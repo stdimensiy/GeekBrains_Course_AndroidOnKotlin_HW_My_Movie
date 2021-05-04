@@ -22,4 +22,9 @@
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings.RatingsFragment"
         android:label="@string/menu_ratings"
         tools:layout="@layout/fragment_ratings" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.about.AboutFragment"
+        android:label="about_fragment"
+        tools:layout="@layout/about_fragment" />
 </navigation>

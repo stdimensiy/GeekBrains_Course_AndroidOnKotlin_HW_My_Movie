@@ -10,4 +10,6 @@
     <string name="menu_home">Главная</string>
     <string name="menu_favorites">Предпочтения</string>
     <string name="menu_ratings">Рейтинги</string>
+    <string name="menu_croupItem_more_title">Дополнительно</string>
+    <string name="menu_app_info_item_title">О приложении</string>
 </resources>

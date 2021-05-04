@@ -17,4 +17,13 @@
             android:icon="@drawable/ic_twotone_insert_chart_24"
             android:title="@string/menu_ratings" />
     </group>
+    <item android:title="@string/menu_croupItem_more_title">
+        <menu>
+            <item
+                android:id="@+id/app_info"
+                android:icon="@drawable/ic_twotone_info_24"
+                android:onClick="onMenuAboutClick"
+                android:title="@string/menu_app_info_item_title" />
+        </menu>
+    </item>
 </menu>
