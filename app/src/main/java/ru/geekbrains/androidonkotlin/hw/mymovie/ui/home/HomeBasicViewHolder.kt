@@ -11,7 +11,7 @@ class HomeBasicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var adapter: HomeInnerAdapter
 
     init {
-        adapter = HomeInnerAdapter(basicTitle.text as String)
+        adapter = HomeInnerAdapter()
         val homeInnerRecyclerView = itemView.findViewById<RecyclerView>(R.id.home_inner_list)
         homeInnerRecyclerView.adapter = adapter
         homeInnerRecyclerView.layoutManager =

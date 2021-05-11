@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
-class HomeInnerAdapter(listId: String) : RecyclerView.Adapter<HomeInnerViewHolder>() {
+class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
     var items: ArrayList<String> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
@@ -14,7 +14,7 @@ class HomeInnerAdapter(listId: String) : RecyclerView.Adapter<HomeInnerViewHolde
     }
 
     override fun onBindViewHolder(holder: HomeInnerViewHolder, position: Int) {
-        var item = items.get(position)
+        val item = items.get(position)
         holder.nameMovie.text = item
         holder.publicData.text = "2020"
         holder.rating.text = "6,9"

@@ -4,18 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
 
-class RatingBasicAdapter : RecyclerView.Adapter<RatingBasicViewHolder>() {
-    var items: ArrayList<String> = arrayListOf(
-        "Топ 100 зрительских симпатий",
-        "Топ 100 лучшей фантастики",
-        "Топ 100 лучших коммедий",
-        "Топ 100 лучших детективов",
-        "Топ 100 лучших боевиков",
-        "Топ 100 лучших фильмов ужасов",
-        "Рейтинг научно популярных фильмов",
-        "Рейтинг сериалов"
-    )
+class RatingBasicAdapter(_ratingViewModel: RatingsViewModel) :
+    RecyclerView.Adapter<RatingBasicViewHolder>() {
+    val ratingsViewModel: RatingsViewModel = _ratingViewModel
+    var items: ArrayList<ListMovies> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingBasicViewHolder {
         val root =
@@ -24,8 +18,13 @@ class RatingBasicAdapter : RecyclerView.Adapter<RatingBasicViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RatingBasicViewHolder, position: Int) {
-        var item = items.get(position)
-        holder.basicTitle.text = item
+        val item = items.get(position)
+        val currentIdList = item.listId
+        val innerItems = ratingsViewModel.fetchDataListById(currentIdList)
+        holder.basicTitle.text = item.listName
+        holder.adapter.items.clear()
+        holder.adapter.items.addAll(innerItems)
+        holder.adapter.notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

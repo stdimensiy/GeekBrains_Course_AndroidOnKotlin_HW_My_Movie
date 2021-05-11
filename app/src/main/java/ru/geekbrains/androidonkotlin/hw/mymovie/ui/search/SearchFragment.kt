@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var searchRecyclerView = view.findViewById<RecyclerView>(R.id.search_list)
+        val searchRecyclerView = view.findViewById<RecyclerView>(R.id.search_list)
         searchRecyclerView.adapter = adapter
         searchRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

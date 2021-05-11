@@ -4,18 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites.FavoriteViewHolder
 
-class SearchAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
+class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     var items: ArrayList<String> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
+        //применена разметка от элемента списка избранных фильмов - сознательно. для экономии времени и проверки работоспособности.
+        //пока он будет абсолютно таким-же, потом может заменю.
         val root =
             LayoutInflater.from(parent.context).inflate(R.layout.item_favorites, parent, false)
-        return FavoriteViewHolder(root)
+        return SearchViewHolder(root)
     }
 
-    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = items.get(position)
         holder.textViewNameFavoritesMovie.text = item
         holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"

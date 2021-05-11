@@ -5,7 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
-class SeaschViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewNameFavoritesMovie: TextView =
         itemView.findViewById(R.id.textViewNameFavoritesMovie)
     val textViewReleaseDataFavoritesMovie: TextView =
