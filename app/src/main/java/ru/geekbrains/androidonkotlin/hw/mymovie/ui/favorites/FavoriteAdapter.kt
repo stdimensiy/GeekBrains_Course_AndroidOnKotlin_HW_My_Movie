@@ -6,16 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
-    //временно создаем исходные данные непосредственно в адаптере, для проверки работоспособности
-    var items: ArrayList<String> = arrayListOf(
-        "Первый фильм",
-        "Второй фильм",
-        "Третий фильм",
-        "Четвертый фильм",
-        "Пятый фильм",
-        "Шестой фильм",
-        "Седьмой фильм"
-    )
+    var items: ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val root =
