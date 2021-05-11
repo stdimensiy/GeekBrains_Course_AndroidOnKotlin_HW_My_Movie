@@ -7,16 +7,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites.FavoriteViewHolder
 
 class SearchAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
-    //временно создаем исходные данные непосредственно в адаптере, для проверки работоспособности
-    var items: ArrayList<String> = arrayListOf(
-        "Рез. поиска - фильм 1",
-        "Рез. поиска - фильм 2",
-        "Рез. поиска - фильм 3",
-        "Рез. поиска - фильм 4",
-        "Рез. поиска - фильм 5",
-        "Рез. поиска - фильм 6",
-        "Рез. поиска - фильм 7"
-    )
+    var items: ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val root =
@@ -25,7 +16,7 @@ class SearchAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-        var item = items.get(position)
+        val item = items.get(position)
         holder.textViewNameFavoritesMovie.text = item
         holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"
         holder.textViewRatingFavoritesMovie.text = "8,1"

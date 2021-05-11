@@ -52,6 +52,16 @@ class TestMoviesRepository : MovieRepository {
         "(Ожид.) Восьмой фильм"
     )
 
+    var searchItems: ArrayList<String> = arrayListOf(
+        "Рез. поиска - фильм 1",
+        "Рез. поиска - фильм 2",
+        "Рез. поиска - фильм 33",
+        "Рез. поиска - фильм 44",
+        "Рез. поиска - фильм 55",
+        "Рез. поиска - фильм 666",
+        "Рез. поиска - фильм 7777"
+    )
+
     override fun getPopularList(callBack: CallBack<ArrayList<String>>) {
         callBack.onResult(testItems)
     }
@@ -64,10 +74,15 @@ class TestMoviesRepository : MovieRepository {
         callBack.onResult(homeFragmentStructure)
     }
 
-    override fun getListMovieById(listId: String, callBack: CallBack<java.util.ArrayList<String>>) {
+    override fun getListMovieById(listId: String, callBack: CallBack<ArrayList<String>>) {
         when (listId) {
             "first" -> callBack.onResult(populItems)
             "second" -> callBack.onResult(overItems)
         }
+    }
+
+    override fun getSearchList(searchPhrase: String, callBack: CallBack<ArrayList<String>>) {
+        // тут будет логика отработки запроса
+        callBack.onResult(searchItems)
     }
 }
