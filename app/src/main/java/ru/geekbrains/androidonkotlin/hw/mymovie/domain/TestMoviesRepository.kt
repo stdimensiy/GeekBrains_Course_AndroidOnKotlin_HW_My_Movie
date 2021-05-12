@@ -1,6 +1,14 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
+import retrofit2.Call
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.`interface`.RetrofitServices
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.common.Common
+import retrofit2.Callback
+import retrofit2.Response
+
 class TestMoviesRepository : MovieRepository {
+    var mService: RetrofitServices = Common.retrofitService
+
     var testItems: ArrayList<String> = arrayListOf(
         "Первый фильм",
         "Второй фильм",
@@ -120,7 +128,24 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getFavoriteList(callBack: CallBack<ArrayList<String>>) {
-        callBack.onResult(favoriteItems)
+        val fi: ArrayList<String> = ArrayList()
+        //первоначальный вариант
+        //callBack.onResult(favoriteItems)
+        //тестирование
+        mService.getMovieList().enqueue(object : Callback<MutableList<TestMovie>>{
+            override fun onResponse(
+                call: Call<MutableList<TestMovie>>,
+                response: Response<MutableList<TestMovie>>
+            ) {
+                for(i in response.body()!!){
+                    fi.add(i.name.toString())
+                }
+                callBack.onResult(fi)
+            }
+            override fun onFailure(call: Call<MutableList<TestMovie>>, t: Throwable) {
+                callBack.onResult(fi)
+            }
+        })
     }
 
     override fun getHomeFragmentStructure(callBack: CallBack<ArrayList<ListMovies>>) {
