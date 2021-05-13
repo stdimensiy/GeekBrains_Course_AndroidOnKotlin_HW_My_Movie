@@ -1,13 +1,13 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
 import retrofit2.Call
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.`interface`.RetrofitServices
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.common.Common
 import retrofit2.Callback
 import retrofit2.Response
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.`interface`.RetrofitServices
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.common.Common
 
 class TestMoviesRepository : MovieRepository {
-    var mService: RetrofitServices = Common.retrofitService
+    var networkService: RetrofitServices = Common.retrofitService
 
     var testItems: ArrayList<String> = arrayListOf(
         "Первый фильм",
@@ -127,23 +127,16 @@ class TestMoviesRepository : MovieRepository {
         callBack.onResult(testItems)
     }
 
-    override fun getFavoriteList(callBack: CallBack<ArrayList<String>>) {
-        val fi: ArrayList<String> = ArrayList()
-        //первоначальный вариант
-        //callBack.onResult(favoriteItems)
-        //тестирование
-        mService.getMovieList().enqueue(object : Callback<MutableList<TestMovie>>{
+    override fun getFavoriteList(callBack: CallBack<MutableList<TestMovie>>) {
+        networkService.getMovieList().enqueue(object : Callback<MutableList<TestMovie>> {
             override fun onResponse(
                 call: Call<MutableList<TestMovie>>,
                 response: Response<MutableList<TestMovie>>
             ) {
-                for(i in response.body()!!){
-                    fi.add(i.name.toString())
-                }
-                callBack.onResult(fi)
+                callBack.onResult(response.body()!!)
             }
+
             override fun onFailure(call: Call<MutableList<TestMovie>>, t: Throwable) {
-                callBack.onResult(fi)
             }
         })
     }
