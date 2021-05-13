@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        adapter = HomeBasicAdapter(homeViewModel)
+        adapter = HomeBasicAdapter(this)
         return root
     }
 

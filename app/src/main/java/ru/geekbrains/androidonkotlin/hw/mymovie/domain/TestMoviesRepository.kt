@@ -9,36 +9,12 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServ
 class TestMoviesRepository : MovieRepository {
     var networkService: RetrofitServicesTest = Common.retrofitServiceTest
     var networkServiceTMDB: RetrofitServicesTMDB = Common.retrofitServiceTMDB
-
-    var testItems: ArrayList<String> = arrayListOf(
-        "Первый фильм",
-        "Второй фильм",
-        "Третий фильм",
-        "Четвертый фильм",
-        "Пятый фильм",
-        "Шестой фильм",
-        "Седьмой фильм",
-        "Восьмой Избранный"
-    )
-
-    var favoriteItems: ArrayList<String> = arrayListOf(
-        "(избранное) Первый фильм",
-        "(избранное) Второй фильм",
-        "(избранное) Третий фильм",
-        "(избранное) Четвертый фильм",
-        "(избранное) Пятый фильм",
-        "(избранное) Шестой фильм",
-        "(избранное) Седьмой фильм",
-        "(избранное) Восьмой фильм"
-    )
-
     var homeFragmentStructure: ArrayList<ListMovies> = arrayListOf(
-        ListMovies("first", "Популярное", "Комментарий к подборке популярного"),
-        ListMovies("second", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
-        ListMovies("first", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
-        ListMovies("first", "Лучшие", "Комментарий к подборке Лучшие")
+        ListMovies("topRated", "Лучшие", "Комментарий к подборке Лучшие"),
+        ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
+        ListMovies("nowPlaying", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
+        ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
-
     var ratingFragmentStructure: ArrayList<ListMovies> = arrayListOf(
         ListMovies(
             "1111",
@@ -69,7 +45,6 @@ class TestMoviesRepository : MovieRepository {
         ),
         ListMovies("8888", "Репйтинг сериалов", "Комментарий к подборке Репйтинг сериалов")
     )
-
     var rating1111lItems: ArrayList<String> = arrayListOf(
         "(рейт 111.) Первый фильм",
         "(рейт 111.) Второй фильм",
@@ -80,7 +55,6 @@ class TestMoviesRepository : MovieRepository {
         "(рейт 111.) Седьмой фильм",
         "(рейт 111.) Восьмой фильм"
     )
-
     var rating2222lItems: ArrayList<String> = arrayListOf(
         "(рейт 222.) Первый фильм",
         "(рейт 222.) Второй фильм",
@@ -91,42 +65,6 @@ class TestMoviesRepository : MovieRepository {
         "(рейт 222.) Седьмой фильм",
         "(рейт 222.) Восьмой фильм"
     )
-
-    var populItems: ArrayList<String> = arrayListOf(
-        "(Попул.) Первый фильм",
-        "(Попул.) Второй фильм",
-        "(Попул.) Третий фильм",
-        "(Попул.) Четвертый фильм",
-        "(Попул.) Пятый фильм",
-        "(Попул.) Шестой фильм",
-        "(Попул.) Седьмой фильм",
-        "(Попул.) Восьмой фильм"
-    )
-
-    var overItems: ArrayList<String> = arrayListOf(
-        "(Ожид.) Первый фильм",
-        "(Ожид.) Второй фильм",
-        "(Ожид.) Третий фильм",
-        "(Ожид.) Четвертый фильм",
-        "(Ожид.) Пятый фильм",
-        "(Ожид.) Шестой фильм",
-        "(Ожид.) Седьмой фильм",
-        "(Ожид.) Восьмой фильм"
-    )
-
-    var searchItems: ArrayList<String> = arrayListOf(
-        "Рез. поиска - фильм 1",
-        "Рез. поиска - фильм 2",
-        "Рез. поиска - фильм 33",
-        "Рез. поиска - фильм 44",
-        "Рез. поиска - фильм 55",
-        "Рез. поиска - фильм 666",
-        "Рез. поиска - фильм 7777"
-    )
-
-    override fun getPopularList(callBack: CallBack<ArrayList<String>>) {
-        callBack.onResult(testItems)
-    }
 
     override fun getFavoriteList(callBack: CallBack<MutableList<TestMovie>>) {
         networkService.getMovieList().enqueue(object : Callback<MutableList<TestMovie>> {
@@ -143,7 +81,52 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getNowPlayingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getNowPlayingMovies(3, TMDBAPIConstants.API_KEY_V3, 2)
+        networkServiceTMDB.getNowPlayingMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+            .enqueue(object : Callback<MoviesResponseTMDB> {
+                override fun onResponse(
+                    call: Call<MoviesResponseTMDB>,
+                    response: Response<MoviesResponseTMDB>
+                ) {
+                    callBack.onResult(response.body()?.results!!)
+                }
+
+                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
+                }
+            })
+    }
+
+    override fun getUpcomingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
+        networkServiceTMDB.getUpcomingMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+            .enqueue(object : Callback<MoviesResponseTMDB> {
+                override fun onResponse(
+                    call: Call<MoviesResponseTMDB>,
+                    response: Response<MoviesResponseTMDB>
+                ) {
+                    callBack.onResult(response.body()?.results!!)
+                }
+
+                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
+                }
+            })
+    }
+
+    override fun getPopularMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
+        networkServiceTMDB.getPopularMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+            .enqueue(object : Callback<MoviesResponseTMDB> {
+                override fun onResponse(
+                    call: Call<MoviesResponseTMDB>,
+                    response: Response<MoviesResponseTMDB>
+                ) {
+                    callBack.onResult(response.body()?.results!!)
+                }
+
+                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
+                }
+            })
+    }
+
+    override fun getTopRatedMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
+        networkServiceTMDB.getTopRatedMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(
                     call: Call<MoviesResponseTMDB>,
@@ -167,8 +150,6 @@ class TestMoviesRepository : MovieRepository {
 
     override fun getListMovieById(listId: String, callBack: CallBack<ArrayList<String>>) {
         when (listId) {
-            "first" -> callBack.onResult(populItems)
-            "second" -> callBack.onResult(overItems)
             "1111" -> callBack.onResult(rating1111lItems)
             "2222" -> callBack.onResult(rating2222lItems)
             "3333" -> callBack.onResult(rating1111lItems)
@@ -178,10 +159,5 @@ class TestMoviesRepository : MovieRepository {
             "7777" -> callBack.onResult(rating1111lItems)
             "8888" -> callBack.onResult(rating2222lItems)
         }
-    }
-
-    override fun getSearchList(searchPhrase: String, callBack: CallBack<ArrayList<String>>) {
-        // тут будет логика отработки запроса
-        callBack.onResult(searchItems)
     }
 }
