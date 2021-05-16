@@ -20,7 +20,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        val item = items.get(position)
+        val item = items[position]
+        holder.bind(item)
         holder.textViewNameFavoritesMovie.text = item.title
         Picasso.get()
             .load(String.format(TMDBAPIConstants.POSTER_URL, item.poster_path))
@@ -31,8 +32,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
             .into(holder.imageViewPoster)
         holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"
         holder.textViewRatingFavoritesMovie.text = item.vote_average.toString()
-        holder.textViewReleaseDataFavoritesMovie.text =
-            "(" + item.release_date + ") " + item.original_title
+        ("(" + item.release_date?.trim()?.subSequence(0, 4) + ") " + item.original_title).also { holder.textViewReleaseDataFavoritesMovie.text = it }
     }
 
     override fun getItemCount(): Int {
