@@ -18,6 +18,7 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         val item = items[position]
+        holder.bind(item)
         holder.textViewNameFavoritesMovie.text = item.name
         Picasso.get()
             .load(item.imageurl)
