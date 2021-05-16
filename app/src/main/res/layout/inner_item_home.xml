@@ -69,5 +69,13 @@
             app:layout_constraintTop_toTopOf="@+id/textView4"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
+        <ImageView
+            android:id="@+id/imageViewFlagFavoritesMovie"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_twotone_favorite_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

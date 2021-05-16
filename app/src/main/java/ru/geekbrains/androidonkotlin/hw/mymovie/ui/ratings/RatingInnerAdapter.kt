@@ -18,6 +18,7 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
 
     override fun onBindViewHolder(holder: RatingInnerViewHolder, position: Int) {
         val item = items[position]
+        holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
             .load(String.format(TMDBAPIConstants.POSTER_URL, item.poster_path))
