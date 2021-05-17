@@ -5,11 +5,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.withContext
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
 
@@ -24,9 +21,9 @@ class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById(R.id.textViewRatingFavoritesMovie)
     val imageViewPoster: ImageView =
         itemView.findViewById(R.id.imageViewPoster)
-    val imageViewFlagFavoritesMovie: ImageView =
+    private val imageViewFlagFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
-    val imageViewRatingFavoritesMovie: ImageView =
+    private val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
 
     fun bind(item: MovieTMDB) {
@@ -34,11 +31,6 @@ class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
             itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
-//            Toast.makeText(
-//                it.context,
-//                "нажал на постер фильма ${item.title}, идентификатор фильма ${item.id}, в позиции адаптера ${adapterPosition}",
-//                Toast.LENGTH_SHORT
-//            ).show()
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {

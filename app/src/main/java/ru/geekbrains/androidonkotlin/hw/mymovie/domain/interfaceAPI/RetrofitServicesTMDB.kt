@@ -13,13 +13,15 @@ interface RetrofitServicesTMDB {
      * @param key
      * @param page
      * @param region  - регион поиска (пока отключен)
+     * @param language - установка базового языка ответа
      * @return возвращает список фильмов в кинотеатрах...
      */
-    @GET("{api_version}/movie/now_playing?language=ru-RU")
+    @GET("{api_version}/movie/now_playing")
     fun getNowPlayingMovies(
         @Path("api_version") api_version: Int, // версия API с которой приято решение работать
         @Query("api_key") key: String,         // базовый ключ пользователя
         @Query("page") page: Int,              // номер страницы (их может быть много)
+        @Query("language") language: String,   // установка базового языка ответа
         //@Query("region") region: String        // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
 
@@ -31,11 +33,12 @@ interface RetrofitServicesTMDB {
      * @param region  - регион поиска (пока отключен)
      * @return возвращает список текущих популярных фильмов на IMDB. Этот список обновляется ежедневно.
      */
-    @GET("{api_version}/movie/popular?language=ru-RU")
+    @GET("{api_version}/movie/popular")
     fun getPopularMovies(
         @Path("api_version") api_version: Int, // версия API с которой приято решение работать
         @Query("api_key") key: String,         // базовый ключ пользователя
         @Query("page") page: Int,              // номер страницы (их может быть много)
+        @Query("language") language: String,   // установка базового языка ответа
         //@Query("region") region: String            // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
 
@@ -47,11 +50,12 @@ interface RetrofitServicesTMDB {
      * @param region  - регион поиска (пока отключен)
      * @return возвращает список ожидаемых фильмов на IMDB.
      */
-    @GET("{api_version}/movie/upcoming?language=ru-RU")
+    @GET("{api_version}/movie/upcoming")
     fun getUpcomingMovies(
         @Path("api_version") api_version: Int, // версия API с которой приято решение работать
         @Query("api_key") key: String,         // базовый ключ пользователя
         @Query("page") page: Int,              // номер страницы (их может быть много)
+        @Query("language") language: String,   // установка базового языка ответа
         //@Query("region") region: String            // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
 
@@ -63,11 +67,12 @@ interface RetrofitServicesTMDB {
      * @param region  - регион поиска (пока отключен)
      * @return возвращает список фиьмов с самым высоким рейтонгом по версии IMDB.
      */
-    @GET("{api_version}/movie/top_rated?language=ru-RU")
+    @GET("{api_version}/movie/top_rated")
     fun getTopRatedMovies(
         @Path("api_version") api_version: Int, // версия API с которой приято решение работать
         @Query("api_key") key: String,         // базовый ключ пользователя
         @Query("page") page: Int,              // номер страницы (их может быть много)
+        @Query("language") language: String,   // установка базового языка ответа
         //@Query("region") region: String            // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
 }

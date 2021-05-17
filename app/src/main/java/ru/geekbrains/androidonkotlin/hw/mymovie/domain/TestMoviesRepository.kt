@@ -37,7 +37,12 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getNowPlayingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getNowPlayingMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+        networkServiceTMDB.getNowPlayingMovies(
+            3,
+            TMDBAPIConstants.API_KEY_V3,
+            1,
+            TMDBAPIConstants.LANGUAGE_ANSWER
+        )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(
                     call: Call<MoviesResponseTMDB>,
@@ -52,7 +57,12 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getUpcomingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getUpcomingMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+        networkServiceTMDB.getUpcomingMovies(
+            3,
+            TMDBAPIConstants.API_KEY_V3,
+            1,
+            TMDBAPIConstants.LANGUAGE_ANSWER
+        )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(
                     call: Call<MoviesResponseTMDB>,
@@ -67,7 +77,12 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getPopularMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getPopularMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+        networkServiceTMDB.getPopularMovies(
+            3,
+            TMDBAPIConstants.API_KEY_V3,
+            1,
+            TMDBAPIConstants.LANGUAGE_ANSWER
+        )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(
                     call: Call<MoviesResponseTMDB>,
@@ -82,7 +97,12 @@ class TestMoviesRepository : MovieRepository {
     }
 
     override fun getTopRatedMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getTopRatedMovies(3, TMDBAPIConstants.API_KEY_V3, 1)
+        networkServiceTMDB.getTopRatedMovies(
+            3,
+            TMDBAPIConstants.API_KEY_V3,
+            1,
+            TMDBAPIConstants.LANGUAGE_ANSWER
+        )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(
                     call: Call<MoviesResponseTMDB>,

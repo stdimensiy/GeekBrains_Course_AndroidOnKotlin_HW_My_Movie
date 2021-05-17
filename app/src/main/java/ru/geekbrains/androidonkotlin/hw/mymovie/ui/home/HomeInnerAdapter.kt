@@ -27,7 +27,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        holder.publicData.text = "2020"
+        holder.publicData.text = item.release_date?.trim()?.substring(0, 4)
         holder.rating.text = item.vote_average.toString()
     }
 

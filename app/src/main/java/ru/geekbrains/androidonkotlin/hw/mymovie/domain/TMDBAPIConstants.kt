@@ -12,7 +12,7 @@ object TMDBAPIConstants {
     val POSTER_SIZE = "w500"
 
     /** language answer - язык ответа  */
-    val LANGUAGE_ANSWER = "ru_RU"
+    val LANGUAGE_ANSWER = "ru-RU"
 
     /** форматная строка сборного адреса картинки  */
     val POSTER_URL = "$IMAGE_SERVER_URL$POSTER_SIZE%1\$s"

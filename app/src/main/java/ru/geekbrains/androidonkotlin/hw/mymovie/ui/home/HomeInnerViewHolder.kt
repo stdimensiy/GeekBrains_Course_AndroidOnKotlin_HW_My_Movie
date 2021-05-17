@@ -16,8 +16,8 @@ class HomeInnerViewHolder(
     val publicData: TextView = itemView.findViewById(R.id.textView3),
     val rating: TextView = itemView.findViewById(R.id.textView4),
     val imageViewPoster: ImageView = itemView.findViewById(R.id.imageView2),
-    val imageViewRating: ImageView = itemView.findViewById(R.id.imageView3),
-    val imageViewFlagFavoritesMovie: ImageView =
+    private val imageViewRating: ImageView = itemView.findViewById(R.id.imageView3),
+    private val imageViewFlagFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
 ) : RecyclerView.ViewHolder(itemView){
 

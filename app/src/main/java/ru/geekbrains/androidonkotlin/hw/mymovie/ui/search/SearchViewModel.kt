@@ -11,7 +11,7 @@ class SearchViewModel : ViewModel() {
     val searchMovieLiveData = MutableLiveData<ArrayList<MovieTMDB>>()
 
     fun fetchData() {
-        // вместо поисковой фразы пока пустая строка
+        // вместо поисковой фразы пока запрос списка фильмов которые сейчас в показе
         repository.getNowPlayingMovies(object : CallBack<ArrayList<MovieTMDB>> {
             override fun onResult(value: ArrayList<MovieTMDB>) {
                 searchMovieLiveData.postValue(value)

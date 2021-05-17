@@ -27,7 +27,6 @@ class HomeBasicAdapter(_fragment: Fragment) :
     override fun onBindViewHolder(holder: HomeBasicViewHolder, position: Int) {
         val item = items.get(position)
         // в зависимости от того что за позиция, запрашивается нужный список
-        var currentIdList = item.listId // текущий идентификатор подборки
         holder.basicTitle.text = item.listName
         //работа с вложенным адаптером
         //подписываем каждую конкретную линейку на свою лайвдату

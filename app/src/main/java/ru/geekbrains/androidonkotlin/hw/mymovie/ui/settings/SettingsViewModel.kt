@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SettingsViewModel : ViewModel() {
+    //временно
     private val _text = MutableLiveData<String>().apply {
         value = "Этo фрагмент \n настроек программы. \n" +
                 "реализовать дневной и ночной режим, количество рубрик в левом меню и содержимое главного фрагмента."

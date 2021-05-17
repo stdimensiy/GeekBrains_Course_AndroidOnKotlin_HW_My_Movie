@@ -6,7 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMovie
 
 class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,17 +24,29 @@ class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
 
-    fun bind(item: TestMovie){
+    fun bind(item: TestMovie) {
         imageViewPoster.setOnClickListener {
-            Toast.makeText(it.context, "нажал на постер фильма ${item.name}, идентификатор фильма ${item.imageurl}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                it.context,
+                "нажал на постер фильма ${item.name}, идентификатор фильма ${item.imageurl}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {
-            Toast.makeText(it.context, "нажал на сердечко к фильму ${item.name}, идентификатор фильма ${item.imageurl}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                it.context,
+                "нажал на сердечко к фильму ${item.name}, идентификатор фильма ${item.imageurl}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         imageViewRatingFavoritesMovie.setOnClickListener {
-            Toast.makeText(it.context, "нажал на звездочку к фильму ${item.name}, идентификатор фильма ${item.imageurl}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                it.context,
+                "нажал на звездочку к фильму ${item.name}, идентификатор фильма ${item.imageurl}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

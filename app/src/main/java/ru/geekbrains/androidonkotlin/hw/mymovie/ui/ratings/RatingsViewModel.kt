@@ -32,7 +32,6 @@ class RatingsViewModel : ViewModel() {
     //временно пока не найду способа объединить запросы
     //подборка "популярные видео"
     fun fetchPopularData() {
-        // вместо поисковой фразы пока пустая строка
         repository.getPopularMovies(object : CallBack<ArrayList<MovieTMDB>> {
             override fun onResult(value: ArrayList<MovieTMDB>) {
                 popularMovieLiveData.postValue(value)
@@ -42,7 +41,6 @@ class RatingsViewModel : ViewModel() {
 
     //подборка "Ожидаемые видео"
     fun fetchUpcomingData() {
-        // вместо поисковой фразы пока пустая строка
         repository.getUpcomingMovies(object : CallBack<ArrayList<MovieTMDB>> {
             override fun onResult(value: ArrayList<MovieTMDB>) {
                 upcomingMovieLiveData.postValue(value)
@@ -52,7 +50,6 @@ class RatingsViewModel : ViewModel() {
 
     //подборка "Смотрят сейчас"
     fun fetchNowPlayingData() {
-        // вместо поисковой фразы пока пустая строка
         repository.getNowPlayingMovies(object : CallBack<ArrayList<MovieTMDB>> {
             override fun onResult(value: ArrayList<MovieTMDB>) {
                 nowPlayingMovieLiveData.postValue(value)
@@ -62,7 +59,6 @@ class RatingsViewModel : ViewModel() {
 
     //подборка "Лучшие"
     fun fetchTopRatedData() {
-        // вместо поисковой фразы пока пустая строка
         repository.getTopRatedMovies(object : CallBack<ArrayList<MovieTMDB>> {
             override fun onResult(value: ArrayList<MovieTMDB>) {
                 topRatedMovieLiveData.postValue(value)

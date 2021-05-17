@@ -32,7 +32,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
             .into(holder.imageViewPoster)
         holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"
         holder.textViewRatingFavoritesMovie.text = item.vote_average.toString()
-        ("(" + item.release_date?.trim()?.subSequence(0, 4) + ") " + item.original_title).also { holder.textViewReleaseDataFavoritesMovie.text = it }
+        ("(" + item.release_date?.trim()?.subSequence(0, 4) + ") " + item.original_title)
+            .also { holder.textViewReleaseDataFavoritesMovie.text = it }
     }
 
     override fun getItemCount(): Int {

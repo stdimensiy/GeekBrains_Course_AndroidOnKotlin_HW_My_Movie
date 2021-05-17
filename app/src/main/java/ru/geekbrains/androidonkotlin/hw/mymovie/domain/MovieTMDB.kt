@@ -18,7 +18,7 @@ data class MovieTMDB(
     val video: Boolean = false,
     val vote_average: Double = 0.toDouble(),
     val vote_count: Int = 0
-):Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),
         parcel.readString(),
