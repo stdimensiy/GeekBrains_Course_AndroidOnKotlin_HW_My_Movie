@@ -1,9 +1,11 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings
 
+import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
@@ -21,7 +23,9 @@ class RatingInnerViewHolder(
 
     fun bind(item: MovieTMDB){
         imageViewPoster.setOnClickListener {
-            Toast.makeText(it.context, "нажал на постер фильма ${item.title}, идентификатор фильма ${item.id}", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle()
+            bundle.putParcelable("ARG_MOVIE", item)
+            itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
         }
 
         imageViewRating.setOnClickListener {
