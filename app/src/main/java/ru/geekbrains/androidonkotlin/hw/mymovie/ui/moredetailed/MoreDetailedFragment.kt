@@ -7,44 +7,74 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
 
 class MoreDetailedFragment : Fragment() {
+    lateinit var movie: MovieTMDB
+
+    //private lateinit var viewModel: MoreDetailedViewModel
+    private lateinit var textViewNameMovie: TextView
+    private lateinit var textViewOrigNameMovieAndData: TextView
+    private lateinit var imageViewPoster: ImageView
+    private lateinit var textViewDuration: TextView
+    private lateinit var textViewRating: TextView
+    private lateinit var tetextViewBudget: TextView
+    private lateinit var textViewRevenue: TextView
+    private lateinit var textViewReleaseData: TextView
+    private lateinit var textView: TextView
+
 
     companion object {
         fun newInstance() = MoreDetailedFragment()
     }
 
-    private lateinit var viewModel: MoreDetailedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(MoreDetailedViewModel::class.java)
         val root = inflater.inflate(R.layout.more_detailed_fragment, container, false)
-        val textView: TextView = root.findViewById(R.id.text_moreDetailed)
-        val textViewNameMovie: TextView =
+        textView = root.findViewById(R.id.text_moreDetailed)
+        textViewNameMovie =
             root.findViewById(R.id.textView_moreDetail_nameMovie)  // Региональное наименование фильма
-        val textViewOrigNameMovieAndData: TextView =
+        textViewOrigNameMovieAndData =
             root.findViewById(R.id.textView_moreDetail_origNameMovieAndData) // Оригинальное наименование и (ГГГГ)
-        val imageViewPoster: ImageView = root.findViewById(R.id.imageViewPoster) // постер
-        val textViewDuration: TextView =
+        imageViewPoster = root.findViewById(R.id.imageViewPoster) // постер
+        textViewDuration =
             root.findViewById(R.id.textView_moreDetail_duration) // длительность 125 мин.
-        val textViewRating: TextView =
-            root.findViewById(R.id.textView_moreDetail_rating) // рейтинг 8,5 (7183)
-        val tetextViewBudget: TextView =
+        textViewRating = root.findViewById(R.id.textView_moreDetail_rating)   // рейтинг 8,5 (7183)
+        tetextViewBudget =
             root.findViewById(R.id.textView_moreDetail_budget) // Бюджет: 1 234 567 890 $
-        val textViewRevenue: TextView =
+        textViewRevenue =
             root.findViewById(R.id.textView_moreDetail_revenue) // Сборы: 1 234 567 890 $
-        val textViewReleaseData: TextView =
+        textViewReleaseData =
             root.findViewById(R.id.textView_moreDetail_releaseData) // Дата релиза: (2018-12-06)
-        //Фактически пока в разметку передаются только тестовка, для проверки скроллится ли текст
-        viewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        movie = arguments?.getParcelable("ARG_MOVIE")!!
+        textViewNameMovie.text = movie.title
+        (movie.original_title + " (" + movie.release_date?.trim()
+            ?.substring(0, 4) + ")").also { textViewOrigNameMovieAndData.text = it }
+        Picasso.get()
+            .load(String.format(TMDBAPIConstants.POSTER_URL, movie.poster_path))
+            .placeholder(R.drawable.pholder)
+            .error(R.drawable.err404)
+            .resize(500, 750)
+            .centerCrop()
+            .into(imageViewPoster)
+        textViewDuration.text = "длительность 125 мин."
+        (movie.vote_average.toString() + " (" + movie.vote_count.toString() + ")").also {
+            textViewRating.text = it
+        }
+        tetextViewBudget.text = "загрузка..."
+        textViewRevenue.text = "загрузка..."
+        textViewReleaseData.text = "(${movie.release_date})"
+        textView.text = movie.overview
     }
 }
