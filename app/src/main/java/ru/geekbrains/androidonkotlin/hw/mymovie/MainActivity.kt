@@ -1,8 +1,11 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -16,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.widget.SearchView
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +55,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searItem = menu.findItem(R.id.menu_search)
+        val searchView = searItem.actionView as SearchView
+        searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                searchView.setQuery("", false)
+                searItem.collapseActionView()
+                val bundle = Bundle()
+                bundle.putString("ARG_SEARCH", query?.trim())
+                val navController = findNavController(R.id.nav_host_fragment)
+                navController.navigate(R.id.searchFragment, bundle)
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                //TODO("Not yet implemented")
+                return false
+            }
+        })
+
         return true
     }
 

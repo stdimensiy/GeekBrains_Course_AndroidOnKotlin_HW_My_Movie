@@ -75,4 +75,26 @@ interface RetrofitServicesTMDB {
         @Query("language") language: String,   // установка базового языка ответа
         //@Query("region") region: String            // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
+
+    /**
+     * Режим: Simple Search Movie - простой поиск фильмов на основе поисковой фразы
+     * @param api_version
+     * @param key
+     * @param page
+     * @param region  - регион поиска (пока отключен)
+     * @param language - установка базового языка ответа
+     * @param query - поисковый запрос
+     * @param include_adult - флаг включения в выборку фиильмов для взрослых
+     * @return возвращает список фильмов в кинотеатрах...
+     */
+    @GET("{api_version}/search/movie")
+    fun getSimpleSearchMovies(
+        @Path("api_version") api_version: Int, // версия API с которой приято решение работать
+        @Query("api_key") key: String,         // базовый ключ пользователя
+        @Query("page") page: Int,              // номер страницы (их может быть много)
+        @Query("language") language: String,   // установка базового языка ответа
+        @Query("query") query: String,         // поисковая фраза
+        @Query("include_adult") include_adult: Boolean    // признак наличия в выборке фильмов для взрослых
+        //@Query("region") region: String        // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
+    ): Call<MoviesResponseTMDB>
 }
