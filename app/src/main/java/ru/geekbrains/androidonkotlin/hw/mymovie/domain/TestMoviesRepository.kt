@@ -124,14 +124,18 @@ class TestMoviesRepository : MovieRepository {
         callBack.onResult(ratingFragmentStructure)
     }
 
-    override fun getDiscoveredMovies(title: String, page: Int, callBack: CallBack<MoviesResponseTMDB>) {
+    override fun getDiscoveredMovies(
+        title: String,
+        page: Int,
+        callBack: CallBack<MoviesResponseTMDB>
+    ) {
         networkServiceTMDB.getSimpleSearchMovies(
             3,
             TMDBAPIConstants.API_KEY_V3,
             page,
             TMDBAPIConstants.LANGUAGE_ANSWER,
             title,
-            false
+            TMDBAPIConstants.INCLUDE_ADULT
         )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(

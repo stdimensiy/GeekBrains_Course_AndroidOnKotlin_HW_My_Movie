@@ -53,8 +53,13 @@ class MoreDetailedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         movie = arguments?.getParcelable("ARG_MOVIE")!!
         textViewNameMovie.text = movie.title
-        (movie.original_title + " (" + movie.release_date?.trim()
-            ?.substring(0, 4) + ")").also { textViewOrigNameMovieAndData.text = it }
+        var currentReleaseData = "0000"
+        if (!movie.release_date.isNullOrBlank()) {
+            currentReleaseData = movie.release_date!!.trim().substring(0, 4)
+        }
+        (movie.original_title + " (" + currentReleaseData + ")").also {
+            textViewOrigNameMovieAndData.text = it
+        }
         Picasso.get()
             .load(String.format(TMDBAPIConstants.POSTER_URL, movie.poster_path))
             .placeholder(R.drawable.pholder)
