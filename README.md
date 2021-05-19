@@ -6,8 +6,12 @@
 Курс: ***Android 2. Android на Kotlin***    
 ### Комплексное задание: Разработка приложения по My Movie - работа с базой данных фильмов.
 ---    
-- Текущий результат (презентация)    
-
+- Текущий результат (презентация)        
+![Home Fragment](https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/HomeFragment.png)
+![Home Fragment](https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/FavoriteFragment.png)
+![Home Fragment](https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/ActionSearch.png)
+![Home Fragment](https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/SearchFragment.png)
+![Home Fragment](https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/ActionLeftMenu.png)
 ---
 - Задачи
 - [X] ***Задача №1.1.***	Создать новый проект в Android Studio на Kotlin.
