@@ -10,7 +10,7 @@
 <p align="center">
    <video src="https://user-images.githubusercontent.com/73497940/118815431-e8418280-b8b9-11eb-983d-7071fcddd7c5.mp4"></video>
   <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/HomeFragment.png" width="150" title="Домашний фрагмент">
-  <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/FavoriteFragment.png" width="150" alt="Фрагмент \"Избранное\"">
+  <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/FavoriteFragment.png" width="150" alt="Фрагмент Избранное">
   <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/ActionSearch.png" width="150" alt="активация поиска из любого фрагмента">
   <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/SearchFragment.png" width="150" alt="фрагмент поиска фильмов">
   <img src="https://github.com/stdimensiy/GeekBrains_Course_AndroidOnKotlin_HW_My_Movie/raw/hw_lesson5/snapshots/ActionLeftMenu.png" width="150" alt="Левая шторка меню">

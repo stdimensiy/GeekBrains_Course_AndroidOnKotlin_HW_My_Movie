@@ -97,4 +97,23 @@ interface RetrofitServicesTMDB {
         @Query("include_adult") include_adult: Boolean    // признак наличия в выборке фильмов для взрослых
         //@Query("region") region: String        // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
     ): Call<MoviesResponseTMDB>
+
+    /**
+     * Раздел API: Movies
+     * Режим standards lists (согласно документации есть только 4 стандартных листа now_playing, popular, top_rated и upcoming
+     * @param api_version
+     * @param key
+     * @param page
+     * @param region  - регион поиска (пока отключен)
+     * @return возвращает список фиьмов с самым высоким рейтонгом по версии IMDB.
+     */
+    @GET("{api_version}/movie/{standard_list}")
+    fun sectionMoviesGetStandardsLists(
+        @Path("api_version") api_version: Int,        // версия API с которой приято решение работать
+        @Path("standard_list") standard_list: String, // ытандартный лист (строго по API)
+        @Query("api_key") key: String,                // базовый ключ пользователя
+        @Query("page") page: Int,                     // номер страницы (их может быть много)
+        @Query("language") language: String,          // установка базового языка ответа
+        //@Query("region") region: String                   // код ISO 3166-1 для фильтрации дат выпуска. Должно быть в верхнем регистре
+    ): Call<MoviesResponseTMDB>
 }

@@ -16,9 +16,9 @@ class TestMoviesRepository : MovieRepository {
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
     var ratingFragmentStructure: ArrayList<ListMovies> = arrayListOf(
-        ListMovies("topRated", "Лучшие", "Комментарий к подборке Лучшие"),
+        ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
         ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
-        ListMovies("nowPlaying", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
+        ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
 
@@ -143,6 +143,31 @@ class TestMoviesRepository : MovieRepository {
                     response: Response<MoviesResponseTMDB>
                 ) {
                     callBack.onResult(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
+                }
+            })
+    }
+
+    override fun getStandardsLists(
+        standard_list: String,
+        page: Int,
+        callBack: CallBack<ArrayList<MovieTMDB>>
+    ) {
+        networkServiceTMDB.sectionMoviesGetStandardsLists(
+            3,
+            standard_list,
+            TMDBAPIConstants.API_KEY_V3,
+            page,
+            TMDBAPIConstants.LANGUAGE_ANSWER
+        )
+            .enqueue(object : Callback<MoviesResponseTMDB> {
+                override fun onResponse(
+                    call: Call<MoviesResponseTMDB>,
+                    response: Response<MoviesResponseTMDB>
+                ) {
+                    callBack.onResult(response.body()?.results!!)
                 }
 
                 override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {

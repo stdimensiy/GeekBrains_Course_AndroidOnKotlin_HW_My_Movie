@@ -8,15 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
 
 class RatingBasicAdapter(_fragment: Fragment) :
     RecyclerView.Adapter<RatingBasicViewHolder>() {
-    val ratingsViewModel: RatingsViewModel =
+    private val ratingsViewModel: RatingsViewModel =
         ViewModelProvider(_fragment).get(RatingsViewModel::class.java)
     val fragment: Fragment = _fragment
-    var items: ArrayList<ListMovies> = ArrayList()
+    var items: ArrayList<GroupResponseObject> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingBasicViewHolder {
         val root =
@@ -26,16 +26,10 @@ class RatingBasicAdapter(_fragment: Fragment) :
 
     override fun onBindViewHolder(holder: RatingBasicViewHolder, position: Int) {
         val item = items[position]
-        holder.basicTitle.text = item.listName
+        holder.basicTitle.text = item.nameGroupResponse
         //работа с вложенным адаптером
-        //подписываем каждую конкретную линейку на свою лайвдату
-        var currentMutableLiveData: MutableLiveData<ArrayList<MovieTMDB>>
-        currentMutableLiveData = ratingsViewModel.popularMovieLiveData
-        when (item.listId) {
-            "upcoming" -> currentMutableLiveData = ratingsViewModel.upcomingMovieLiveData
-            "topRated" -> currentMutableLiveData = ratingsViewModel.topRatedMovieLiveData
-            "nowPlaying" -> currentMutableLiveData = ratingsViewModel.nowPlayingMovieLiveData
-        }
+        val currentMutableLiveData: MutableLiveData<ArrayList<MovieTMDB>> =
+            ratingsViewModel.arrGroupList[position].currentLiveData
         currentMutableLiveData.observe(fragment.viewLifecycleOwner, Observer {
             holder.adapter.items = it
             holder.adapter.notifyDataSetChanged()
