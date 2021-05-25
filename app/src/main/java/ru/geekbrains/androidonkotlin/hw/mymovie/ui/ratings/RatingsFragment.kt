@@ -5,20 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class RatingsFragment : Fragment() {
 
-    private lateinit var ratingsViewModel: RatingsViewModel
     private lateinit var adapter: RatingBasicAdapter
 
-    override fun onStart() {
-        super.onStart()
-        ratingsViewModel.fetchData()
+    private val ratingsViewModel: RatingsViewModel by viewModels {
+        RatingsViewModelFactory(requireActivity().application)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) ratingsViewModel.fetchData()
     }
 
     override fun onCreateView(
@@ -26,8 +29,6 @@ class RatingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        ratingsViewModel =
-            ViewModelProvider(this).get(RatingsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_ratings, container, false)
         adapter = RatingBasicAdapter(this)
         return root
