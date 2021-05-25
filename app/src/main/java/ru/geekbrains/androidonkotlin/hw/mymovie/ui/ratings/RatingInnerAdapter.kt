@@ -30,7 +30,7 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        holder.publicData.text = "2021"
+        holder.publicData.text = item.release_date?.trim()?.substring(0, 4)
         holder.rating.text = item.vote_average.toString()
         if (items.size > 0 && position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()

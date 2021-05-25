@@ -3,20 +3,21 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
 
 class HomeBasicAdapter(_fragment: Fragment) :
     RecyclerView.Adapter<HomeBasicViewHolder>() {
-    // не нашел пока другого способа
-    val homeViewModel: HomeViewModel = ViewModelProvider(_fragment).get(HomeViewModel::class.java)
+    private val homeViewModel: HomeViewModel =
+        ViewModelProvider(_fragment).get(HomeViewModel::class.java)
     val fragment: Fragment = _fragment
-    var items: ArrayList<ListMovies> = ArrayList()
+    var items: ArrayList<GroupResponseObject> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBasicViewHolder {
         val root =
@@ -26,19 +27,22 @@ class HomeBasicAdapter(_fragment: Fragment) :
 
     override fun onBindViewHolder(holder: HomeBasicViewHolder, position: Int) {
         val item = items.get(position)
-        // в зависимости от того что за позиция, запрашивается нужный список
-        holder.basicTitle.text = item.listName
+        holder.basicTitle.text = item.nameGroupResponse
         //работа с вложенным адаптером
-        //подписываем каждую конкретную линейку на свою лайвдату
-        var currentMutableLiveData: MutableLiveData<ArrayList<MovieTMDB>>
-        currentMutableLiveData = homeViewModel.popularMovieLiveData
-        when (item.listId) {
-            "upcoming" -> currentMutableLiveData = homeViewModel.upcomingMovieLiveData
-            "topRated" -> currentMutableLiveData = homeViewModel.topRatedMovieLiveData
-            "nowPlaying" -> currentMutableLiveData = homeViewModel.nowPlayingMovieLiveData
-        }
-        currentMutableLiveData.observe(fragment.viewLifecycleOwner, Observer {
+        val currentRO = homeViewModel.arrGroupList[position]
+        val currentLiveData: LiveData<ArrayList<MovieTMDB>> = currentRO.currentLiveData
+        currentLiveData.observe(fragment.viewLifecycleOwner, Observer {
             holder.adapter.items = it
+            holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
+                override fun onLoadMore() {
+                    if (currentRO.lastAnswer!!.page < currentRO.lastAnswer!!.total_pages) {
+                        currentRO.FuncFetch.invoke(
+                            currentRO.standard_list.toString(),
+                            currentRO.lastAnswer!!.page + 1, currentRO
+                        )
+                    }
+                }
+            })
             holder.adapter.notifyDataSetChanged()
         })
     }

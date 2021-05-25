@@ -11,7 +11,6 @@ class RatingsViewModel(
     private val repository: TestMoviesRepository
 ) : ViewModel() {
 
-    //private val repository: TestMoviesRepository = TestMoviesRepository()
     val ratingBasicStructureLiveData = MutableLiveData<ArrayList<GroupResponseObject>>()
     var arrGroupList = ArrayList<GroupResponseObject>()
 
@@ -35,7 +34,7 @@ class RatingsViewModel(
         Log.v(
             "МОЯ ПРОВЕРКА",
             "Сработал fetchData"
-        );
+        )
     }
 
     fun fetchCurrentData(

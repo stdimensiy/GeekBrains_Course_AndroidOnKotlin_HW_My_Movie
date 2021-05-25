@@ -10,9 +10,9 @@ class TestMoviesRepository : MovieRepository {
     var networkService: RetrofitServicesTest = Common.retrofitServiceTest
     var networkServiceTMDB: RetrofitServicesTMDB = Common.retrofitServiceTMDB
     var homeFragmentStructure: ArrayList<ListMovies> = arrayListOf(
-        ListMovies("topRated", "Лучшие", "Комментарий к подборке Лучшие"),
+        ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
         ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
-        ListMovies("nowPlaying", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
+        ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
     var ratingFragmentStructure: ArrayList<ListMovies> = arrayListOf(
