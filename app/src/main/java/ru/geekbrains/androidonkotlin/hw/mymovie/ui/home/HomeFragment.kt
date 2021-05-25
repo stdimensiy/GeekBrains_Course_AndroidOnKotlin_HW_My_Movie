@@ -44,4 +44,9 @@ class HomeFragment : Fragment() {
             adapter.notifyDataSetChanged()
         })
     }
+
+    override fun onPause() {
+        super.onPause()
+        homeViewModel.homeBasicStructureLiveData.removeObservers(this)
+    }
 }

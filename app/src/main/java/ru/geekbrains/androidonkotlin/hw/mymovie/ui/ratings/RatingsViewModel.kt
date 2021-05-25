@@ -43,14 +43,19 @@ class RatingsViewModel(
         page: Int,
         currentGroupResponseObject: GroupResponseObject
     ) {
-        repository.getStandardsLists(standard_list, page, object : CallBack<ArrayList<MovieTMDB>> {
-            override fun onResult(value: ArrayList<MovieTMDB>) {
-                currentGroupResponseObject.currentLiveData.postValue(value)
+        repository.getStandardsLists(standard_list, page, object : CallBack<MoviesResponseTMDB> {
+            override fun onResult(value: MoviesResponseTMDB) {
+                //получая новую порцию данных обрабатываем её дополнительно по критериям пригодности к отображению
+                // критерии будут определены позже, поэтому сейчас список добавляется к текущему
+                // защита от дублирующих данных
+                if (currentGroupResponseObject.lastAnswer.page < value.page) {
+                    // запись и обработка пришедших данных осуществляется только тогда,
+                    // когда номерр страницы нового ответа больше чем предыдущего.
+                    currentGroupResponseObject.lastAnswer = value
+                    currentGroupResponseObject.prepareListMovies.addAll(value.results!!)
+                    currentGroupResponseObject.currentLiveData.postValue(currentGroupResponseObject.prepareListMovies)
+                }
             }
         })
-        Log.v(
-            "МОЯ ПРОВЕРКА",
-            "Сработал fetchCurrentData с данными standard_list: " + standard_list + " page: "+ page+ " currentGroupResponseObject: " + currentGroupResponseObject
-        );
     }
 }

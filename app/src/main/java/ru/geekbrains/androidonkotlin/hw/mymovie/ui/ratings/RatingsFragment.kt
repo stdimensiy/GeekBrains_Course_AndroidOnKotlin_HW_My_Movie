@@ -14,7 +14,6 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 class RatingsFragment : Fragment() {
 
     private lateinit var adapter: RatingBasicAdapter
-
     private val ratingsViewModel: RatingsViewModel by viewModels {
         RatingsViewModelFactory(requireActivity().application)
     }
@@ -42,7 +41,14 @@ class RatingsFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         ratingsViewModel.ratingBasicStructureLiveData.observe(viewLifecycleOwner, Observer {
             adapter.items = it
-            adapter.notifyDataSetChanged()
+            if (savedInstanceState == null) {
+                adapter.notifyDataSetChanged()
+            }
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ratingsViewModel.ratingBasicStructureLiveData.removeObservers(this)
     }
 }

@@ -153,7 +153,7 @@ class TestMoviesRepository : MovieRepository {
     override fun getStandardsLists(
         standard_list: String,
         page: Int,
-        callBack: CallBack<ArrayList<MovieTMDB>>
+        callBack: CallBack<MoviesResponseTMDB>
     ) {
         networkServiceTMDB.sectionMoviesGetStandardsLists(
             3,
@@ -167,7 +167,7 @@ class TestMoviesRepository : MovieRepository {
                     call: Call<MoviesResponseTMDB>,
                     response: Response<MoviesResponseTMDB>
                 ) {
-                    callBack.onResult(response.body()?.results!!)
+                    callBack.onResult(response.body()!!)
                 }
 
                 override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
