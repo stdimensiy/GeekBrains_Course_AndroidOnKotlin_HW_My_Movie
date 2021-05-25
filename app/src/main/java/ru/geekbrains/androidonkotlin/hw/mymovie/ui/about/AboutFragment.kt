@@ -12,10 +12,6 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class AboutFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AboutFragment()
-    }
-
     private lateinit var viewModel: AboutViewModel
 
     override fun onCreateView(

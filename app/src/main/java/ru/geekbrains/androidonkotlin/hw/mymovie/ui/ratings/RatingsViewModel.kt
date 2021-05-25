@@ -1,7 +1,6 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.*
@@ -30,11 +29,7 @@ class RatingsViewModel(
                 ratingBasicStructureLiveData.postValue(arrGroupList)
             }
         })
-        arrGroupList.forEach { it.FuncFetch.invoke(it.standard_list.toString(), 1, it) }
-        Log.v(
-            "МОЯ ПРОВЕРКА",
-            "Сработал fetchData"
-        )
+        arrGroupList.forEach { it.FuncFetch.invoke(it.standardList.toString(), 1, it) }
     }
 
     fun fetchCurrentData(

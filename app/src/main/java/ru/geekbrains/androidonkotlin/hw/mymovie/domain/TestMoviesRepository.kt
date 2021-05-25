@@ -36,86 +36,6 @@ class TestMoviesRepository : MovieRepository {
         })
     }
 
-    override fun getNowPlayingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getNowPlayingMovies(
-            3,
-            TMDBAPIConstants.API_KEY_V3,
-            1,
-            TMDBAPIConstants.LANGUAGE_ANSWER
-        )
-            .enqueue(object : Callback<MoviesResponseTMDB> {
-                override fun onResponse(
-                    call: Call<MoviesResponseTMDB>,
-                    response: Response<MoviesResponseTMDB>
-                ) {
-                    callBack.onResult(response.body()?.results!!)
-                }
-
-                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
-                }
-            })
-    }
-
-    override fun getUpcomingMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getUpcomingMovies(
-            3,
-            TMDBAPIConstants.API_KEY_V3,
-            1,
-            TMDBAPIConstants.LANGUAGE_ANSWER
-        )
-            .enqueue(object : Callback<MoviesResponseTMDB> {
-                override fun onResponse(
-                    call: Call<MoviesResponseTMDB>,
-                    response: Response<MoviesResponseTMDB>
-                ) {
-                    callBack.onResult(response.body()?.results!!)
-                }
-
-                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
-                }
-            })
-    }
-
-    override fun getPopularMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getPopularMovies(
-            3,
-            TMDBAPIConstants.API_KEY_V3,
-            1,
-            TMDBAPIConstants.LANGUAGE_ANSWER
-        )
-            .enqueue(object : Callback<MoviesResponseTMDB> {
-                override fun onResponse(
-                    call: Call<MoviesResponseTMDB>,
-                    response: Response<MoviesResponseTMDB>
-                ) {
-                    callBack.onResult(response.body()?.results!!)
-                }
-
-                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
-                }
-            })
-    }
-
-    override fun getTopRatedMovies(callBack: CallBack<ArrayList<MovieTMDB>>) {
-        networkServiceTMDB.getTopRatedMovies(
-            3,
-            TMDBAPIConstants.API_KEY_V3,
-            1,
-            TMDBAPIConstants.LANGUAGE_ANSWER
-        )
-            .enqueue(object : Callback<MoviesResponseTMDB> {
-                override fun onResponse(
-                    call: Call<MoviesResponseTMDB>,
-                    response: Response<MoviesResponseTMDB>
-                ) {
-                    callBack.onResult(response.body()?.results!!)
-                }
-
-                override fun onFailure(call: Call<MoviesResponseTMDB>, t: Throwable) {
-                }
-            })
-    }
-
     override fun getHomeFragmentStructure(callBack: CallBack<ArrayList<ListMovies>>) {
         callBack.onResult(homeFragmentStructure)
     }
@@ -160,7 +80,8 @@ class TestMoviesRepository : MovieRepository {
             standard_list,
             TMDBAPIConstants.API_KEY_V3,
             page,
-            TMDBAPIConstants.LANGUAGE_ANSWER
+            TMDBAPIConstants.LANGUAGE_ANSWER,
+            TMDBAPIConstants.INCLUDE_ADULT
         )
             .enqueue(object : Callback<MoviesResponseTMDB> {
                 override fun onResponse(

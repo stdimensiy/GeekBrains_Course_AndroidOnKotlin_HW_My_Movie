@@ -20,7 +20,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HomeInnerViewHolder, position: Int) {
-        val item = items.get(position)
+        val item = items[position]
         holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()

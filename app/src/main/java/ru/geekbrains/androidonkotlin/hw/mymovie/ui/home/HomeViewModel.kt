@@ -30,11 +30,7 @@ class HomeViewModel(
                 homeBasicStructureLiveData.postValue(arrGroupList)
             }
         })
-        arrGroupList.forEach { it.FuncFetch.invoke(it.standard_list.toString(), 1, it) }
-        Log.v(
-            "МОЯ ПРОВЕРКА",
-            "Сработал fetchData"
-        )
+        arrGroupList.forEach { it.FuncFetch.invoke(it.standardList.toString(), 1, it) }
     }
 
     fun fetchCurrentData(

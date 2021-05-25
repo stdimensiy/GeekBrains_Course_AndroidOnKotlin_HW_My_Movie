@@ -35,10 +35,10 @@ class HomeBasicAdapter(_fragment: Fragment) :
             holder.adapter.items = it
             holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
                 override fun onLoadMore() {
-                    if (currentRO.lastAnswer!!.page < currentRO.lastAnswer!!.total_pages) {
+                    if (currentRO.lastAnswer.page < currentRO.lastAnswer.total_pages) {
                         currentRO.FuncFetch.invoke(
-                            currentRO.standard_list.toString(),
-                            currentRO.lastAnswer!!.page + 1, currentRO
+                            currentRO.standardList.toString(),
+                            currentRO.lastAnswer.page + 1, currentRO
                         )
                     }
                 }
