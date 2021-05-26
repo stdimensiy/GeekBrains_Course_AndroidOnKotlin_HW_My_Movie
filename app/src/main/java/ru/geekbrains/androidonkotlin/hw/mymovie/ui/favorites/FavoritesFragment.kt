@@ -35,7 +35,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var favoriteRecyclerView = view.findViewById<RecyclerView>(R.id.favorites_list)
+        val favoriteRecyclerView = view.findViewById<RecyclerView>(R.id.favorites_list)
         favoriteRecyclerView.adapter = adapter
         favoriteRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

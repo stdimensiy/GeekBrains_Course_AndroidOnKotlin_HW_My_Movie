@@ -29,7 +29,7 @@ class RatingsFragment : Fragment() {
         ratingsViewModel =
             ViewModelProvider(this).get(RatingsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_ratings, container, false)
-        adapter = RatingBasicAdapter(ratingsViewModel)
+        adapter = RatingBasicAdapter(this)
         return root
     }
 
