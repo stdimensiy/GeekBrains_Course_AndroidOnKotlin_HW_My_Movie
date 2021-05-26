@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class RatingBasicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val basicTitle: TextView
-    private lateinit var adapter: RatingInnerAdapter
+    val basicTitle: TextView = itemView.findViewById(R.id.basicTitle)
+    var adapter: RatingInnerAdapter = RatingInnerAdapter()
 
     init {
-        basicTitle = itemView.findViewById(R.id.basicTitle)
-        adapter = RatingInnerAdapter()
-        var homeInnerRecyclerView = itemView.findViewById<RecyclerView>(R.id.home_inner_list)
+        val homeInnerRecyclerView = itemView.findViewById<RecyclerView>(R.id.home_inner_list)
         homeInnerRecyclerView.adapter = adapter
         homeInnerRecyclerView.layoutManager =
             LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)

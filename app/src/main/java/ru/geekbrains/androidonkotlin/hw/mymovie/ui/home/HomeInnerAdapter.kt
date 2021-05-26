@@ -6,17 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
-    //временно создаем исходные данные непосредственно в адаптере, для проверки работоспособности
-    var items: ArrayList<String> = arrayListOf(
-        "Первый элемент",
-        "Второй элемент",
-        "Третий элемент",
-        "Четвертый элемент",
-        "Пятый элемент",
-        "Шестой элемент",
-        "Седьмой элемент"
-    )
-
+    var items: ArrayList<String> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
             LayoutInflater.from(parent.context).inflate(R.layout.inner_item_home, parent, false)
@@ -24,7 +14,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HomeInnerViewHolder, position: Int) {
-        var item = items.get(position)
+        val item = items.get(position)
         holder.nameMovie.text = item
         holder.publicData.text = "2020"
         holder.rating.text = "6,9"
