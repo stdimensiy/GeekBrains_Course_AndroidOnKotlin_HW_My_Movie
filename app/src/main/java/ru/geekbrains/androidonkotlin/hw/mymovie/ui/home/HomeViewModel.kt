@@ -14,8 +14,8 @@ class HomeViewModel(
     var arrGroupList = ArrayList<GroupResponseObject>()
 
     fun fetchData() {
-        repository.getHomeFragmentStructure(object : CallBack<ArrayList<ListMovies>> {
-            override fun onResult(value: ArrayList<ListMovies>) {
+        repository.getHomeFragmentStructure(object : CallBack<List<ListMovies>> {
+            override fun onResult(value: List<ListMovies>) {
                 arrGroupList.clear()
                 value.forEach {
                     arrGroupList.add(
@@ -29,7 +29,7 @@ class HomeViewModel(
                 homeBasicStructureLiveData.postValue(arrGroupList)
             }
         })
-        arrGroupList.forEach { it.FuncFetch.invoke(it.standardList.toString(), 1, it) }
+        arrGroupList.forEach { it.funcFetch.invoke(it.standardList.toString(), 1, it) }
     }
 
     fun fetchCurrentData(
@@ -37,8 +37,8 @@ class HomeViewModel(
         page: Int,
         currentGroupResponseObject: GroupResponseObject
     ) {
-        repository.getStandardsLists(standard_list, page, object : CallBack<MoviesResponseTMDB> {
-            override fun onResult(value: MoviesResponseTMDB) {
+        repository.getStandardsList(standard_list, page, object : CallBack<MoviesResponseTmdb> {
+            override fun onResult(value: MoviesResponseTmdb) {
                 //получая новую порцию данных обрабатываем её дополнительно по критериям пригодности к отображению
                 // критерии будут определены позже, поэтому сейчас список добавляется к текущему
                 // защита от дублирующих данных

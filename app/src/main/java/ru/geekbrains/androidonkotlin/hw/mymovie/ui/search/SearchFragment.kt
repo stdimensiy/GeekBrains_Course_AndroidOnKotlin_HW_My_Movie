@@ -24,7 +24,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root = binding.root
         adapter = SearchAdapter()
         return root
     }

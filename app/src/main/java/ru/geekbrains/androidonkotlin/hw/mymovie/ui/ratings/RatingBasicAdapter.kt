@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.GroupResponseObject
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
 
 class RatingBasicAdapter(_fragment: Fragment) :
@@ -30,13 +29,13 @@ class RatingBasicAdapter(_fragment: Fragment) :
         holder.basicTitle.text = item.nameGroupResponse
         //работа с вложенным адаптером
         val currentRO = ratingsViewModel.arrGroupList[position]
-        val currentLiveData: LiveData<ArrayList<MovieTMDB>> = currentRO.currentLiveData
-        currentLiveData.observe(fragment.viewLifecycleOwner, Observer {
+        val currentLiveData: LiveData<List<MovieTmdb>> = currentRO.currentLiveData
+        currentLiveData.observe(fragment.viewLifecycleOwner, {
             holder.adapter.items = it
             holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
                 override fun onLoadMore() {
                     if (currentRO.lastAnswer.page < currentRO.lastAnswer.total_pages) {
-                        currentRO.FuncFetch.invoke(
+                        currentRO.funcFetch.invoke(
                             currentRO.standardList.toString(),
                             currentRO.lastAnswer.page + 1, currentRO
                         )

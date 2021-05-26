@@ -1,8 +1,8 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
-data class MoviesResponseTMDB(
+data class MoviesResponseTmdb(
     val page: Int = 0,
-    var results: ArrayList<MovieTMDB>? = null,
+    var results: ArrayList<MovieTmdb>? = null,
     val total_pages: Int = 0,
     val total_results: Int = 0
 )

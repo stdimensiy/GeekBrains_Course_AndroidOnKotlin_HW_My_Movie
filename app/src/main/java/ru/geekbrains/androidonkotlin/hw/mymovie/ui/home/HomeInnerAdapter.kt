@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
 
 class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
-    var items: ArrayList<MovieTMDB> = arrayListOf()
+    var items: List<MovieTmdb> = listOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
@@ -24,7 +24,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
         holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
-            .load(String.format(TMDBAPIConstants.POSTER_URL, item.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, item.poster_path))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)

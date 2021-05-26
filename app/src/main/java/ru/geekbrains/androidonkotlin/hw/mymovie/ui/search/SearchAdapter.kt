@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
 
 class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
-    var items: ArrayList<MovieTMDB> = arrayListOf()
+    var items: ArrayList<MovieTmdb> = arrayListOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
     var currentPage: Int = 0         //номер текущей страницы выдачи
     private var totalPages: Int = 0  //всего страниц в выдаче
@@ -33,7 +33,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         holder.bind(item)
         holder.textViewNameFavoritesMovie.text = item.title
         Picasso.get()
-            .load(String.format(TMDBAPIConstants.POSTER_URL, item.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, item.poster_path))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)

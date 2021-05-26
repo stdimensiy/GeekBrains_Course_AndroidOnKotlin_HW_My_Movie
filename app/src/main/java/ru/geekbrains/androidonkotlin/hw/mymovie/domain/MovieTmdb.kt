@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MovieTMDB(
+data class MovieTmdb(
     val adult: Boolean = false,
     val backdrop_path: String? = null,
     val genre_ids: ArrayList<Int>? = ArrayList(),

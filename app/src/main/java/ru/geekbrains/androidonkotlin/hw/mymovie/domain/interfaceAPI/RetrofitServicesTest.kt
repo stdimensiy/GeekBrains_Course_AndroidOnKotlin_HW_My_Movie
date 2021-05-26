@@ -6,5 +6,5 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMovie
 
 interface RetrofitServicesTest {
     @GET("marvel")
-    fun getMovieList(): Call<MutableList<TestMovie>>
+    fun getMovieList(): Call<List<TestMovie>>
 }

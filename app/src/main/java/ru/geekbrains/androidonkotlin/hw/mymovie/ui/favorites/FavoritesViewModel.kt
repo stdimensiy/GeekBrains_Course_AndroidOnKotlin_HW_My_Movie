@@ -11,11 +11,11 @@ class FavoritesViewModel(
     private val app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {
-    val favoritesMovieLiveData = MutableLiveData<MutableList<TestMovie>>()
+    val favoritesMovieLiveData = MutableLiveData<List<TestMovie>>()
 
     fun fetchData() {
-        repository.getFavoriteList(object : CallBack<MutableList<TestMovie>> {
-            override fun onResult(value: MutableList<TestMovie>) {
+        repository.getFavoriteList(object : CallBack<List<TestMovie>> {
+            override fun onResult(value: List<TestMovie>) {
                 favoritesMovieLiveData.postValue(value)
             }
         })

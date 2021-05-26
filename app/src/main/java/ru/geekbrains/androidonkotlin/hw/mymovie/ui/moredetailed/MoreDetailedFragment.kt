@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMoreDetailedBinding
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 
 class MoreDetailedFragment : Fragment() {
     private val moreDetailedViewModel: MoreDetailedViewModel by viewModels {
@@ -21,7 +21,7 @@ class MoreDetailedFragment : Fragment() {
     private var _binding: FragmentMoreDetailedBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var movie: MovieTMDB
+    private lateinit var movie: MovieTmdb
     private lateinit var textViewNameMovie: TextView             // Региональное наименование фильма
     private lateinit var textViewOrigNameMovieAndData: TextView  // Оригинальное наименование и (ГГГГ)
     private lateinit var imageViewPoster: ImageView              // постер
@@ -63,7 +63,7 @@ class MoreDetailedFragment : Fragment() {
             textViewOrigNameMovieAndData.text = it
         }
         Picasso.get()
-            .load(String.format(TMDBAPIConstants.POSTER_URL, movie.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, movie.poster_path))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)
