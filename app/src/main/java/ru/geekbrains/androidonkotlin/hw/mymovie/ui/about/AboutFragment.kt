@@ -18,8 +18,9 @@ class AboutFragment : Fragment() {
 
     private lateinit var viewModel: AboutViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
         val root = inflater.inflate(R.layout.about_fragment, container, false)
