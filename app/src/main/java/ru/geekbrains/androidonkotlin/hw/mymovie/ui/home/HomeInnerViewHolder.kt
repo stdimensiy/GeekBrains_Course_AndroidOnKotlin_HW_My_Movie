@@ -19,9 +19,9 @@ class HomeInnerViewHolder(
     private val imageViewRating: ImageView = itemView.findViewById(R.id.imageView3),
     private val imageViewFlagFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
-) : RecyclerView.ViewHolder(itemView){
+) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(item: MovieTMDB){
+    fun bind(item: MovieTMDB) {
         imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
@@ -29,11 +29,19 @@ class HomeInnerViewHolder(
         }
 
         imageViewRating.setOnClickListener {
-            Toast.makeText(it.context, "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                it.context,
+                "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {
-            Toast.makeText(it.context, "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                it.context,
+                "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
