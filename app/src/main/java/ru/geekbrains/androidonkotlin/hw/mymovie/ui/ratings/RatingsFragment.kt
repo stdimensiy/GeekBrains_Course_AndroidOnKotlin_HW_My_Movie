@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.gallery
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
-class GalleryFragment : Fragment() {
+class RatingsFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var ratingsViewModel: RatingsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        ratingsViewModel =
+                ViewModelProvider(this).get(RatingsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_ratings, container, false)
+        val textView: TextView = root.findViewById(R.id.text_ratings)
+        ratingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

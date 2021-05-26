@@ -6,15 +6,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_twotone_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_twotone_favorite_24"
+            android:title="@string/menu_favorites" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_ratings"
+            android:icon="@drawable/ic_twotone_insert_chart_24"
+            android:title="@string/menu_ratings" />
     </group>
+    <item android:title="@string/menu_croupItem_more_title">
+        <menu>
+            <item
+                android:id="@+id/app_info"
+                android:icon="@drawable/ic_twotone_info_24"
+                android:onClick="onMenuAboutClick"
+                android:title="@string/menu_app_info_item_title" />
+        </menu>
+    </item>
+    <item android:title="@string/menu_croupItem_temporary_titles">
+        <menu>
+            <item
+                android:id="@+id/search"
+                android:icon="@drawable/ic_twotone_search_24"
+                android:onClick="onMenuSearchClick"
+                android:title="@string/menu_search_item_title" />
+            <item
+                android:id="@+id/moreDetail"
+                android:icon="@drawable/ic_baseline_read_more_24"
+                android:onClick="onMenuMoreInfoClick"
+                android:title="@string/menu_moreDetail_item_title" />
+        </menu>
+    </item>
 </menu>
