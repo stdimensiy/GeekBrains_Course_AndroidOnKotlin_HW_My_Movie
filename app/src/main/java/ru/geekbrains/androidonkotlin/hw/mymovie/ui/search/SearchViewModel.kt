@@ -1,5 +1,6 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.CallBack
@@ -7,8 +8,10 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTMDB
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 
-class SearchViewModel : ViewModel() {
-    private val repository: TestMoviesRepository = TestMoviesRepository()
+class SearchViewModel(
+    private val app: Application,
+    private val repository: TestMoviesRepository
+) : ViewModel() {
     val searchMovieLiveData = MutableLiveData<MoviesResponseTMDB>()
     var prepareListMovie = ArrayList<MovieTMDB>()
     private var currentSearchTitle: String = ""

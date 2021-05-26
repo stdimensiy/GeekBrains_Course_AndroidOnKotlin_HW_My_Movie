@@ -5,43 +5,54 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
 
-    private lateinit var favoritesViewModel: FavoritesViewModel
+    private val favoritesViewModel: FavoritesViewModel by viewModels {
+        FavoritesViewModelFactory(requireActivity().application)
+    }
     private lateinit var adapter: FavoriteAdapter
+    private var _binding: FragmentFavoritesBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onStart() {
-        super.onStart()
-        favoritesViewModel.fetchData()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) favoritesViewModel.fetchData()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        favoritesViewModel =
-            ViewModelProvider(this).get(FavoritesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_favorites, container, false)
+    ): View {
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        val root: View = binding.root
         adapter = FavoriteAdapter()
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val favoriteRecyclerView = view.findViewById<RecyclerView>(R.id.favorites_list)
+        val favoriteRecyclerView = binding.favoritesList
         favoriteRecyclerView.adapter = adapter
         favoriteRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        favoritesViewModel.favoritesMovieLiveData.observe(viewLifecycleOwner, Observer {
+        favoritesViewModel.favoritesMovieLiveData.observe(viewLifecycleOwner, {
             adapter.items = it
             adapter.notifyDataSetChanged()
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        favoritesViewModel.favoritesMovieLiveData.removeObservers(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

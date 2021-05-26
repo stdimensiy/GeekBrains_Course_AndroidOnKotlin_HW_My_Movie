@@ -26,17 +26,17 @@
         android:id="@+id/aboutFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.about.AboutFragment"
         android:label="about_fragment"
-        tools:layout="@layout/about_fragment" />
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/moreDetailedFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.moredetailed.MoreDetailedFragment"
         android:label="more_detailed_fragment"
-        tools:layout="@layout/more_detailed_fragment" />
+        tools:layout="@layout/fragment_more_detailed" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.SearchFragment"
         android:label="search_fragment"
-        tools:layout="@layout/search_fragment" >
+        tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_moreDetailedFragment"
             app:destination="@id/moreDetailedFragment" />
@@ -45,5 +45,5 @@
         android:id="@+id/settingsFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.settings.SettingsFragment"
         android:label="settings_fragment"
-        tools:layout="@layout/settings_fragment" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>

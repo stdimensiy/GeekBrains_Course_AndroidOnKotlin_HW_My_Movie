@@ -7,45 +7,47 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMoreDetailedBinding
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
 
 class MoreDetailedFragment : Fragment() {
-    lateinit var movie: MovieTMDB
+    private val moreDetailedViewModel: MoreDetailedViewModel by viewModels {
+        MoreDetailedViewModelFactory(requireActivity().application)
+    }
+    private var _binding: FragmentMoreDetailedBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var textViewNameMovie: TextView
-    private lateinit var textViewOrigNameMovieAndData: TextView
-    private lateinit var imageViewPoster: ImageView
-    private lateinit var textViewDuration: TextView
-    private lateinit var textViewRating: TextView
-    private lateinit var tetextViewBudget: TextView
-    private lateinit var textViewRevenue: TextView
-    private lateinit var textViewReleaseData: TextView
+    private lateinit var movie: MovieTMDB
+    private lateinit var textViewNameMovie: TextView             // Региональное наименование фильма
+    private lateinit var textViewOrigNameMovieAndData: TextView  // Оригинальное наименование и (ГГГГ)
+    private lateinit var imageViewPoster: ImageView              // постер
+    private lateinit var textViewDuration: TextView              // длительность мин.
+    private lateinit var textViewRating: TextView                // рейтинг образец: 8,5 (7183)
+    private lateinit var tetextViewBudget: TextView              // Бюджет образец: 1 234 567 890 $
+    private lateinit var textViewRevenue: TextView               // Сборы: образец: 1 234 567 890 $
+    private lateinit var textViewReleaseData: TextView           // Дата релиза образец: (2018-12-06)
     private lateinit var textView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.more_detailed_fragment, container, false)
-        textView = root.findViewById(R.id.text_moreDetailed)
-        textViewNameMovie =
-            root.findViewById(R.id.textView_moreDetail_nameMovie)            // Региональное наименование фильма
-        textViewOrigNameMovieAndData =
-            root.findViewById(R.id.textView_moreDetail_origNameMovieAndData) // Оригинальное наименование и (ГГГГ)
-        imageViewPoster = root.findViewById(R.id.imageViewPoster)            // постер
-        textViewDuration =
-            root.findViewById(R.id.textView_moreDetail_duration)              // длительность мин.
-        textViewRating =
-            root.findViewById(R.id.textView_moreDetail_rating)                // рейтинг образец: 8,5 (7183)
-        tetextViewBudget =
-            root.findViewById(R.id.textView_moreDetail_budget)                 // Бюджет образец: 1 234 567 890 $
-        textViewRevenue =
-            root.findViewById(R.id.textView_moreDetail_revenue)                // Сборы: образец: 1 234 567 890 $
-        textViewReleaseData =
-            root.findViewById(R.id.textView_moreDetail_releaseData)            // Дата релиза образец: (2018-12-06)
+    ): View {
+        _binding = FragmentMoreDetailedBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        textView = binding.textMoreDetailed
+        textViewNameMovie = binding.textViewMoreDetailNameMovie
+        textViewOrigNameMovieAndData = binding.textViewMoreDetailOrigNameMovieAndData
+        imageViewPoster = binding.imageViewPoster
+        textViewDuration = binding.textViewMoreDetailDuration
+        textViewRating = binding.textViewMoreDetailRating
+        tetextViewBudget = binding.textViewMoreDetailBudget
+        textViewRevenue = binding.textViewMoreDetailRevenue
+        textViewReleaseData = binding.textViewMoreDetailReleaseData
         return root
     }
 
@@ -75,5 +77,10 @@ class MoreDetailedFragment : Fragment() {
         textViewRevenue.text = "загрузка..."
         ("(" + movie.release_date + ")").also { textViewReleaseData.text = it }
         textView.text = movie.overview
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

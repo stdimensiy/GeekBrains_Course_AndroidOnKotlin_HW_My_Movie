@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
@@ -17,6 +15,8 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModels {
         HomeViewModelFactory(requireActivity().application)
     }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +27,20 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
         adapter = HomeBasicAdapter(this)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val homeBasicRecyclerView = view.findViewById<RecyclerView>(R.id.home_basic_list)
+        val homeBasicRecyclerView = binding.homeBasicList
         homeBasicRecyclerView.adapter = adapter
         homeBasicRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        homeViewModel.homeBasicStructureLiveData.observe(viewLifecycleOwner, Observer {
+        homeViewModel.homeBasicStructureLiveData.observe(viewLifecycleOwner, {
             adapter.items = it
             if (savedInstanceState == null) {
                 adapter.notifyDataSetChanged()
@@ -50,5 +51,10 @@ class HomeFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         homeViewModel.homeBasicStructureLiveData.removeObservers(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
