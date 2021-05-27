@@ -8,12 +8,12 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.domain
  */
 
 data class TestMovie(
-    var name: String? = null,
-    var realname: String? = null,
-    var team: String? = null,
-    var firstapperance: String? = null,
-    var createdby: String? = null,
-    var publisher: String? = null,
-    var imageurl: String? = null,
-    var bio: String? = null
+    val name: String? = null,
+    val realname: String? = null,
+    val team: String? = null,
+    val firstapperance: String? = null,
+    val createdby: String? = null,
+    val publisher: String? = null,
+    val imageurl: String? = null,
+    val bio: String? = null
 )

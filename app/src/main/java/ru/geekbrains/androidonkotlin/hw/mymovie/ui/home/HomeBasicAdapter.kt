@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class HomeBasicAdapter(_fragment: Fragment) :
@@ -46,7 +46,5 @@ class HomeBasicAdapter(_fragment: Fragment) :
         })
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 }

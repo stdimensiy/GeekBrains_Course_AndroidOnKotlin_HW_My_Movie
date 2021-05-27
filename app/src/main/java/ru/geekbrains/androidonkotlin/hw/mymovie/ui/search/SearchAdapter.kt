@@ -50,9 +50,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     fun setOnLoadMoreMoviesListener(onLoadMoreMoviesListener: OnLoadMoreMovies) {
         this.onLoadMoreMoviesListener = onLoadMoreMoviesListener

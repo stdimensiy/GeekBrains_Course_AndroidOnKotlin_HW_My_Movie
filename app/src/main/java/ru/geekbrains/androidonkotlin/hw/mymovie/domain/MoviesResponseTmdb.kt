@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class MoviesResponseTmdb(
     val page: Int = 0,
-    var results: ArrayList<MovieTmdb>? = null,
+    val results: List<MovieTmdb> = listOf(),
     @SerializedName("total_pages")
     val totalPages: Int = 0,
     @SerializedName("total_results")

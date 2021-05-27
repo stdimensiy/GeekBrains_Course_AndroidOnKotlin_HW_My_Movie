@@ -33,7 +33,5 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
             "(" + item.createdby + ")" + " " + item.realname
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 }

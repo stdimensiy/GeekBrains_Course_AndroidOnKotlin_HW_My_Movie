@@ -9,15 +9,15 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitSe
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTmdb
 
 class TestMoviesRepository : MovieRepository {
-    var networkService: RetrofitServicesTest = Common.retrofitServiceTest
-    var networkServiceTmdb: RetrofitServicesTmdb = Common.retrofitServiceTmdb
-    var homeFragmentStructure: List<ListMovies> = arrayListOf(
+    private val networkService: RetrofitServicesTest = Common.retrofitServiceTest
+    private val networkServiceTmdb: RetrofitServicesTmdb = Common.retrofitServiceTmdb
+    private val homeFragmentStructure: List<ListMovies> = listOf(
         ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
         ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
         ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
-    var ratingFragmentStructure: ArrayList<ListMovies> = arrayListOf(
+    private val ratingFragmentStructure: List<ListMovies> = listOf(
         ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
         ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
         ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
