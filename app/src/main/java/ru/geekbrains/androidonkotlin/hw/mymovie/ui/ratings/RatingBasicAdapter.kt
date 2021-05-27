@@ -7,9 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.GroupResponseObject
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class RatingBasicAdapter(_fragment: Fragment) :
     RecyclerView.Adapter<RatingBasicViewHolder>() {
@@ -34,7 +34,7 @@ class RatingBasicAdapter(_fragment: Fragment) :
             holder.adapter.items = it
             holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
                 override fun onLoadMore() {
-                    if (currentRO.lastAnswer.page < currentRO.lastAnswer.total_pages) {
+                    if (currentRO.lastAnswer.page < currentRO.lastAnswer.totalPages) {
                         currentRO.funcFetch.invoke(
                             currentRO.standardList.toString(),
                             currentRO.lastAnswer.page + 1, currentRO

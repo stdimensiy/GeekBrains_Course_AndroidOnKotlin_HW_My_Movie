@@ -3,7 +3,7 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.CallBack
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository

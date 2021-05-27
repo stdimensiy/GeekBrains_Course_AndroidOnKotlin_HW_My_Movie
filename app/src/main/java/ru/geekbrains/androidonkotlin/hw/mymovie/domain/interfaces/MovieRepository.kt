@@ -1,4 +1,8 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.domain
+package ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces
+
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMovie
 
 interface MovieRepository {
     fun getFavoriteList(callBack: CallBack<List<TestMovie>>)

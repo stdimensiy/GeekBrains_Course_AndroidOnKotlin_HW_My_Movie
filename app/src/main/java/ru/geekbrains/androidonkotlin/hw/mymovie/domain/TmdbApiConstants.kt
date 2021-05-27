@@ -5,9 +5,7 @@ object TmdbApiConstants {
     /** API KEY  V3 */
     const val API_KEY_V3 = "aefbe34a550ff3229e1b71c60f4f16df"
 
-    /**
-     * Рабочая (онования по умолчанию) версия API
-     */
+    /** Рабочая (онования по умолчанию) версия API */
     const val DEFAULT_API_VERSION = 3
 
     /** Server endpoint  фдрес базового размещеия графического материала  */

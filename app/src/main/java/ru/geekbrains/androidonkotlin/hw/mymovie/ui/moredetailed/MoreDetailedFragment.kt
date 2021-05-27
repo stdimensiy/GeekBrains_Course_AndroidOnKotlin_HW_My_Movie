@@ -56,26 +56,26 @@ class MoreDetailedFragment : Fragment() {
         movie = arguments?.getParcelable("ARG_MOVIE")!!
         textViewNameMovie.text = movie.title
         var currentReleaseData = "0000"
-        if (!movie.release_date.isNullOrBlank()) {
-            currentReleaseData = movie.release_date!!.trim().substring(0, 4)
+        if (!movie.releaseDate.isNullOrBlank()) {
+            currentReleaseData = movie.releaseDate.trim().substring(0, 4)
         }
-        (movie.original_title + " (" + currentReleaseData + ")").also {
+        (movie.originalTitle + " (" + currentReleaseData + ")").also {
             textViewOrigNameMovieAndData.text = it
         }
         Picasso.get()
-            .load(String.format(TmdbApiConstants.POSTER_URL, movie.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, movie.posterPath))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)
             .centerCrop()
             .into(imageViewPoster)
         textViewDuration.text = "загрузка..."
-        (movie.vote_average.toString() + " (" + movie.vote_count.toString() + ")").also {
+        (movie.voteAverage.toString() + " (" + movie.voteCount.toString() + ")").also {
             textViewRating.text = it
         }
         tetextViewBudget.text = "загрузка..."
         textViewRevenue.text = "загрузка..."
-        ("(" + movie.release_date + ")").also { textViewReleaseData.text = it }
+        ("(" + movie.releaseDate + ")").also { textViewReleaseData.text = it }
         textView.text = movie.overview
     }
 

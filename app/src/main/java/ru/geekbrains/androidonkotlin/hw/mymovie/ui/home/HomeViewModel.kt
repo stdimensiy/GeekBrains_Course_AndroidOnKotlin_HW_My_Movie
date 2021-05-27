@@ -3,7 +3,11 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.home
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.*
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 
 class HomeViewModel(
     private val app: Application,
@@ -33,11 +37,11 @@ class HomeViewModel(
     }
 
     fun fetchCurrentData(
-        standard_list: String,
+        standardList: String,
         page: Int,
         currentGroupResponseObject: GroupResponseObject
     ) {
-        repository.getStandardsList(standard_list, page, object : CallBack<MoviesResponseTmdb> {
+        repository.getStandardsList(standardList, page, object : CallBack<MoviesResponseTmdb> {
             override fun onResult(value: MoviesResponseTmdb) {
                 //получая новую порцию данных обрабатываем её дополнительно по критериям пригодности к отображению
                 // критерии будут определены позже, поэтому сейчас список добавляется к текущему

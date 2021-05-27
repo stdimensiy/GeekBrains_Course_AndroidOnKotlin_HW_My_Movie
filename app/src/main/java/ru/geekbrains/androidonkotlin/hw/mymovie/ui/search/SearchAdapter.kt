@@ -1,6 +1,5 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,7 @@ import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     var items: ArrayList<MovieTmdb> = arrayListOf()
@@ -33,24 +32,20 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         holder.bind(item)
         holder.textViewNameFavoritesMovie.text = item.title
         Picasso.get()
-            .load(String.format(TmdbApiConstants.POSTER_URL, item.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
         holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"
-        holder.textViewRatingFavoritesMovie.text = item.vote_average.toString()
-        if (item.release_date.isNullOrBlank()) holder.textViewReleaseDataFavoritesMovie.text =
+        holder.textViewRatingFavoritesMovie.text = item.voteAverage.toString()
+        if (item.releaseDate.isBlank()) holder.textViewReleaseDataFavoritesMovie.text =
             "(0000)"
-        else ("(" + item.release_date.trim().subSequence(0, 4) + ") " + item.original_title)
+        else ("(" + item.releaseDate.trim().subSequence(0, 4) + ") " + item.originalTitle)
             .also { holder.textViewReleaseDataFavoritesMovie.text = it }
         //попытка отследить момент необходимости загрузки нового листа данных
         if (currentPage < totalPages && position == items.size - 1) {
-            Log.v(
-                "МОЯ ПРОВЕРКА",
-                "Пора грузить новый список (cp:" + currentPage + ", tp:" + totalPages + ")"
-            );
             onLoadMoreMoviesListener!!.onLoadMore()
         }
     }

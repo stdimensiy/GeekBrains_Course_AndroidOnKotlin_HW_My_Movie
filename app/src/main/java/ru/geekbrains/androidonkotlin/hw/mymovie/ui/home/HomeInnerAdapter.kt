@@ -7,7 +7,7 @@ import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
@@ -24,14 +24,18 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
         holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
-            .load(String.format(TmdbApiConstants.POSTER_URL, item.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        holder.publicData.text = item.release_date?.trim()?.substring(0, 4)
-        holder.rating.text = item.vote_average.toString()
+        if (!item.releaseDate.isNullOrBlank()) {
+            holder.publicData.text = item.releaseDate.trim().substring(0, 4)
+        } else {
+            holder.publicData.text = "0000"
+        }
+        holder.rating.text = item.voteAverage.toString()
         if (items.size > 0 && position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
         }

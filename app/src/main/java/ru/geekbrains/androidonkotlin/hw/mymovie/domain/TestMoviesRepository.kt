@@ -3,8 +3,10 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTmdb
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTest
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.MovieRepository
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTest
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTmdb
 
 class TestMoviesRepository : MovieRepository {
     var networkService: RetrofitServicesTest = Common.retrofitServiceTest

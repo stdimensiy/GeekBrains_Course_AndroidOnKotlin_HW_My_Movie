@@ -1,7 +1,7 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTmdb
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTest
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTest
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.retrofit.RetrofitClient
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.retrofit.RetrofitClientTmdb
 

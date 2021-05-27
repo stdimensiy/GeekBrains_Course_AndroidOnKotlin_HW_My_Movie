@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI
+package ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api
 
 import retrofit2.Call
 import retrofit2.http.GET

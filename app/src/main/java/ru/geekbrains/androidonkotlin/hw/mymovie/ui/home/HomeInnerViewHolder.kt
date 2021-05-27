@@ -30,19 +30,19 @@ class HomeInnerViewHolder(
         }
 
         imageViewRating.setOnClickListener {
-//            Toast.makeText(
-//                it.context,
-//                "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}",
-//                Toast.LENGTH_SHORT
-//            ).show()
+            Toast.makeText(
+                it.context,
+                "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {
-//            Toast.makeText(
-//                it.context,
-//                "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}",
-//                Toast.LENGTH_SHORT
-//            ).show()
+            Toast.makeText(
+                it.context,
+                "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
