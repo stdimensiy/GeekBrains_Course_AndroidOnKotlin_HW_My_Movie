@@ -6,29 +6,37 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import ru.geekbrains.androidonkotlin.hw.mymovie.R
+import androidx.fragment.app.viewModels
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AboutFragment()
+    private val aboutViewModel: AboutViewModel by viewModels {
+        AboutViewModelFactory(requireActivity().application)
     }
-
-    private lateinit var viewModel: AboutViewModel
+    private var _binding: FragmentAboutBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
-        val root = inflater.inflate(R.layout.about_fragment, container, false)
-        val textView: TextView = root.findViewById(R.id.text_about)
-        viewModel.text.observe(viewLifecycleOwner, Observer {
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        val textView: TextView = binding.textAbout
+        aboutViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root
     }
 
+    override fun onPause() {
+        super.onPause()
+        aboutViewModel.text.removeObservers(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

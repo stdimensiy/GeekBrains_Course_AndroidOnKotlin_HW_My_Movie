@@ -17,6 +17,9 @@ object TMDBAPIConstants {
     /** форматная строка сборного адреса картинки  */
     val POSTER_URL = "$IMAGE_SERVER_URL$POSTER_SIZE%1\$s"
 
+    /** include_adult - признак включения в выборку фильмов для взрослых  */
+    val INCLUDE_ADULT = false
+
     /** временно полный запрос к гостевым выдвчам */
     val TEMP_POPULAR_MOVIE =
         "https://api.themoviedb.org/3/movie/popular?api_key=aefbe34a550ff3229e1b71c60f4f16df&language&language=ru-RU"
