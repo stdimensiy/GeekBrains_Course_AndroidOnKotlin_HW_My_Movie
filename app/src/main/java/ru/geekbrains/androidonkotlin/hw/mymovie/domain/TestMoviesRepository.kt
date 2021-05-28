@@ -5,11 +5,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.MovieRepository
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTest
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTmdb
 
 class TestMoviesRepository : MovieRepository {
-    private val networkService: RetrofitServicesTest = Common.retrofitServiceTest
     private val networkServiceTmdb: RetrofitServicesTmdb = Common.retrofitServiceTmdb
     private val homeFragmentStructure: List<ListMovies> = listOf(
         ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
@@ -23,20 +21,6 @@ class TestMoviesRepository : MovieRepository {
         ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
-
-    override fun getFavoriteList(callBack: CallBack<List<TestMovie>>) {
-        networkService.getMovieList().enqueue(object : Callback<List<TestMovie>> {
-            override fun onResponse(
-                call: Call<List<TestMovie>>,
-                response: Response<List<TestMovie>>
-            ) {
-                callBack.onResult(response.body()!!)
-            }
-
-            override fun onFailure(call: Call<List<TestMovie>>, t: Throwable) {
-            }
-        })
-    }
 
     override fun getHomeFragmentStructure(callBack: CallBack<List<ListMovies>>) {
         callBack.onResult(homeFragmentStructure)
@@ -64,7 +48,7 @@ class TestMoviesRepository : MovieRepository {
                     call: Call<MoviesResponseTmdb>,
                     response: Response<MoviesResponseTmdb>
                 ) {
-                    callBack.onResult(response.body()!!)
+                    response.body()?.let { callBack.onResult(it) }
                 }
 
                 override fun onFailure(call: Call<MoviesResponseTmdb>, t: Throwable) {
@@ -90,7 +74,7 @@ class TestMoviesRepository : MovieRepository {
                     call: Call<MoviesResponseTmdb>,
                     response: Response<MoviesResponseTmdb>
                 ) {
-                    callBack.onResult(response.body()!!)
+                    response.body()?.let { callBack.onResult(it) }
                 }
 
                 override fun onFailure(call: Call<MoviesResponseTmdb>, t: Throwable) {
