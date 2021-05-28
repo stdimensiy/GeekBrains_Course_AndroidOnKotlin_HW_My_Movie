@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 
 class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewNameFavoritesMovie: TextView =
@@ -26,7 +26,7 @@ class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
 
-    fun bind(item: MovieTMDB) {
+    fun bind(item: MovieTmdb) {
         imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)

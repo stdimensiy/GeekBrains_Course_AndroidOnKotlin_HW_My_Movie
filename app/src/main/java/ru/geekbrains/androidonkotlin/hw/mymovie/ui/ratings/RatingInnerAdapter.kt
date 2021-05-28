@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TMDBAPIConstants
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
-    var items: ArrayList<MovieTMDB> = arrayListOf()
+    var items: List<MovieTmdb> = listOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingInnerViewHolder {
@@ -24,22 +24,24 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
         holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
-            .load(String.format(TMDBAPIConstants.POSTER_URL, item.poster_path))
+            .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
             .placeholder(R.drawable.pholder)
             .error(R.drawable.err404)
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        holder.publicData.text = item.release_date?.trim()?.substring(0, 4)
-        holder.rating.text = item.vote_average.toString()
-        if (items.size > 0 && position == items.size - 1) {
+        if (!item.releaseDate.isBlank()) {
+            holder.publicData.text = item.releaseDate.trim().substring(0, 4)
+        } else {
+            holder.publicData.text = "0000"
+        }
+        holder.rating.text = item.voteAverage.toString()
+        if (items.isNotEmpty() && position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     fun setOnLoadMoreMoviesListener(onLoadMoreMoviesListener: OnLoadMoreMovies) {
         this.onLoadMoreMoviesListener = onLoadMoreMoviesListener

@@ -8,7 +8,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMovie
 
 class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
-    var items: MutableList<TestMovie> = mutableListOf(TestMovie())
+    var items: List<TestMovie> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val root =
@@ -33,7 +33,5 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
             "(" + item.createdby + ")" + " " + item.realname
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 }

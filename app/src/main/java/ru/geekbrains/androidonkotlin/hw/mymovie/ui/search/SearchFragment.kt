@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentSearchBinding
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.OnLoadMoreMovies
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class SearchFragment : Fragment() {
     private lateinit var adapter: SearchAdapter
@@ -24,7 +24,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root = binding.root
         adapter = SearchAdapter()
         return root
     }
@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
                 }
             })
             adapter.currentPage = it.page
-            adapter.setTotalPages(it.total_pages)
+            adapter.setTotalPages(it.totalPages)
             adapter.notifyDataSetChanged()
         })
     }

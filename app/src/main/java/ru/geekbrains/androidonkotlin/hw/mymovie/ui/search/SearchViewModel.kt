@@ -3,17 +3,17 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.CallBack
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 
 class SearchViewModel(
     private val app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {
-    val searchMovieLiveData = MutableLiveData<MoviesResponseTMDB>()
-    var prepareListMovie = ArrayList<MovieTMDB>()
+    val searchMovieLiveData = MutableLiveData<MoviesResponseTmdb>()
+    var prepareListMovie = ArrayList<MovieTmdb>()
     private var currentSearchTitle: String = ""
     private var currentPage: Int = 1
 
@@ -27,8 +27,8 @@ class SearchViewModel(
         repository.getDiscoveredMovies(
             currentSearchTitle,
             currentPage,
-            object : CallBack<MoviesResponseTMDB> {
-                override fun onResult(value: MoviesResponseTMDB) {
+            object : CallBack<MoviesResponseTmdb> {
+                override fun onResult(value: MoviesResponseTmdb) {
                     searchMovieLiveData.postValue(value)
                     prepareListMovie.addAll(value.results!!)
                 }

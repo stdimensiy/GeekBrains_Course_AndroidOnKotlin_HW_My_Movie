@@ -1,9 +1,9 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTMDB
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaceAPI.RetrofitServicesTest
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTmdb
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.api.RetrofitServicesTest
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.retrofit.RetrofitClient
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.retrofit.RetrofitClientTMDB
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.retrofit.RetrofitClientTmdb
 
 object Common {
     private const val BASE_URL_TEST = "https://www.simplifiedcoding.net/demos/"
@@ -13,9 +13,9 @@ object Common {
             return RetrofitClient.getClient(BASE_URL_TEST).create(RetrofitServicesTest::class.java)
         }
 
-    val retrofitServiceTMDB: RetrofitServicesTMDB
+    val retrofitServiceTmdb: RetrofitServicesTmdb
         get() {
-            return RetrofitClientTMDB.getClient(BASE_URL_TMDB)
-                .create(RetrofitServicesTMDB::class.java)
+            return RetrofitClientTmdb.getClient(BASE_URL_TMDB)
+                .create(RetrofitServicesTmdb::class.java)
         }
 }
