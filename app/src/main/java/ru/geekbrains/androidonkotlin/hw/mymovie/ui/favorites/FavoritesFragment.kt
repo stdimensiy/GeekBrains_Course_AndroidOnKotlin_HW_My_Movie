@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentFavoritesBinding
+import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class FavoritesFragment : Fragment() {
-
+    private lateinit var adapter: FavoriteAdapter
     private val favoritesViewModel: FavoritesViewModel by viewModels {
         FavoritesViewModelFactory(requireActivity().application)
     }
-    private lateinit var adapter: FavoriteAdapter
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
@@ -41,7 +41,12 @@ class FavoritesFragment : Fragment() {
         favoriteRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         favoritesViewModel.favoritesMovieLiveData.observe(viewLifecycleOwner, {
-            adapter.items = it
+            adapter.items = favoritesViewModel.prepareListMovies
+            adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
+                override fun onLoadMore() {
+                    favoritesViewModel.fetchData()
+                }
+            })
             adapter.notifyDataSetChanged()
         })
     }
