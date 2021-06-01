@@ -14,4 +14,15 @@
     <string name="menu_app_info_item_title">О приложении</string>
     <string name="menu_search_item_title">Поиск фильмов</string>
     <string name="menu_moreDetail_item_title">Детально о фильме</string>
+    <string name="default_date_null">0000</string>
+    <string name="default_test_string_line_for_more_detailed">Этoт фрагмент
+ сообщает детальную информацию о фильме.
+ реализовать добавление собственного рейтинга и комментария, может еще что…</string>
+    <string name="default_test_string_line_for_about">Этот фрагмент \n сообщает информацию о приложении. \n Здесь планируется разместить картинку:\n" +
+                    "номер версии\n" +
+                    "ссылку на адрес администратора\n" +
+                    "фио автора\n" +
+                    "инструкцию как с приложением работать, может еще что…</string>
+    <string name="default_test_string_line_for_settings">Этo фрагмент \n настроек программы. \n" +
+                "реализовать дневной и ночной режим, количество рубрик в левом меню и содержимое главного фрагмента.</string>
 </resources>

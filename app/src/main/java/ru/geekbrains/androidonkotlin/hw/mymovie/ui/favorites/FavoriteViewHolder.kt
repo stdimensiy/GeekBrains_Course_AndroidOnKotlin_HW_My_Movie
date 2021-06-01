@@ -1,12 +1,14 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites
 
+import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMovie
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 
 class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewNameFavoritesMovie: TextView =
@@ -24,19 +26,17 @@ class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
 
-    fun bind(item: TestMovie) {
+    fun bind(item: MovieTmdb) {
         imageViewPoster.setOnClickListener {
-            Toast.makeText(
-                it.context,
-                "нажал на постер фильма ${item.name}, идентификатор фильма ${item.imageurl}",
-                Toast.LENGTH_SHORT
-            ).show()
+            val bundle = Bundle()
+            bundle.putParcelable("ARG_MOVIE", item)
+            itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
-                "нажал на сердечко к фильму ${item.name}, идентификатор фильма ${item.imageurl}",
+                "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -44,7 +44,7 @@ class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         imageViewRatingFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
-                "нажал на звездочку к фильму ${item.name}, идентификатор фильма ${item.imageurl}",
+                "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}",
                 Toast.LENGTH_SHORT
             ).show()
         }
