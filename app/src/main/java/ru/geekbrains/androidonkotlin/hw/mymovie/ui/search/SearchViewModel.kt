@@ -30,7 +30,7 @@ class SearchViewModel(
             object : CallBack<MoviesResponseTmdb> {
                 override fun onResult(value: MoviesResponseTmdb) {
                     searchMovieLiveData.postValue(value)
-                    prepareListMovie.addAll(value.results!!)
+                    prepareListMovie.addAll(value.results)
                 }
             })
     }

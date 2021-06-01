@@ -12,10 +12,12 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
+    private lateinit var defoultDataNull: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
             LayoutInflater.from(parent.context).inflate(R.layout.inner_item_home, parent, false)
+        defoultDataNull = parent.context.getString(R.string.default_date_null)
         return HomeInnerViewHolder(root)
     }
 
@@ -33,7 +35,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
         if (!item.releaseDate.isNullOrBlank()) {
             holder.publicData.text = item.releaseDate.trim().substring(0, 4)
         } else {
-            holder.publicData.text = "0000"
+            holder.publicData.text = defoultDataNull
         }
         holder.rating.text = item.voteAverage.toString()
         if (items.size > 0 && position == items.size - 1) {
