@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
@@ -22,17 +23,13 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        val textView: TextView = binding.textAbout
-        aboutViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
-        })
-        return root
+        return binding.root
     }
 
-    override fun onPause() {
-        super.onPause()
-        aboutViewModel.text.removeObservers(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val webView = view as WebView
+        webView.loadUrl(getString(R.string.base_url_about))
     }
 
     override fun onDestroyView() {
