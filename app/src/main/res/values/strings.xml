@@ -30,4 +30,6 @@
     <string name="default_text_action_for_star">Пользователь нажал на звездочку к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="default_text_action_for_heart">Пользователь нажал на сердечко к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="base_url_about">https://souos.ru</string>
+    <string name="more_detailed_fragment">Информация о фильме</string>
+    <string name="search_fragment_label_result">Результаты поиска...</string>
 </resources>
