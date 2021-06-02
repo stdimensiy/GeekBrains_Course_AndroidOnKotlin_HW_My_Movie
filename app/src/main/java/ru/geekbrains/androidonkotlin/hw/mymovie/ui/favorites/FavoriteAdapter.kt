@@ -11,6 +11,8 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
     var items: ArrayList<MovieTmdb> = arrayListOf()
+    lateinit var genreStub: String
+    lateinit var defoultDataNull: String
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
     var currentPage: Int = 0         //номер текущей страницы выдачи
     private var totalPages: Int = 0  //всего страниц в выдаче
@@ -22,6 +24,8 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val root =
             LayoutInflater.from(parent.context).inflate(R.layout.item_favorites, parent, false)
+        genreStub = parent.context.getString(R.string.genre_stub)
+        defoultDataNull = parent.context.getString(R.string.default_date_null)
         return FavoriteViewHolder(root)
     }
 
@@ -36,10 +40,10 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        holder.textViewGenresFavoritesMovie.text = "Какойто жанр, Драма, Задрама"
+        holder.textViewGenresFavoritesMovie.text = genreStub
         holder.textViewRatingFavoritesMovie.text = item.voteAverage.toString()
         if (item.releaseDate.isBlank()) holder.textViewReleaseDataFavoritesMovie.text =
-            "(0000)"
+            defoultDataNull
         else ("(" + item.releaseDate.trim().subSequence(0, 4) + ") " + item.originalTitle)
             .also { holder.textViewReleaseDataFavoritesMovie.text = it }
         if (position == items.size - 1) {

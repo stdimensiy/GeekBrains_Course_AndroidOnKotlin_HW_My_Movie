@@ -25,4 +25,8 @@
                     "инструкцию как с приложением работать, может еще что…</string>
     <string name="default_test_string_line_for_settings">Этo фрагмент \n настроек программы. \n" +
                 "реализовать дневной и ночной режим, количество рубрик в левом меню и содержимое главного фрагмента.</string>
+    <string name="genre_stub">Какойто жанр, Драма, Задрама</string>
+    <string name="default_plug_download">Загрузка…</string>
+    <string name="default_text_action_for_star">Пользователь нажал на звездочку к фильму %1$s, идентификатор фильма %2$d</string>
+    <string name="default_text_action_for_heart">Пользователь нажал на сердечко к фильму %1$s, идентификатор фильма %2$d</string>
 </resources>
