@@ -36,17 +36,15 @@ class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
-                "нажал на сердечко к фильму ${item.title}, идентификатор фильма ${item.id}",
-                Toast.LENGTH_SHORT
-            ).show()
+                it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
+                Toast.LENGTH_SHORT).show()
         }
 
         imageViewRatingFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
-                "нажал на звездочку к фильму ${item.title}, идентификатор фильма ${item.id}",
-                Toast.LENGTH_SHORT
-            ).show()
+                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
+                Toast.LENGTH_SHORT).show()
         }
     }
 }

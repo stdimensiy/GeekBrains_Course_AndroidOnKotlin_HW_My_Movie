@@ -32,6 +32,9 @@ class MoreDetailedFragment : Fragment() {
     private lateinit var textViewReleaseData: TextView           // Дата релиза образец: (2018-12-06)
     private lateinit var textView: TextView
 
+    lateinit var defoultDataNull: String
+    lateinit var defaultPlugDownload: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +58,9 @@ class MoreDetailedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         movie = arguments?.getParcelable("ARG_MOVIE")!!
         textViewNameMovie.text = movie.title
-        var currentReleaseData = "0000"
+        defoultDataNull = view.context.getString(R.string.default_date_null)
+        defaultPlugDownload = view.context.getString(R.string.default_plug_download)
+        var currentReleaseData = defoultDataNull
         if (!movie.releaseDate.isNullOrBlank()) {
             currentReleaseData = movie.releaseDate.trim().substring(0, 4)
         }
@@ -69,12 +74,12 @@ class MoreDetailedFragment : Fragment() {
             .resize(500, 750)
             .centerCrop()
             .into(imageViewPoster)
-        textViewDuration.text = "загрузка..."
+        textViewDuration.text = defaultPlugDownload
         (movie.voteAverage.toString() + " (" + movie.voteCount.toString() + ")").also {
             textViewRating.text = it
         }
-        tetextViewBudget.text = "загрузка..."
-        textViewRevenue.text = "загрузка..."
+        tetextViewBudget.text = defaultPlugDownload
+        textViewRevenue.text = defaultPlugDownload
         ("(" + movie.releaseDate + ")").also { textViewReleaseData.text = it }
         textView.text = movie.overview
     }
