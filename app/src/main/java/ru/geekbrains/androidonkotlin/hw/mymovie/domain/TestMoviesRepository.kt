@@ -14,10 +14,6 @@ class TestMoviesRepository : MovieRepository {
         ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
         ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
         ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
-        ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),
-        ListMovies("popular", "Популярное", "Комментарий к подборке популярного"),
-        ListMovies("now_playing", "Смотрят сейчас", "Комментарий к подборке Смотрят сейчас"),
-        ListMovies("upcoming", "Ожидаемые", "Комментарий к подборке Ожидаемые"),
     )
     private val ratingFragmentStructure: List<ListMovies> = listOf(
         ListMovies("top_rated", "Лучшие", "Комментарий к подборке Лучшие"),

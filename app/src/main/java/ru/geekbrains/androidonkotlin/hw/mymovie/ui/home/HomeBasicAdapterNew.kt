@@ -29,12 +29,13 @@ class HomeBasicAdapterNew(_fragment: Fragment) :
     override fun getItemCount(): Int = items.size
 
     override fun onViewAttachedToWindow(holder: HomeBasicViewHolderNew) {
-        attachFragmentToContainer(holder.flContainer.id)
+        attachFragmentToContainer(holder.flContainer.id, holder.adapterPosition)
         super.onViewAttachedToWindow(holder)
     }
 
-    private fun attachFragmentToContainer(containerId: Int) {
-        val fragment = HomeInnerFragment.newInstance("Первый парметр", "Второй параметр")
+    private fun attachFragmentToContainer(containerId: Int, fragmentListId: Int) {
+        val fragment =
+            HomeInnerFragment.newInstance("Первый парметр $fragmentListId", "Второй параметр")
         fragmentManager.beginTransaction().add(containerId, fragment).commitNowAllowingStateLoss()
     }
 }

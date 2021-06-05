@@ -1,10 +1,11 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,8 +35,13 @@ class HomeInnerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_inner, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val testText: TextView = view.findViewById(R.id.test_text_inner_fragment)
+        testText.text = param1
+        super.onViewCreated(view, savedInstanceState)
     }
 
     companion object {
