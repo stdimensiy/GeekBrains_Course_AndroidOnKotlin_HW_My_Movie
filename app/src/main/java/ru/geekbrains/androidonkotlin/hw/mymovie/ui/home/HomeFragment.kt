@@ -11,7 +11,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private lateinit var adapter: HomeBasicAdapter
+    private lateinit var adapter: HomeBasicAdapterNew
     private val homeViewModel: HomeViewModel by viewModels {
         HomeViewModelFactory(requireActivity().application)
     }
@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        adapter = HomeBasicAdapter(this)
+        adapter = HomeBasicAdapterNew(this)
         return root
     }
 
