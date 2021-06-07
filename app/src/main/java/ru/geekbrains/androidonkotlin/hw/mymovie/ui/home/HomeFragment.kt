@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val homeBasicRecyclerView = binding.homeBasicList
         homeBasicRecyclerView.adapter = adapter
+        homeBasicRecyclerView.setItemViewCacheSize(4)
         homeBasicRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         homeViewModel.homeBasicStructureLiveData.observe(viewLifecycleOwner, {
@@ -48,8 +49,8 @@ class HomeFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         homeViewModel.homeBasicStructureLiveData.removeObservers(this)
     }
 

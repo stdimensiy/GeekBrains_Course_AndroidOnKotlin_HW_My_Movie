@@ -24,11 +24,11 @@ class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //val testText: TextView = view.findViewById(R.id.test_text_inner_fragment)
+        val testText: TextView = view.findViewById(R.id.test_text_inner_fragment)
         val innerRecyclerView: RecyclerView = view.findViewById(R.id.home_inner_list)
         adapter = HomeInnerFragmentAdapterNew(this)
         innerRecyclerView.adapter = adapter
-        //testText.text = groupResponseObject?.nameGroupResponse
+        testText.text = groupResponseObject?.nameGroupResponse
         innerRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         groupResponseObject?.currentLiveData?.observe(viewLifecycleOwner, {
