@@ -13,7 +13,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 class HomeInnerViewHolder(
     itemView: View,
 
-) : RecyclerView.ViewHolder(itemView) {
+    ) : RecyclerView.ViewHolder(itemView) {
     val nameMovie: TextView = itemView.findViewById(R.id.textView2)
     val publicData: TextView = itemView.findViewById(R.id.textView3)
     val rating: TextView = itemView.findViewById(R.id.textView4)
@@ -33,14 +33,16 @@ class HomeInnerViewHolder(
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

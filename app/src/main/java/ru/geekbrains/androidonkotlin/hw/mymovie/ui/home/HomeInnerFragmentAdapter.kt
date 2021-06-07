@@ -10,20 +10,20 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
-class HomeInnerFragmentAdapterNew(_fragment: Fragment) : RecyclerView.Adapter<HomeInnerViewHolderNew>() {
+class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
     val fragment: Fragment = _fragment
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
     private lateinit var defoultDataNull: String
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolderNew {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.inner_item_home, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.inner_item_horizontal_rv_type_one, parent, false)
         defoultDataNull = parent.context.getString(R.string.default_date_null)
-        return HomeInnerViewHolderNew(root)
+        return HomeInnerViewHolder(root)
     }
 
-    override fun onBindViewHolder(holder: HomeInnerViewHolderNew, position: Int) {
+    override fun onBindViewHolder(holder: HomeInnerViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
         holder.nameMovie.text = item.title

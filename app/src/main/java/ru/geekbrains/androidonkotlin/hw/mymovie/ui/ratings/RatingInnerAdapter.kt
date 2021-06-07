@@ -16,7 +16,11 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingInnerViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.inner_item_home, parent, false)
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.inner_item_horizontal_rv_type_one,
+                parent,
+                false
+            )
         defoultDataNull = parent.context.getString(R.string.default_date_null)
         return RatingInnerViewHolder(root)
     }

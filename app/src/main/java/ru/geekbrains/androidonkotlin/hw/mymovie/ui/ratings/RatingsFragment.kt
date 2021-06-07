@@ -48,8 +48,8 @@ class RatingsFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         ratingsViewModel.ratingBasicStructureLiveData.removeObservers(this)
     }
 

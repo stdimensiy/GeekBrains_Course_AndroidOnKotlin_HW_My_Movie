@@ -14,7 +14,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 
 class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = null) : Fragment() {
-    private lateinit var adapter: HomeInnerFragmentAdapterNew
+    private lateinit var adapter: HomeInnerFragmentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val testText: TextView = view.findViewById(R.id.test_text_inner_fragment)
         val innerRecyclerView: RecyclerView = view.findViewById(R.id.home_inner_list)
-        adapter = HomeInnerFragmentAdapterNew(this)
+        adapter = HomeInnerFragmentAdapter(this)
         innerRecyclerView.adapter = adapter
         testText.text = groupResponseObject?.nameGroupResponse
         innerRecyclerView.layoutManager =
