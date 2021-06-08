@@ -13,7 +13,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 
-class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = null) : Fragment() {
+class HomeInnerFragment(private var groupResponseObject: GroupResponseObject) : Fragment() {
     private lateinit var adapter: HomeInnerFragmentAdapter
 
     override fun onCreateView(
@@ -28,17 +28,17 @@ class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = 
         val innerRecyclerView: RecyclerView = view.findViewById(R.id.home_inner_list)
         adapter = HomeInnerFragmentAdapter(this)
         innerRecyclerView.adapter = adapter
-        testText.text = groupResponseObject?.nameGroupResponse
+        testText.text = groupResponseObject.nameGroupResponse
         innerRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        groupResponseObject?.currentLiveData?.observe(viewLifecycleOwner, {
+        groupResponseObject.currentLiveData.observe(viewLifecycleOwner, {
             adapter.items = it
             adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
                 override fun onLoadMore() {
-                    if (groupResponseObject!!.lastAnswer.page < groupResponseObject!!.lastAnswer.totalPages) {
-                        groupResponseObject!!.funcFetch.invoke(
-                            groupResponseObject!!.standardList.toString(),
-                            groupResponseObject!!.lastAnswer.page + 1, groupResponseObject!!
+                    if (groupResponseObject.lastAnswer.page < groupResponseObject.lastAnswer.totalPages) {
+                        groupResponseObject.funcFetch.invoke(
+                            groupResponseObject.standardList.toString(),
+                            groupResponseObject.lastAnswer.page + 1, groupResponseObject
                         )
                     }
                 }
@@ -46,5 +46,10 @@ class HomeInnerFragment(private var groupResponseObject: GroupResponseObject? = 
             adapter.notifyDataSetChanged()
         })
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        groupResponseObject.currentLiveData.removeObservers(this)
     }
 }

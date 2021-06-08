@@ -1,7 +1,10 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
@@ -27,7 +30,6 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
 
     override fun onBindViewHolder(holder: RatingInnerViewHolder, position: Int) {
         val item = items[position]
-        holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
             .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
@@ -45,6 +47,37 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
         if (items.isNotEmpty() && position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
         }
+    }
+
+    override fun onViewAttachedToWindow(holder: RatingInnerViewHolder) {
+        val item = items[holder.adapterPosition]
+        super.onViewAttachedToWindow(holder)
+        holder.imageViewPoster.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelable("ARG_MOVIE", item)
+            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+        }
+
+        holder.imageViewRating.setOnClickListener {
+            Toast.makeText(
+                it.context,
+                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
+                Toast.LENGTH_SHORT).show()
+        }
+
+        holder.imageViewFlagFavoritesMovie.setOnClickListener {
+            Toast.makeText(
+                it.context,
+                it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onViewDetachedFromWindow(holder: RatingInnerViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.imageViewPoster.setOnClickListener(null)
+        holder.imageViewRating.setOnClickListener(null)
+        holder.imageViewFlagFavoritesMovie.setOnClickListener(null)
     }
 
     override fun getItemCount(): Int = items.size
