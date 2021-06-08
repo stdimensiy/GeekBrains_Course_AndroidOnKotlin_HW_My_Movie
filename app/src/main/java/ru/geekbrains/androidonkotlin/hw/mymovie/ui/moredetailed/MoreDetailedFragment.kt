@@ -61,7 +61,7 @@ class MoreDetailedFragment : Fragment() {
         defoultDataNull = view.context.getString(R.string.default_date_null)
         defaultPlugDownload = view.context.getString(R.string.default_plug_download)
         var currentReleaseData = defoultDataNull
-        if (!movie.releaseDate.isNullOrBlank()) {
+        if (!movie.releaseDate.isBlank()) {
             currentReleaseData = movie.releaseDate.trim().substring(0, 4)
         }
         (movie.originalTitle + " (" + currentReleaseData + ")").also {

@@ -35,7 +35,6 @@ class RatingsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val ratingBasicRecyclerView = binding.ratingBasicList
         ratingBasicRecyclerView.adapter = adapter
         ratingBasicRecyclerView.layoutManager =
@@ -46,10 +45,11 @@ class RatingsFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         })
+        super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         ratingsViewModel.ratingBasicStructureLiveData.removeObservers(this)
     }
 

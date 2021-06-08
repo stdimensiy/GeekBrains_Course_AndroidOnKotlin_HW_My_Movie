@@ -21,30 +21,8 @@ class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById(R.id.textViewRatingFavoritesMovie)
     val imageViewPoster: ImageView =
         itemView.findViewById(R.id.imageViewPoster)
-    private val imageViewFlagFavoritesMovie: ImageView =
+    val imageViewFlagFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
-    private val imageViewRatingFavoritesMovie: ImageView =
+    val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
-
-    fun bind(item: MovieTmdb) {
-        imageViewPoster.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelable("ARG_MOVIE", item)
-            itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
-        }
-
-        imageViewFlagFavoritesMovie.setOnClickListener {
-            Toast.makeText(
-                it.context,
-                it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
-        }
-
-        imageViewRatingFavoritesMovie.setOnClickListener {
-            Toast.makeText(
-                it.context,
-                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
-        }
-    }
 }
