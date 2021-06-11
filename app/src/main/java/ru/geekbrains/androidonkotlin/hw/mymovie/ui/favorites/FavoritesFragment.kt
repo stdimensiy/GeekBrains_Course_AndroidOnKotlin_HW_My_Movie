@@ -51,13 +51,9 @@ class FavoritesFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
-        favoritesViewModel.favoritesMovieLiveData.removeObservers(this)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
+        favoritesViewModel.favoritesMovieLiveData.removeObservers(viewLifecycleOwner)
         _binding = null
     }
 }

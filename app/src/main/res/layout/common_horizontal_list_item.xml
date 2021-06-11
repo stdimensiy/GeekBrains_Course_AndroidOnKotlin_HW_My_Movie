@@ -15,20 +15,20 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView_poster_for_inner_item_holder_home"
+            android:id="@+id/imageView_poster_for_common_horizontal_list_item"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:baselineAlignBottom="false"
-            app:layout_constraintBottom_toTopOf="@id/textView_name_movie_for_inner_item_holder_home"
+            android:contentDescription="@string/ImageView_contentDescription_go_to_details_movie_question"
+            app:layout_constraintBottom_toTopOf="@id/textView_name_movie_for_common_horizontal_list_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/zgl"
-            android:contentDescription="@string/ImageView_contentDescription_go_to_details_movie_question" />
+            app:srcCompat="@drawable/zgl" />
 
         <TextView
-            android:id="@+id/textView_name_movie_for_inner_item_holder_home"
+            android:id="@+id/textView_name_movie_for_common_horizontal_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -39,46 +39,46 @@
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView_poster_for_inner_item_holder_home" />
+            app:layout_constraintTop_toBottomOf="@id/imageView_poster_for_common_horizontal_list_item" />
 
         <TextView
-            android:id="@+id/textView_date_release_movie_for_inner_item_holder_home"
+            android:id="@+id/textView_date_release_movie_for_common_horizontal_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/textView_default_date_release_for_item_holder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_name_movie_for_inner_item_holder_home" />
+            app:layout_constraintTop_toBottomOf="@id/textView_name_movie_for_common_horizontal_list_item" />
 
         <TextView
-            android:id="@+id/textView_rating_movie_for_inner_item_holder_home"
+            android:id="@+id/textView_rating_movie_for_common_horizontal_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="@string/textView_default_rating_tmdb_for_item_holder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_name_movie_for_inner_item_holder_home" />
+            app:layout_constraintTop_toBottomOf="@id/textView_name_movie_for_common_horizontal_list_item" />
 
         <ImageView
-            android:id="@+id/imageView_rating_movie_for_inner_item_holder_home"
+            android:id="@+id/imageView_rating_movie_for_common_horizontal_list_item"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/textView_rating_movie_for_inner_item_holder_home"
-            app:layout_constraintEnd_toStartOf="@+id/textView_rating_movie_for_inner_item_holder_home"
-            app:layout_constraintTop_toTopOf="@+id/textView_rating_movie_for_inner_item_holder_home"
-            app:srcCompat="@android:drawable/btn_star_big_on"
-            android:contentDescription="@string/ImageView_contentDescription_give_a_rating_question" />
+            android:contentDescription="@string/ImageView_contentDescription_give_a_rating_question"
+            app:layout_constraintBottom_toBottomOf="@id/textView_rating_movie_for_common_horizontal_list_item"
+            app:layout_constraintEnd_toStartOf="@+id/textView_rating_movie_for_common_horizontal_list_item"
+            app:layout_constraintTop_toTopOf="@+id/textView_rating_movie_for_common_horizontal_list_item"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <ImageView
-            android:id="@+id/imageView_flag_added_to_favorites_movie"
+            android:id="@+id/imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:contentDescription="@string/ImageView_contentDescription_add_to_favorites_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_twotone_favorite_24"
-            android:contentDescription="@string/ImageView_contentDescription_add_to_favorites_question" />
+            app:srcCompat="@drawable/ic_twotone_favorite_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

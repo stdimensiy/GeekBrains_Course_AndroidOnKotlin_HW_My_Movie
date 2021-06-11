@@ -19,7 +19,8 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.inner_item_home, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.common_horizontal_list_item, parent, false)
         defaultDataNull = parent.context.getString(R.string.default_date_null)
         return HomeInnerViewHolder(root)
     }
@@ -57,14 +58,16 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         holder.imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
         super.onViewAttachedToWindow(holder)
     }
