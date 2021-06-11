@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
@@ -13,8 +12,6 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class HomeBasicAdapter(_fragment: Fragment) :
     RecyclerView.Adapter<HomeBasicViewHolder>() {
-    private val homeViewModel: HomeViewModel =
-        ViewModelProvider(_fragment).get(HomeViewModel::class.java)
     val fragment: Fragment = _fragment
     var items: ArrayList<GroupResponseObject> = ArrayList()
 
@@ -28,22 +25,21 @@ class HomeBasicAdapter(_fragment: Fragment) :
         val item = items.get(position)
         holder.basicTitle.text = item.nameGroupResponse
         //работа с вложенным адаптером
-        val currentRO = homeViewModel.arrGroupList[position]
-        val currentLiveData: LiveData<List<MovieTmdb>> = currentRO.currentLiveData
-        currentLiveData.observe(fragment.viewLifecycleOwner, {
+        val currentLiveData: LiveData<List<MovieTmdb>> = item.currentLiveData
+        currentLiveData.observeForever {
             holder.adapter.items = it
             holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
                 override fun onLoadMore() {
-                    if (currentRO.lastAnswer.page < currentRO.lastAnswer.totalPages) {
-                        currentRO.funcFetch.invoke(
-                            currentRO.standardList.toString(),
-                            currentRO.lastAnswer.page + 1, currentRO
+                    if (item.lastAnswer.page < item.lastAnswer.totalPages) {
+                        item.funcFetch.invoke(
+                            item.standardList.toString(),
+                            item.lastAnswer.page + 1, item
                         )
                     }
                 }
             })
             holder.adapter.notifyDataSetChanged()
-        })
+        }
     }
 
     override fun getItemCount(): Int = items.size

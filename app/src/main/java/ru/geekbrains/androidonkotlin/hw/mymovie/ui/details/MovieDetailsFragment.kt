@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.moredetailed
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMoreDetailedBinding
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMovieDetailsBinding
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 
-class MoreDetailedFragment : Fragment() {
-    private val moreDetailedViewModel: MoreDetailedViewModel by viewModels {
-        MoreDetailedViewModelFactory(requireActivity().application)
+class MovieDetailsFragment : Fragment() {
+    private val movieDetailsViewModel: MovieDetailsViewModel by viewModels {
+        MovieDetailsViewModelFactory(requireActivity().application)
     }
-    private var _binding: FragmentMoreDetailedBinding? = null
+    private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var movie: MovieTmdb
@@ -39,18 +39,18 @@ class MoreDetailedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMoreDetailedBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        textView = binding.textMoreDetailed
-        textViewNameMovie = binding.textViewMoreDetailNameMovie
-        textViewOrigNameMovieAndData = binding.textViewMoreDetailOrigNameMovieAndData
-        imageViewPoster = binding.imageViewPoster
-        textViewDuration = binding.textViewMoreDetailDuration
-        textViewRating = binding.textViewMoreDetailRating
-        tetextViewBudget = binding.textViewMoreDetailBudget
-        textViewRevenue = binding.textViewMoreDetailRevenue
-        textViewReleaseData = binding.textViewMoreDetailReleaseData
+        textView = binding.textViewMovieDetailsDescription
+        textViewNameMovie = binding.textViewMovieDetailsNameMovie
+        textViewOrigNameMovieAndData = binding.textViewMovieDetailsOrigNameMovieAndData
+        imageViewPoster = binding.imageViewMovieDetailsPoster
+        textViewDuration = binding.textViewMovieDetailsDuration
+        textViewRating = binding.textViewMovieDetailsRating
+        tetextViewBudget = binding.textViewMovieDetailsBudget
+        textViewRevenue = binding.textViewMovieDetailsRevenue
+        textViewReleaseData = binding.textViewMovieDetailsReleaseData
         return root
     }
 
@@ -61,10 +61,10 @@ class MoreDetailedFragment : Fragment() {
         defoultDataNull = view.context.getString(R.string.default_date_null)
         defaultPlugDownload = view.context.getString(R.string.default_plug_download)
         var currentReleaseData = defoultDataNull
-        if (!movie.releaseDate.isNullOrBlank()) {
+        if (!movie.releaseDate.isBlank()) {
             currentReleaseData = movie.releaseDate.trim().substring(0, 4)
         }
-        (movie.originalTitle + " (" + currentReleaseData + ")").also {
+        ("${movie.originalTitle} ($currentReleaseData)").also {
             textViewOrigNameMovieAndData.text = it
         }
         Picasso.get()
@@ -75,12 +75,12 @@ class MoreDetailedFragment : Fragment() {
             .centerCrop()
             .into(imageViewPoster)
         textViewDuration.text = defaultPlugDownload
-        (movie.voteAverage.toString() + " (" + movie.voteCount.toString() + ")").also {
+        ("${movie.voteAverage} (${movie.voteCount})").also {
             textViewRating.text = it
         }
         tetextViewBudget.text = defaultPlugDownload
         textViewRevenue.text = defaultPlugDownload
-        ("(" + movie.releaseDate + ")").also { textViewReleaseData.text = it }
+        ("(${movie.releaseDate})").also { textViewReleaseData.text = it }
         textView.text = movie.overview
     }
 

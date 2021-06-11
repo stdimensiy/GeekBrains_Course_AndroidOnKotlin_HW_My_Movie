@@ -16,9 +16,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageViewPoster"
+            android:id="@+id/imageView_movie_details_poster"
             android:layout_width="67dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/ImageView_contentDescription_go_to_details_movie_question"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Воспоминание об убийстве"
+            android:text="@string/textView_default_name_movie_for_item_holder"
             android:textAlignment="textStart"
             android:textSize="16sp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageViewPoster"
+            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -43,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="2020 и еще какаято шляпа"
-            app:layout_constraintStart_toEndOf="@id/imageViewPoster"
+            android:text="@string/default_text_movie_details_original_name_movie"
+            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
             app:layout_constraintTop_toBottomOf="@id/textViewNameFavoritesMovie" />
 
         <TextView
@@ -52,17 +53,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="Драма, не драма, пилорама"
+            android:text="@string/genre_stub"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/imageViewPoster"
+            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
             app:layout_constraintTop_toBottomOf="@id/textViewReleaseDataFavoritesMovie" />
 
         <ImageView
             android:id="@+id/imageViewRatingFavoritesMovie"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:contentDescription="@string/ImageView_contentDescription_give_a_rating_question"
             app:layout_constraintBottom_toBottomOf="@+id/textViewRatingFavoritesMovie"
-            app:layout_constraintStart_toEndOf="@id/imageViewPoster"
+            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
             app:layout_constraintTop_toTopOf="@+id/textViewRatingFavoritesMovie"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
@@ -70,16 +72,17 @@
             android:id="@+id/textViewRatingFavoritesMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6,9"
+            android:text="@string/textView_default_rating_tmdb_for_item_holder"
             app:layout_constraintStart_toEndOf="@id/imageViewRatingFavoritesMovie"
             app:layout_constraintTop_toBottomOf="@+id/textViewGenresFavoritesMovie"
             tools:layout_editor_absoluteX="99dp" />
 
         <ImageView
-            android:id="@+id/imageViewFlagFavoritesMovie"
+            android:id="@+id/imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="16dp"
+            android:contentDescription="@string/ImageView_contentDescription_add_to_favorites_question"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

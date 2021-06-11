@@ -41,9 +41,9 @@
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/moreDetailedFragment"
-        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.moredetailed.MoreDetailedFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.details.MovieDetailsFragment"
         android:label="@string/more_detailed_fragment"
-        tools:layout="@layout/fragment_more_detailed" />
+        tools:layout="@layout/fragment_movie_details" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.SearchFragment"
