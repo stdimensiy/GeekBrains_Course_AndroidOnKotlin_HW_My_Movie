@@ -20,9 +20,9 @@ class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewRatingFavoritesMovie: TextView =
         itemView.findViewById(R.id.textViewRatingFavoritesMovie)
     val imageViewPoster: ImageView =
-        itemView.findViewById(R.id.imageViewPoster)
+        itemView.findViewById(R.id.imageView_movie_details_poster)
     private val imageViewFlagFavoritesMovie: ImageView =
-        itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
+        itemView.findViewById(R.id.imageView_flag_added_to_favorites_movie)
     private val imageViewRatingFavoritesMovie: ImageView =
         itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
 

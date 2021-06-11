@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.moredetailed
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.details
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 
-class MoreDetailedViewModel(
+class MovieDetailsViewModel(
     private val app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {

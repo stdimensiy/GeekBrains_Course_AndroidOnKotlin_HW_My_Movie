@@ -12,13 +12,13 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 
 class RatingInnerViewHolder(
     itemView: View,
-    val nameMovie: TextView = itemView.findViewById(R.id.textView2),
-    val publicData: TextView = itemView.findViewById(R.id.textView3),
-    val rating: TextView = itemView.findViewById(R.id.textView4),
-    val imageViewPoster: ImageView = itemView.findViewById(R.id.imageView2),
-    private val imageViewRating: ImageView = itemView.findViewById(R.id.imageView3),
+    val nameMovie: TextView = itemView.findViewById(R.id.textView_name_movie_for_inner_item_holder_home),
+    val publicData: TextView = itemView.findViewById(R.id.textView_date_release_movie_for_inner_item_holder_home),
+    val rating: TextView = itemView.findViewById(R.id.textView_rating_movie_for_inner_item_holder_home),
+    val imageViewPoster: ImageView = itemView.findViewById(R.id.imageView_poster_for_inner_item_holder_home),
+    private val imageViewRating: ImageView = itemView.findViewById(R.id.imageView_rating_movie_for_inner_item_holder_home),
     private val imageViewFlagFavoritesMovie: ImageView =
-        itemView.findViewById(R.id.imageViewFlagFavoritesMovie)
+        itemView.findViewById(R.id.imageView_flag_added_to_favorites_movie)
 ) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(item: MovieTmdb) {

@@ -32,4 +32,18 @@
     <string name="base_url_about">https://souos.ru</string>
     <string name="more_detailed_fragment">Информация о фильме</string>
     <string name="search_fragment_label_result">Результаты поиска...</string>
+    <string name="default_text_movie_details_name_movie">Региональное наименование фильма</string>
+    <string name="default_text_movie_details_original_name_movie">Оригинальное наименование и (ГГГГ)</string>
+    <string name="default_text_movie_details_duration_movie">123 мин.</string>
+    <string name="default_text_movie_details_rating_movie">8,5 (7183)</string>
+    <string name="default_text_movie_details_budget_movie">Бюджет: 1 234 567 890 $</string>
+    <string name="default_text_movie_details_revenue_movie">Сборы: 1 234 567 890 $</string>
+    <string name="default_text_movie_details_release_data_movie">Дата релиза: (2018-12-06)</string>
+    <string name="textView_default_basic_title">Пустое наименование рубрики</string>
+    <string name="textView_default_name_movie_for_item_holder">Воспоминание об убийстве</string>
+    <string name="textView_default_date_release_for_item_holder">2020</string>
+    <string name="textView_default_rating_tmdb_for_item_holder">6,9</string>
+    <string name="ImageView_contentDescription_add_to_favorites_question">Добавить в избранное?</string>
+    <string name="ImageView_contentDescription_give_a_rating_question">Оценить фильм?</string>
+    <string name="ImageView_contentDescription_go_to_details_movie_question">Посмотреть подробное описание фильма и дополнительную информацию?</string>
 </resources>

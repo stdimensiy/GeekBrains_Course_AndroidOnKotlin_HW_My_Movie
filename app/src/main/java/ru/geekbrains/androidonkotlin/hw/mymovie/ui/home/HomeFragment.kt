@@ -48,9 +48,9 @@ class HomeFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
-        homeViewModel.homeBasicStructureLiveData.removeObservers(this)
+    override fun onStop() {
+        super.onStop()
+        homeViewModel.homeBasicStructureLiveData.removeObservers(viewLifecycleOwner)
     }
 
     override fun onDestroyView() {
