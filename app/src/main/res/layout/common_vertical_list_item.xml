@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView_movie_details_poster"
+            android:id="@+id/imageView_poster"
             android:layout_width="67dp"
             android:layout_height="100dp"
             android:contentDescription="@string/ImageView_contentDescription_go_to_details_movie_question"
@@ -26,7 +26,7 @@
             app:srcCompat="@drawable/zgl" />
 
         <TextView
-            android:id="@+id/textViewNameFavoritesMovie"
+            android:id="@+id/textViewName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -36,49 +36,49 @@
             android:textSize="16sp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
+            app:layout_constraintStart_toEndOf="@id/imageView_poster"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewReleaseDataFavoritesMovie"
+            android:id="@+id/textViewReleaseData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/default_text_movie_details_original_name_movie"
-            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
-            app:layout_constraintTop_toBottomOf="@id/textViewNameFavoritesMovie" />
+            app:layout_constraintStart_toEndOf="@id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@id/textViewName" />
 
         <TextView
-            android:id="@+id/textViewGenresFavoritesMovie"
+            android:id="@+id/textViewGenres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/genre_stub"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
-            app:layout_constraintTop_toBottomOf="@id/textViewReleaseDataFavoritesMovie" />
+            app:layout_constraintStart_toEndOf="@id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@id/textViewReleaseData" />
 
         <ImageView
-            android:id="@+id/imageViewRatingFavoritesMovie"
+            android:id="@+id/imageViewRating"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:contentDescription="@string/ImageView_contentDescription_give_a_rating_question"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewRatingFavoritesMovie"
-            app:layout_constraintStart_toEndOf="@id/imageView_movie_details_poster"
-            app:layout_constraintTop_toTopOf="@+id/textViewRatingFavoritesMovie"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
+            app:layout_constraintStart_toEndOf="@id/imageView_poster"
+            app:layout_constraintTop_toTopOf="@+id/textViewRating"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <TextView
-            android:id="@+id/textViewRatingFavoritesMovie"
+            android:id="@+id/textViewRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textView_default_rating_tmdb_for_item_holder"
-            app:layout_constraintStart_toEndOf="@id/imageViewRatingFavoritesMovie"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGenresFavoritesMovie"
+            app:layout_constraintStart_toEndOf="@id/imageViewRating"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGenres"
             tools:layout_editor_absoluteX="99dp" />
 
         <ImageView
-            android:id="@+id/imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item"
+            android:id="@+id/imageView_ingBtn_addToFavorites"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="16dp"

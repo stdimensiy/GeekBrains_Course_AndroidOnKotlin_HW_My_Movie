@@ -30,7 +30,7 @@
     <string name="default_text_action_for_star">Пользователь нажал на звездочку к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="default_text_action_for_heart">Пользователь нажал на сердечко к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="base_url_about">https://souos.ru</string>
-    <string name="more_detailed_fragment">Информация о фильме</string>
+    <string name="movie_details_fragment">Информация о фильме</string>
     <string name="search_fragment_label_result">Результаты поиска...</string>
     <string name="default_text_movie_details_name_movie">Региональное наименование фильма</string>
     <string name="default_text_movie_details_original_name_movie">Оригинальное наименование и (ГГГГ)</string>
@@ -76,4 +76,7 @@
     <string name="action_unwanted_content_list_title">Нежелательный контент</string>
     <string name="action_marked_as_adult_by_me_list_title">Список \"Для взрослых\" (доп.)</string>
     <string name="tmdbUserName_title">Имя пользователя (TMDB)</string>
+    <string name="settings_fragment_label">Настройки</string>
+    <string name="marked_Aaa_List_Label">Контент "Для взрослых" (дополнительно)</string>
+    <string name="unwanted_list_label">Нежелательный контент</string>
 </resources>

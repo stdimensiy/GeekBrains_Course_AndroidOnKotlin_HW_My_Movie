@@ -8,17 +8,17 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
 class MarkedAaaListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewNameMarkedAaaMovie: TextView =
-        itemView.findViewById(R.id.textViewNameFavoritesMovie)
+        itemView.findViewById(R.id.textViewName)
     val textViewReleaseDataMarkedAaaMovie: TextView =
-        itemView.findViewById(R.id.textViewReleaseDataFavoritesMovie)
+        itemView.findViewById(R.id.textViewReleaseData)
     val textViewGenresMarkedAaaMovie: TextView =
-        itemView.findViewById(R.id.textViewGenresFavoritesMovie)
+        itemView.findViewById(R.id.textViewGenres)
     val textViewRatingMarkedAaaMovie: TextView =
-        itemView.findViewById(R.id.textViewRatingFavoritesMovie)
+        itemView.findViewById(R.id.textViewRating)
     val imageViewPoster: ImageView =
-        itemView.findViewById(R.id.imageView_movie_details_poster)
+        itemView.findViewById(R.id.imageView_poster)
     val imageViewFlagMarkedAaaMovie: ImageView =
-        itemView.findViewById(R.id.imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item)
+        itemView.findViewById(R.id.imageView_ingBtn_addToFavorites)
     val imageViewRatingMarkedAaaMovie: ImageView =
-        itemView.findViewById(R.id.imageViewRatingFavoritesMovie)
+        itemView.findViewById(R.id.imageViewRating)
 }

@@ -21,6 +21,6 @@ class HomeInnerViewHolder(
     val imageViewRating: ImageView =
         itemView.findViewById(R.id.imageView_rating_movie_for_common_horizontal_list_item)
     val imageViewFlagFavoritesMovie: ImageView =
-        itemView.findViewById(R.id.imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item)
+        itemView.findViewById(R.id.imageView_ingBtn_addToFavorites)
 }
 

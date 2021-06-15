@@ -15,13 +15,13 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
-    private lateinit var defoultDataNull: String
+    private lateinit var defaultDataNull: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingInnerViewHolder {
         val root =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.common_horizontal_list_item, parent, false)
-        defoultDataNull = parent.context.getString(R.string.default_date_null)
+        defaultDataNull = parent.context.getString(R.string.default_date_null)
         return RatingInnerViewHolder(root)
     }
 
@@ -38,7 +38,7 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
         if (item.releaseDate.isNotBlank()) {
             holder.publicData.text = item.releaseDate.trim().substring(0, 4)
         } else {
-            holder.publicData.text = defoultDataNull
+            holder.publicData.text = defaultDataNull
         }
         holder.rating.text = item.voteAverage.toString()
         if (items.isNotEmpty() && position == items.size - 1) {
@@ -52,21 +52,23 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
-            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+            holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
         holder.imageViewRating.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         holder.imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

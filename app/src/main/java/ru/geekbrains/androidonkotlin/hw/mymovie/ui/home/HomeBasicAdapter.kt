@@ -22,7 +22,7 @@ class HomeBasicAdapter(_fragment: Fragment) :
     }
 
     override fun onBindViewHolder(holder: HomeBasicViewHolder, position: Int) {
-        val item = items.get(position)
+        val item = items[position]
         holder.basicTitle.text = item.nameGroupResponse
         //работа с вложенным адаптером
         val currentLiveData: LiveData<List<MovieTmdb>> = item.currentLiveData

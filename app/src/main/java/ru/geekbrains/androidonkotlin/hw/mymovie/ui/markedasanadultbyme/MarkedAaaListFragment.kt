@@ -1,20 +1,14 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.markedasanadultbyme
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.MarkedAaaListFragmentBinding
-import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.UnwantedListFragmentBinding
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted.UnwantedAdapter
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted.UnwantedListViewModel
-import ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted.UnwantedListViewModelFactory
 
 class MarkedAaaListFragment : Fragment() {
     private lateinit var adapter: MarkedAaaListAdapter
@@ -34,7 +28,7 @@ class MarkedAaaListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding =  MarkedAaaListFragmentBinding.inflate(inflater, container, false)
+        _binding = MarkedAaaListFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
         adapter = MarkedAaaListAdapter()
         return root

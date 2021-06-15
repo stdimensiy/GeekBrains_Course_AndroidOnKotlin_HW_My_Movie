@@ -51,7 +51,7 @@ class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
-            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+            holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
         holder.imageViewRating.setOnClickListener {

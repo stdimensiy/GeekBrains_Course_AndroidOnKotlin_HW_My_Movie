@@ -72,7 +72,7 @@
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <ImageView
-            android:id="@+id/imageView_flag_added_to_favorites_moviee_for_common_horizontal_list_item"
+            android:id="@+id/imageView_ingBtn_addToFavorites"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:contentDescription="@string/ImageView_contentDescription_add_to_favorites_question"
