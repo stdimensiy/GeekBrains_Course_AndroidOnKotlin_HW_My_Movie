@@ -58,4 +58,8 @@
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.settings.SettingsFragment"
         android:label="@string/action_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/settingsFragmentNewAllInOne"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.settings.SettingsFragmentNewAllInOne"
+        android:label="SettingsFragmentNewAllInOne" />
 </navigation>

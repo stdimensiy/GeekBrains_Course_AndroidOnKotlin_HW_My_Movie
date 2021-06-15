@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment)
-                navController.navigate(R.id.settingsFragment)
+                navController.navigate(R.id.settingsFragmentNewAllInOne)
             }
         }
         return super.onOptionsItemSelected(item)
