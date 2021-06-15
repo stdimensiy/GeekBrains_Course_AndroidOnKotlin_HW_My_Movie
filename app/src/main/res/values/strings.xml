@@ -73,4 +73,6 @@
     <string name="selection_settings_exclude_movies_without_release_data_title">Исключать фильмы без даты релиза</string>
     <string name="selection_exclude_movies_without_release_data_summary_off">В подборках могут присутствовать фильмы с отсутствующей датой релиза</string>
     <string name="selection_exclude_movies_without_release_data_summary_on">Из подборок будут исключены фильмы без даты релиза</string>
+    <string name="action_unwanted_content_list_title">Нежелательный контент</string>
+    <string name="action_marked_as_adult_by_me_list_title">Список \"Для взрослых\" (доп.)</string>
 </resources>
