@@ -51,7 +51,7 @@
     <string name="selection_settings_header">Подборки и результаты поиска</string>
 
     <!-- Messages Preferences -->
-    <string name="TmdbApiKeyV3_title">Ваш (V3)API key</string>
+    <string name="tmdbApiKeyV3_title">Ваш (V3)API key</string>
     <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
@@ -75,4 +75,5 @@
     <string name="selection_exclude_movies_without_release_data_summary_on">Из подборок будут исключены фильмы без даты релиза</string>
     <string name="action_unwanted_content_list_title">Нежелательный контент</string>
     <string name="action_marked_as_adult_by_me_list_title">Список \"Для взрослых\" (доп.)</string>
+    <string name="tmdbUserName_title">Имя пользователя (TMDB)</string>
 </resources>

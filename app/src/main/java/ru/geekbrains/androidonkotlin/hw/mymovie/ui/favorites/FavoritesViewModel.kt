@@ -1,7 +1,6 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
