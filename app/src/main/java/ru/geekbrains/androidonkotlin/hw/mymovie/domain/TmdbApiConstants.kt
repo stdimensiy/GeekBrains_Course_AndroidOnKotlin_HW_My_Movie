@@ -23,10 +23,6 @@ object TmdbApiConstants {
     /** include_adult - признак включения в выборку фильмов для взрослых  */
     const val INCLUDE_ADULT = false
 
-    /** временно полный запрос к гостевым выдачам */
-    const val TEMP_POPULAR_MOVIE =
-        "https://api.themoviedb.org/3/movie/popular?api_key=aefbe34a550ff3229e1b71c60f4f16df&language&language=ru-RU"
-
     /** временно полный запрос к конфигурационным данным */
     const val TEMP_GETCONFIGURAT =
         "https://api.themoviedb.org/3/configuration?api_key=aefbe34a550ff3229e1b71c60f4f16df&language"

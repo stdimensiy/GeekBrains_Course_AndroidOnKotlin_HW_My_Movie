@@ -3,7 +3,7 @@
     <PreferenceCategory app:title="@string/basic_settings_header">
 
         <EditTextPreference
-            app:key="TmdbApiKeyV3"
+            app:key="tmdbApiKeyV3"
             app:title="@string/TmdbApiKeyV3_title"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
@@ -12,9 +12,9 @@
 
         <SwitchPreferenceCompat
             app:key="adultAdded"
-            app:title="@string/selection_settings_adult_added_title"
             app:summaryOff="@string/selection_settings_adult_added_summary_off"
-            app:summaryOn="@string/selection_settings_adult_added_summary_on"/>
+            app:summaryOn="@string/selection_settings_adult_added_summary_on"
+            app:title="@string/selection_settings_adult_added_title" />
 
         <SwitchPreferenceCompat
             app:dependency="adultAdded"
@@ -25,27 +25,27 @@
 
         <SwitchPreferenceCompat
             app:key="excludeUnwantedContent"
-            app:title="@string/selection_settings_exclude_unwanted_content_title"
             app:summaryOff="@string/selection_exclude_unwanted_content_summary_off"
-            app:summaryOn="@string/selection_exclude_unwanted_content_summary_on"/>
+            app:summaryOn="@string/selection_exclude_unwanted_content_summary_on"
+            app:title="@string/selection_settings_exclude_unwanted_content_title" />
 
         <SwitchPreferenceCompat
             app:key="excludeMoviesWithoutPoster"
-            app:title="@string/selection_settings_exclude_movies_without_poster_title"
             app:summaryOff="@string/selection_exclude_movies_without_poster_summary_off"
-            app:summaryOn="@string/selection_exclude_movies_without_poster_summary_on"/>
+            app:summaryOn="@string/selection_exclude_movies_without_poster_summary_on"
+            app:title="@string/selection_settings_exclude_movies_without_poster_title" />
 
         <SwitchPreferenceCompat
             app:key="excludeMoviesWithoutSummary"
-            app:title="@string/selection_settings_exclude_movies_without_summary_title"
             app:summaryOff="@string/selection_exclude_movies_without_summary_summary_off"
-            app:summaryOn="@string/selection_exclude_movies_without_summary_summary_on"/>
+            app:summaryOn="@string/selection_exclude_movies_without_summary_summary_on"
+            app:title="@string/selection_settings_exclude_movies_without_summary_title" />
 
         <SwitchPreferenceCompat
             app:key="excludeMoviesWithoutReleaseData"
-            app:title="@string/selection_settings_exclude_movies_without_release_data_title"
             app:summaryOff="@string/selection_exclude_movies_without_release_data_summary_off"
-            app:summaryOn="@string/selection_exclude_movies_without_release_data_summary_on"/>
+            app:summaryOn="@string/selection_exclude_movies_without_release_data_summary_on"
+            app:title="@string/selection_settings_exclude_movies_without_release_data_title" />
 
     </PreferenceCategory>
 

@@ -32,16 +32,18 @@ class TestMoviesRepository : MovieRepository {
 
     override fun getDiscoveredMovies(
         title: String,
+        tmdbApiKeyV3: String,
+        adultAdded: Boolean,
         page: Int,
         callBack: CallBack<MoviesResponseTmdb>
     ) {
         networkServiceTmdb.getSimpleSearchMovies(
             TmdbApiConstants.DEFAULT_API_VERSION,
-            TmdbApiConstants.API_KEY_V3,
+            tmdbApiKeyV3,
             page,
             TmdbApiConstants.LANGUAGE_ANSWER,
             title,
-            TmdbApiConstants.INCLUDE_ADULT
+            adultAdded
         )
             .enqueue(object : Callback<MoviesResponseTmdb> {
                 override fun onResponse(
