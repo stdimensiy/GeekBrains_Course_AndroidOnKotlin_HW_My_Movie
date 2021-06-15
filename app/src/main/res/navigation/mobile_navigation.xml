@@ -13,6 +13,18 @@
         <action
             android:id="@+id/action_nav_home_to_moreDetailedFragment"
             app:destination="@id/moreDetailedFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_markedAaaListFragment"
+            app:destination="@id/markedAaaListFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_unwantedListFragment"
+            app:destination="@id/unwantedListFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_settingsFragmentNewAllInOne"
+            app:destination="@id/settingsFragmentNewAllInOne" />
+        <action
+            android:id="@+id/action_nav_home_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
 
     <fragment
@@ -54,8 +66,17 @@
             app:destination="@id/moreDetailedFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.settings.SettingsFragment"
-        android:label="@string/action_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/settingsFragmentNewAllInOne"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.settings.SettingsFragmentNewAllInOne"
+        android:label="SettingsFragmentNewAllInOne" />
+    <fragment
+        android:id="@+id/markedAaaListFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.markedasanadultbyme.MarkedAaaListFragment"
+        android:label="marked_aaa_list_fragment"
+        tools:layout="@layout/marked_aaa_list_fragment" />
+    <fragment
+        android:id="@+id/unwantedListFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted.UnwantedListFragment"
+        android:label="unwanted_list_fragment"
+        tools:layout="@layout/unwanted_list_fragment" />
 </navigation>

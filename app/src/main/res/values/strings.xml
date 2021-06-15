@@ -46,4 +46,33 @@
     <string name="ImageView_contentDescription_add_to_favorites_question">Добавить в избранное?</string>
     <string name="ImageView_contentDescription_give_a_rating_question">Оценить фильм?</string>
     <string name="ImageView_contentDescription_go_to_details_movie_question">Посмотреть подробное описание фильма и дополнительную информацию?</string>
+    <!-- Preference Titles -->
+    <string name="basic_settings_header">Основные настройки</string>
+    <string name="selection_settings_header">Подборки и результаты поиска</string>
+
+    <!-- Messages Preferences -->
+    <string name="TmdbApiKeyV3_title">Ваш (V3)API key</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="selection_settings_adult_added_title">Исключить фильмы \"Для взрослых\"</string>
+    <string name="enable_custom_adult_validation_title">Дополнительная проверка</string>
+    <string name="selection_settings_custom_adult_validation_summary_on">Из результатов выборки будут Автоматически исключены фильмы, которые Вы САМОСТОЯТЕЛЬНО отнесли в категорию \"Для взрослых\"</string>
+    <string name="selection_settings_custom_adult_validation_summary_off">Определенные вами критерии отношения фильмов к группе \"Для взрослых\" не будут учитываться.</string>
+    <string name="selection_settings_adult_added_summary_on">Из подборок будут исключены фильмы, отнесенные сервисом в категорию \"Для ВЗРОСЛЫХ\"</string>
+    <string name="selection_settings_adult_added_summary_off">В подборки будут включены фильмы, отнесенные сервисом в категорию \"Для ВЗРОСЛЫХ\"</string>
+    <string name="selection_settings_exclude_unwanted_content_title">Исключать нежедательный контент</string>
+    <string name="selection_exclude_unwanted_content_summary_on">Из результатов выборки будут Автоматически исключены фильмы, которые Вы САМОСТОЯТЕЛЬНО отнесли в категорию \"Нежелательный контент\"</string>
+    <string name="selection_exclude_unwanted_content_summary_off">Ваши предпочтения и пометки \"Нежелательный контент\" при выборке не будут учитываться</string>
+    <string name="selection_settings_exclude_movies_without_poster_title">Исключить фильмы без постеров</string>
+    <string name="selection_exclude_movies_without_poster_summary_on">Из подборок будут исключены фильмы без постеров</string>
+    <string name="selection_exclude_movies_without_poster_summary_off">В подборках могут присутвовать фильмы без постеров</string>
+    <string name="selection_settings_exclude_movies_without_summary_title">Исключать фильмы без описания</string>
+    <string name="selection_exclude_movies_without_summary_summary_off">В подборках могут присутствовать фильмы с отсутствующим описанием</string>
+    <string name="selection_exclude_movies_without_summary_summary_on">Из подборок будут исключены фильмы без описаний</string>
+    <string name="selection_settings_exclude_movies_without_release_data_title">Исключать фильмы без даты релиза</string>
+    <string name="selection_exclude_movies_without_release_data_summary_off">В подборках могут присутствовать фильмы с отсутствующей датой релиза</string>
+    <string name="selection_exclude_movies_without_release_data_summary_on">Из подборок будут исключены фильмы без даты релиза</string>
+    <string name="action_unwanted_content_list_title">Нежелательный контент</string>
+    <string name="action_marked_as_adult_by_me_list_title">Список \"Для взрослых\" (доп.)</string>
 </resources>
