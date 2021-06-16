@@ -12,23 +12,18 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
-class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
     var items: ArrayList<MovieTmdb> = arrayListOf()
     lateinit var genreStub: String
-    lateinit var defoultDataNull: String
+    private lateinit var defaultDataNull: String
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
-    var currentPage: Int = 0         //номер текущей страницы выдачи
-    private var totalPages: Int = 0  //всего страниц в выдаче
-
-    init {
-        this.currentPage = 1          //принудительная инициализация (всегда стартуем со страниы 1)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_favorites, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.common_vertical_list_item, parent, false)
         genreStub = parent.context.getString(R.string.genre_stub)
-        defoultDataNull = parent.context.getString(R.string.default_date_null)
+        defaultDataNull = parent.context.getString(R.string.default_date_null)
         return FavoriteViewHolder(root)
     }
 
@@ -45,8 +40,8 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
         holder.textViewGenresFavoritesMovie.text = genreStub
         holder.textViewRatingFavoritesMovie.text = item.voteAverage.toString()
         if (item.releaseDate.isBlank()) holder.textViewReleaseDataFavoritesMovie.text =
-            defoultDataNull
-        else ("(" + item.releaseDate.trim().subSequence(0, 4) + ") " + item.originalTitle)
+            defaultDataNull
+        else ("(${item.releaseDate.trim().subSequence(0, 4)}) ${item.originalTitle}")
             .also { holder.textViewReleaseDataFavoritesMovie.text = it }
         if (position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
@@ -58,7 +53,7 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
-            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+            holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
         holder.imageViewFlagFavoritesMovie.setOnClickListener {
@@ -90,9 +85,5 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteViewHolder>() {
 
     fun setOnLoadMoreMoviesListener(onLoadMoreMoviesListener: OnLoadMoreMovies) {
         this.onLoadMoreMoviesListener = onLoadMoreMoviesListener
-    }
-
-    fun setTotalPages(totalPages: Int) {
-        this.totalPages = totalPages
     }
 }

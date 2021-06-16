@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.markedasanadultbyme
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 
-class FavoritesViewModel(
+class MarkedAaaListViewModel(
     private val app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {

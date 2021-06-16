@@ -83,7 +83,15 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment)
-                navController.navigate(R.id.settingsFragment)
+                navController.navigate(R.id.settingsFragmentNewAllInOne)
+            }
+            R.id.action_unwanted_content_list -> {
+                val navController = findNavController(R.id.nav_host_fragment)
+                navController.navigate(R.id.unwantedListFragment)
+            }
+            R.id.action_marked_as_adult_by_me_list -> {
+                val navController = findNavController(R.id.nav_host_fragment)
+                navController.navigate(R.id.markedAaaListFragment)
             }
         }
         return super.onOptionsItemSelected(item)

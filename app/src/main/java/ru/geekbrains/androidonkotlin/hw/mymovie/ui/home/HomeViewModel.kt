@@ -48,7 +48,7 @@ class HomeViewModel(
                 // защита от дублирующих данных
                 if (currentGroupResponseObject.lastAnswer.page < value.page) {
                     // запись и обработка пришедших данных осуществляется только тогда,
-                    // когда номерр страницы нового ответа больше чем предыдущего.
+                    // когда номер страницы нового ответа больше чем предыдущего.
                     currentGroupResponseObject.lastAnswer = value
                     currentGroupResponseObject.prepareListMovies.addAll(value.results)
                     currentGroupResponseObject.currentLiveData.postValue(currentGroupResponseObject.prepareListMovies)

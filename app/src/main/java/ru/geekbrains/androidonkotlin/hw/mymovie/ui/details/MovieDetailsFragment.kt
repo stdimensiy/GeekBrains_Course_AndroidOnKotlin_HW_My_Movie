@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.moredetailed
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.squareup.picasso.Picasso
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
-import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMoreDetailedBinding
+import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentMovieDetailsBinding
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 
-class MoreDetailedFragment : Fragment() {
-    private val moreDetailedViewModel: MoreDetailedViewModel by viewModels {
-        MoreDetailedViewModelFactory(requireActivity().application)
+class MovieDetailsFragment : Fragment() {
+    private val movieDetailsViewModel: MovieDetailsViewModel by viewModels {
+        MovieDetailsViewModelFactory(requireActivity().application)
     }
-    private var _binding: FragmentMoreDetailedBinding? = null
+    private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var movie: MovieTmdb
@@ -27,30 +27,31 @@ class MoreDetailedFragment : Fragment() {
     private lateinit var imageViewPoster: ImageView              // постер
     private lateinit var textViewDuration: TextView              // длительность мин.
     private lateinit var textViewRating: TextView                // рейтинг образец: 8,5 (7183)
-    private lateinit var tetextViewBudget: TextView              // Бюджет образец: 1 234 567 890 $
+    private lateinit var textViewBudget: TextView                // Бюджет образец: 1 234 567 890 $
     private lateinit var textViewRevenue: TextView               // Сборы: образец: 1 234 567 890 $
     private lateinit var textViewReleaseData: TextView           // Дата релиза образец: (2018-12-06)
     private lateinit var textView: TextView
 
-    lateinit var defoultDataNull: String
-    lateinit var defaultPlugDownload: String
+    private lateinit var defaultDataNull: String
+    private lateinit var defaultPlugDownload: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMoreDetailedBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        textView = binding.textMoreDetailed
-        textViewNameMovie = binding.textViewMoreDetailNameMovie
-        textViewOrigNameMovieAndData = binding.textViewMoreDetailOrigNameMovieAndData
+        textView = binding.textViewMovieDetailsDescription
+        textViewNameMovie = binding.textViewMovieDetailsNameMovie
+        textViewOrigNameMovieAndData = binding.textViewMovieDetailsOrigNameMovieAndData
         imageViewPoster = binding.imageViewPoster
-        textViewDuration = binding.textViewMoreDetailDuration
-        textViewRating = binding.textViewMoreDetailRating
-        tetextViewBudget = binding.textViewMoreDetailBudget
-        textViewRevenue = binding.textViewMoreDetailRevenue
-        textViewReleaseData = binding.textViewMoreDetailReleaseData
+        textViewDuration = binding.textViewMovieDetailsDuration
+        textViewRating = binding.textViewMovieDetailsRating
+        textViewBudget = binding.textViewMovieDetailsBudget
+        textViewRevenue = binding.textViewMovieDetailsRevenue
+        textViewReleaseData = binding.textViewMovieDetailsReleaseData
         return root
     }
 
@@ -58,13 +59,13 @@ class MoreDetailedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         movie = arguments?.getParcelable("ARG_MOVIE")!!
         textViewNameMovie.text = movie.title
-        defoultDataNull = view.context.getString(R.string.default_date_null)
+        defaultDataNull = view.context.getString(R.string.default_date_null)
         defaultPlugDownload = view.context.getString(R.string.default_plug_download)
-        var currentReleaseData = defoultDataNull
-        if (!movie.releaseDate.isBlank()) {
+        var currentReleaseData = defaultDataNull
+        if (movie.releaseDate.isNotBlank()) {
             currentReleaseData = movie.releaseDate.trim().substring(0, 4)
         }
-        (movie.originalTitle + " (" + currentReleaseData + ")").also {
+        ("${movie.originalTitle} ($currentReleaseData)").also {
             textViewOrigNameMovieAndData.text = it
         }
         Picasso.get()
@@ -75,12 +76,12 @@ class MoreDetailedFragment : Fragment() {
             .centerCrop()
             .into(imageViewPoster)
         textViewDuration.text = defaultPlugDownload
-        (movie.voteAverage.toString() + " (" + movie.voteCount.toString() + ")").also {
+        ("${movie.voteAverage} (${movie.voteCount})").also {
             textViewRating.text = it
         }
-        tetextViewBudget.text = defaultPlugDownload
+        textViewBudget.text = defaultPlugDownload
         textViewRevenue.text = defaultPlugDownload
-        ("(" + movie.releaseDate + ")").also { textViewReleaseData.text = it }
+        ("(${movie.releaseDate})").also { textViewReleaseData.text = it }
         textView.text = movie.overview
     }
 

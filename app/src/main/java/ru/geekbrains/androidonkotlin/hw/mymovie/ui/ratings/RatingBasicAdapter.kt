@@ -10,7 +10,8 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
-class RatingBasicAdapter(_fragment: Fragment) : RecyclerView.Adapter<RatingBasicViewHolder>() {
+class RatingBasicAdapter(_fragment: Fragment) :
+    RecyclerView.Adapter<RatingBasicViewHolder>() {
     val fragment: Fragment = _fragment
     var items: ArrayList<GroupResponseObject> = ArrayList()
 

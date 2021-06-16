@@ -50,13 +50,9 @@ class SearchFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
-        searchViewModel.searchMovieLiveData.removeObservers(this)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        searchViewModel.searchMovieLiveData.removeObservers(viewLifecycleOwner)
     }
 }

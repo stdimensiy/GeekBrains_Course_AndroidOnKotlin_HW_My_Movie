@@ -48,13 +48,9 @@ class RatingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onStop() {
-        super.onStop()
-        ratingsViewModel.ratingBasicStructureLiveData.removeObservers(this)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        ratingsViewModel.ratingBasicStructureLiveData.removeObservers(viewLifecycleOwner)
     }
 }

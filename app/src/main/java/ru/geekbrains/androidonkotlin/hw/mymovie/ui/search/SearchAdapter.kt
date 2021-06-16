@@ -14,7 +14,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
 class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     var items: ArrayList<MovieTmdb> = arrayListOf()
-    private lateinit var genreStub: String
+    lateinit var genreStub: String
     private lateinit var defaultDataNull: String
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
     var currentPage: Int = 0         //номер текущей страницы выдачи
@@ -30,7 +30,10 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         genreStub = parent.context.getString(R.string.genre_stub)
         defaultDataNull = parent.context.getString(R.string.default_date_null)
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_favorites, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.common_vertical_list_item, parent, false)
+        genreStub = parent.context.getString(R.string.genre_stub)
+        defaultDataNull = parent.context.getString(R.string.default_date_null)
         return SearchViewHolder(root)
     }
 
@@ -48,7 +51,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         holder.textViewRatingFavoritesMovie.text = item.voteAverage.toString()
         if (item.releaseDate.isBlank()) holder.textViewReleaseDataFavoritesMovie.text =
             defaultDataNull
-        else ("(" + item.releaseDate.trim().subSequence(0, 4) + ") " + item.originalTitle)
+        else ("(${item.releaseDate.trim().subSequence(0, 4)}) ${item.originalTitle}")
             .also { holder.textViewReleaseDataFavoritesMovie.text = it }
         //попытка отследить момент необходимости загрузки нового листа данных
         if (currentPage < totalPages && position == items.size - 1) {
@@ -61,21 +64,23 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
-            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+            holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
         holder.imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         holder.imageViewRatingFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
         super.onViewAttachedToWindow(holder)
     }

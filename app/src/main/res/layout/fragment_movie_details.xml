@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        tools:context=".ui.details.MovieDetailsFragment">
+
+        <TextView
+            android:id="@+id/textView_movie_details_name_movie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_name_movie"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_orig_name_movie_and_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_original_name_movie"
+            android:textAlignment="textStart"
+            android:textColor="#66090909"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_movie_details_name_movie" />
+
+        <ImageView
+            android:id="@+id/imageView_poster"
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_orig_name_movie_and_data"
+            app:srcCompat="@drawable/zgl" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_genres"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/genre_stub"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toTopOf="@+id/imageView_poster" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_duration_movie"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_genres" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_rating_movie"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_duration" />
+
+        <ImageView
+            android:id="@+id/imageView_movie_details_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_movie_details_rating"
+            app:layout_constraintStart_toEndOf="@+id/textView_movie_details_rating"
+            app:layout_constraintTop_toTopOf="@+id/textView_movie_details_rating"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_budget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_budget_movie"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_rating" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_revenue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_revenue_movie"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_budget" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_release_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text_movie_details_release_data_movie"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_poster"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie_details_revenue" />
+
+        <TextView
+            android:id="@+id/textView_movie_details_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_poster" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

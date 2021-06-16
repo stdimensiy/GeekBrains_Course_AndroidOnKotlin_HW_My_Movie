@@ -12,4 +12,16 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_unwanted_content_list"
+        android:orderInCategory="99"
+        android:title="@string/action_unwanted_content_list_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_marked_as_adult_by_me_list"
+        android:orderInCategory="99"
+        android:title="@string/action_marked_as_adult_by_me_list_title"
+        app:showAsAction="never" />
 </menu>

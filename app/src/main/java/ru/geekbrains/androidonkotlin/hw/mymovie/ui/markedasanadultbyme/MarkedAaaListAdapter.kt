@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.markedasanadultbyme
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,22 +12,24 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
-class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
-    var items: List<MovieTmdb> = listOf()
-    private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
+class MarkedAaaListAdapter : RecyclerView.Adapter<MarkedAaaListViewHolder>() {
+    var items: ArrayList<MovieTmdb> = arrayListOf()
+    lateinit var genreStub: String
     private lateinit var defaultDataNull: String
+    private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingInnerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarkedAaaListViewHolder {
         val root =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.common_horizontal_list_item, parent, false)
+                .inflate(R.layout.common_vertical_list_item, parent, false)
+        genreStub = parent.context.getString(R.string.genre_stub)
         defaultDataNull = parent.context.getString(R.string.default_date_null)
-        return RatingInnerViewHolder(root)
+        return MarkedAaaListViewHolder(root)
     }
 
-    override fun onBindViewHolder(holder: RatingInnerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MarkedAaaListViewHolder, position: Int) {
         val item = items[position]
-        holder.nameMovie.text = item.title
+        holder.textViewNameMarkedAaaMovie.text = item.title
         Picasso.get()
             .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
             .placeholder(R.drawable.pholder)
@@ -35,47 +37,47 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        if (item.releaseDate.isNotBlank()) {
-            holder.publicData.text = item.releaseDate.trim().substring(0, 4)
-        } else {
-            holder.publicData.text = defaultDataNull
-        }
-        holder.rating.text = item.voteAverage.toString()
-        if (items.isNotEmpty() && position == items.size - 1) {
+        holder.textViewGenresMarkedAaaMovie.text = genreStub
+        holder.textViewRatingMarkedAaaMovie.text = item.voteAverage.toString()
+        if (item.releaseDate.isBlank()) holder.textViewReleaseDataMarkedAaaMovie.text =
+            defaultDataNull
+        else ("(${item.releaseDate.trim().subSequence(0, 4)}) ${item.originalTitle}")
+            .also { holder.textViewReleaseDataMarkedAaaMovie.text = it }
+        if (position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
         }
     }
 
-    override fun onViewAttachedToWindow(holder: RatingInnerViewHolder) {
+    override fun onViewAttachedToWindow(holder: MarkedAaaListViewHolder) {
         val item = items[holder.adapterPosition]
-        super.onViewAttachedToWindow(holder)
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
             holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
-        holder.imageViewRating.setOnClickListener {
-            Toast.makeText(
-                it.context,
-                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        holder.imageViewFlagFavoritesMovie.setOnClickListener {
+        holder.imageViewFlagMarkedAaaMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
                 it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        holder.imageViewRatingMarkedAaaMovie.setOnClickListener {
+            Toast.makeText(
+                it.context,
+                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        super.onViewAttachedToWindow(holder)
     }
 
-    override fun onViewDetachedFromWindow(holder: RatingInnerViewHolder) {
+    override fun onViewDetachedFromWindow(holder: MarkedAaaListViewHolder) {
         holder.imageViewPoster.setOnClickListener(null)
-        holder.imageViewRating.setOnClickListener(null)
-        holder.imageViewFlagFavoritesMovie.setOnClickListener(null)
+        holder.imageViewFlagMarkedAaaMovie.setOnClickListener(null)
+        holder.imageViewRatingMarkedAaaMovie.setOnClickListener(null)
         super.onViewDetachedFromWindow(holder)
     }
 

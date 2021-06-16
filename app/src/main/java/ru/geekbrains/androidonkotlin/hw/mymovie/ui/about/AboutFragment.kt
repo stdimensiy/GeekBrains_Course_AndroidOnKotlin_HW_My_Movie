@@ -11,10 +11,6 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
-
-    private val aboutViewModel: AboutViewModel by viewModels {
-        AboutViewModelFactory(requireActivity().application)
-    }
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 

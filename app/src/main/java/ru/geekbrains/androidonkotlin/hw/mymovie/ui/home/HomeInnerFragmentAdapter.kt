@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -17,18 +16,18 @@ class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeI
     var items: List<MovieTmdb> = listOf()
     val fragment: Fragment = _fragment
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
-    private lateinit var defoultDataNull: String
+    private lateinit var defaultDataNull: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeInnerViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.inner_item_horizontal_rv_type_one, parent, false)
-        defoultDataNull = parent.context.getString(R.string.default_date_null)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.common_horizontal_list_item, parent, false)
+        defaultDataNull = parent.context.getString(R.string.default_date_null)
         return HomeInnerViewHolder(root)
     }
 
     override fun onBindViewHolder(holder: HomeInnerViewHolder, position: Int) {
         val item = items[position]
-        //holder.bind(item)
         holder.nameMovie.text = item.title
         Picasso.get()
             .load(String.format(TmdbApiConstants.POSTER_URL, item.posterPath))
@@ -37,13 +36,13 @@ class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeI
             .resize(500, 750)
             .centerCrop()
             .into(holder.imageViewPoster)
-        if (!item.releaseDate.isNullOrBlank()) {
+        if (item.releaseDate.isNotBlank()) {
             holder.publicData.text = item.releaseDate.trim().substring(0, 4)
         } else {
-            holder.publicData.text = defoultDataNull
+            holder.publicData.text = defaultDataNull
         }
         holder.rating.text = item.voteAverage.toString()
-        if (items.size > 0 && position == items.size - 1) {
+        if (items.isNotEmpty() && position == items.size - 1) {
             onLoadMoreMoviesListener!!.onLoadMore()
         }
     }
@@ -53,13 +52,13 @@ class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeI
         holder.imageViewPoster.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("ARG_MOVIE", item)
-            holder.itemView.findNavController().navigate(R.id.moreDetailedFragment, bundle)
+            holder.itemView.findNavController().navigate(R.id.movieDetailsFragment, bundle)
         }
 
         holder.imageViewRating.setOnClickListener {
             Toast.makeText(
                 it.context,
-                it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
+                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -67,7 +66,7 @@ class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeI
         holder.imageViewFlagFavoritesMovie.setOnClickListener {
             Toast.makeText(
                 it.context,
-                it.context.getString(R.string.default_text_action_for_star, item.title, item.id),
+                it.context.getString(R.string.default_text_action_for_heart, item.title, item.id),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -78,7 +77,6 @@ class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeI
         holder.imageViewPoster.setOnClickListener(null)
         holder.imageViewRating.setOnClickListener(null)
         holder.imageViewFlagFavoritesMovie.setOnClickListener(null)
-
         super.onViewDetachedFromWindow(holder)
     }
 

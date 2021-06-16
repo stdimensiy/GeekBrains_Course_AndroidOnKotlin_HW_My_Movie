@@ -30,9 +30,53 @@
     <string name="default_text_action_for_star">Пользователь нажал на звездочку к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="default_text_action_for_heart">Пользователь нажал на сердечко к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="base_url_about">https://souos.ru</string>
-    <string name="more_detailed_fragment">Информация о фильме</string>
+    <string name="movie_details_fragment">Информация о фильме</string>
     <string name="search_fragment_label_result">Результаты поиска...</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="temp_group_movie_name">Наименование рубрики (временно)</string>
+    <string name="default_text_movie_details_name_movie">Региональное наименование фильма</string>
+    <string name="default_text_movie_details_original_name_movie">Оригинальное наименование и (ГГГГ)</string>
+    <string name="default_text_movie_details_duration_movie">123 мин.</string>
+    <string name="default_text_movie_details_rating_movie">8,5 (7183)</string>
+    <string name="default_text_movie_details_budget_movie">Бюджет: 1 234 567 890 $</string>
+    <string name="default_text_movie_details_revenue_movie">Сборы: 1 234 567 890 $</string>
+    <string name="default_text_movie_details_release_data_movie">Дата релиза: (2018-12-06)</string>
+    <string name="textView_default_basic_title">Пустое наименование рубрики</string>
+    <string name="textView_default_name_movie_for_item_holder">Воспоминание об убийстве</string>
+    <string name="textView_default_date_release_for_item_holder">2020</string>
+    <string name="textView_default_rating_tmdb_for_item_holder">6,9</string>
+    <string name="ImageView_contentDescription_add_to_favorites_question">Добавить в избранное?</string>
+    <string name="ImageView_contentDescription_give_a_rating_question">Оценить фильм?</string>
+    <string name="ImageView_contentDescription_go_to_details_movie_question">Посмотреть подробное описание фильма и дополнительную информацию?</string>
+    <!-- Preference Titles -->
+    <string name="basic_settings_header">Основные настройки</string>
+    <string name="selection_settings_header">Подборки и результаты поиска</string>
+
+    <!-- Messages Preferences -->
+    <string name="tmdbApiKeyV3_title">Ваш (V3)API key</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="selection_settings_adult_added_title">Исключить фильмы \"Для взрослых\"</string>
+    <string name="enable_custom_adult_validation_title">Дополнительная проверка</string>
+    <string name="selection_settings_custom_adult_validation_summary_on">Из результатов выборки будут Автоматически исключены фильмы, которые Вы САМОСТОЯТЕЛЬНО отнесли в категорию \"Для взрослых\"</string>
+    <string name="selection_settings_custom_adult_validation_summary_off">Определенные вами критерии отношения фильмов к группе \"Для взрослых\" не будут учитываться.</string>
+    <string name="selection_settings_adult_added_summary_on">Из подборок будут исключены фильмы, отнесенные сервисом в категорию \"Для ВЗРОСЛЫХ\"</string>
+    <string name="selection_settings_adult_added_summary_off">В подборки будут включены фильмы, отнесенные сервисом в категорию \"Для ВЗРОСЛЫХ\"</string>
+    <string name="selection_settings_exclude_unwanted_content_title">Исключать нежедательный контент</string>
+    <string name="selection_exclude_unwanted_content_summary_on">Из результатов выборки будут Автоматически исключены фильмы, которые Вы САМОСТОЯТЕЛЬНО отнесли в категорию \"Нежелательный контент\"</string>
+    <string name="selection_exclude_unwanted_content_summary_off">Ваши предпочтения и пометки \"Нежелательный контент\" при выборке не будут учитываться</string>
+    <string name="selection_settings_exclude_movies_without_poster_title">Исключить фильмы без постеров</string>
+    <string name="selection_exclude_movies_without_poster_summary_on">Из подборок будут исключены фильмы без постеров</string>
+    <string name="selection_exclude_movies_without_poster_summary_off">В подборках могут присутвовать фильмы без постеров</string>
+    <string name="selection_settings_exclude_movies_without_summary_title">Исключать фильмы без описания</string>
+    <string name="selection_exclude_movies_without_summary_summary_off">В подборках могут присутствовать фильмы с отсутствующим описанием</string>
+    <string name="selection_exclude_movies_without_summary_summary_on">Из подборок будут исключены фильмы без описаний</string>
+    <string name="selection_settings_exclude_movies_without_release_data_title">Исключать фильмы без даты релиза</string>
+    <string name="selection_exclude_movies_without_release_data_summary_off">В подборках могут присутствовать фильмы с отсутствующей датой релиза</string>
+    <string name="selection_exclude_movies_without_release_data_summary_on">Из подборок будут исключены фильмы без даты релиза</string>
+    <string name="action_unwanted_content_list_title">Нежелательный контент</string>
+    <string name="action_marked_as_adult_by_me_list_title">Список \"Для взрослых\" (доп.)</string>
+    <string name="tmdbUserName_title">Имя пользователя (TMDB)</string>
+    <string name="settings_fragment_label">Настройки</string>
+    <string name="marked_Aaa_List_Label">Контент "Для взрослых" (дополнительно)</string>
+    <string name="unwanted_list_label">Нежелательный контент</string>
 </resources>

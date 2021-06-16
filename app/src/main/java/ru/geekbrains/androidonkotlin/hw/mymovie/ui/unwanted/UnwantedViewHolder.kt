@@ -1,4 +1,4 @@
-package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
+package ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted
 
 import android.view.View
 import android.widget.ImageView
@@ -6,19 +6,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 
-class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val textViewNameFavoritesMovie: TextView =
+class UnwantedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val textViewNameUnwantedMovie: TextView =
         itemView.findViewById(R.id.textViewName)
-    val textViewReleaseDataFavoritesMovie: TextView =
+    val textViewReleaseDataUnwantedMovie: TextView =
         itemView.findViewById(R.id.textViewReleaseData)
-    val textViewGenresFavoritesMovie: TextView =
+    val textViewGenresUnwantedMovie: TextView =
         itemView.findViewById(R.id.textViewGenres)
-    val textViewRatingFavoritesMovie: TextView =
+    val textViewRatingUnwantedMovie: TextView =
         itemView.findViewById(R.id.textViewRating)
     val imageViewPoster: ImageView =
         itemView.findViewById(R.id.imageView_poster)
-    val imageViewFlagFavoritesMovie: ImageView =
+    val imageViewFlagUnwantedMovie: ImageView =
         itemView.findViewById(R.id.imageView_ingBtn_addToFavorites)
-    val imageViewRatingFavoritesMovie: ImageView =
+    val imageViewRatingUnwantedMovie: ImageView =
         itemView.findViewById(R.id.imageViewRating)
 }

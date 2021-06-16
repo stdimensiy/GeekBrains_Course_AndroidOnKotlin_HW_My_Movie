@@ -3,7 +3,7 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
@@ -22,7 +22,22 @@ class HomeBasicAdapter(_fragment: Fragment) :
     override fun onBindViewHolder(holder: HomeBasicViewHolder, position: Int) {
         val item = items[position]
         holder.basicTitle.text = item.nameGroupResponse
-        holder.flContainer.id = position + 100000
+        //работа с вложенным адаптером
+        val currentLiveData: LiveData<List<MovieTmdb>> = item.currentLiveData
+        currentLiveData.observeForever {
+            holder.adapter.items = it
+            holder.adapter.setOnLoadMoreMoviesListener(object : OnLoadMoreMovies {
+                override fun onLoadMore() {
+                    if (item.lastAnswer.page < item.lastAnswer.totalPages) {
+                        item.funcFetch.invoke(
+                            item.standardList.toString(),
+                            item.lastAnswer.page + 1, item
+                        )
+                    }
+                }
+            })
+            holder.adapter.notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int = items.size
