@@ -3,13 +3,14 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.preference.PreferenceManager
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 
 class UnwantedListViewModel(
-    private val app: Application,
+    app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {
     val favoritesMovieLiveData = MutableLiveData<List<MovieTmdb>>()
@@ -17,10 +18,16 @@ class UnwantedListViewModel(
     var lastAnswer: MoviesResponseTmdb = MoviesResponseTmdb()
     private var currentPage: Int = 1
 
+    private val preferenceManager = PreferenceManager.getDefaultSharedPreferences(app)
+    private var tmdbApiKeyV3: String = preferenceManager.getString("tmdbApiKeyV3", "").toString()
+    private var adultAdded = !preferenceManager.getBoolean("adultAdded", true)
+
     fun fetchData() {
         val standardList = "top_rated" // временно рубрика выборки (пока не реализована авторизация)
         repository.getStandardsList(
             standardList,
+            tmdbApiKeyV3,
+            adultAdded,
             currentPage,
             object : CallBack<MoviesResponseTmdb> {
                 override fun onResult(value: MoviesResponseTmdb) {

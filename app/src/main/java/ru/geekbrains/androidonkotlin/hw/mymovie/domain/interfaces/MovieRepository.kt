@@ -8,7 +8,7 @@ interface MovieRepository {
     fun getRatingFragmentStructure(callBack: CallBack<List<ListMovies>>)
     fun getDiscoveredMovies(
         title: String,
-        tdbApiKeyV3m: String,
+        tmdbApiKeyV3: String,
         adultAdded: Boolean,
         page: Int,
         callBack: CallBack<MoviesResponseTmdb>
@@ -16,6 +16,8 @@ interface MovieRepository {
 
     fun getStandardsList(
         standardList: String,
+        tmdbApiKeyV3: String,
+        adultAdded: Boolean,
         page: Int = 1,
         callBack: CallBack<MoviesResponseTmdb>
     )
