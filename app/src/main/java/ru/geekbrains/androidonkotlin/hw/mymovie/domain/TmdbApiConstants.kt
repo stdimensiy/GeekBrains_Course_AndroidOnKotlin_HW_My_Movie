@@ -2,10 +2,7 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
 object TmdbApiConstants {
 
-    /** API KEY  V3 */
-    const val API_KEY_V3 = "aefbe34a550ff3229e1b71c60f4f16df"
-
-    /** Рабочая (онования по умолчанию) версия API */
+    /** Рабочая (основная по умолчанию) версия API */
     const val DEFAULT_API_VERSION = 3
 
     /** Server endpoint  фдрес базового размещеия графического материала  */
@@ -19,9 +16,6 @@ object TmdbApiConstants {
 
     /** форматная строка сборного адреса картинки  */
     const val POSTER_URL = "$IMAGE_SERVER_URL$POSTER_SIZE%1\$s"
-
-    /** include_adult - признак включения в выборку фильмов для взрослых  */
-    const val INCLUDE_ADULT = false
 
     /** временно полный запрос к конфигурационным данным */
     const val TEMP_GETCONFIGURAT =

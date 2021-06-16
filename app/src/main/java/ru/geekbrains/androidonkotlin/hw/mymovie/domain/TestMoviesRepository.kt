@@ -1,5 +1,6 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.domain
 
+import androidx.preference.PreferenceManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,16 +61,18 @@ class TestMoviesRepository : MovieRepository {
 
     override fun getStandardsList(
         standardList: String,
+        tmdbApiKeyV3: String,
+        adultAdded: Boolean,
         page: Int,
         callBack: CallBack<MoviesResponseTmdb>
     ) {
         networkServiceTmdb.sectionMoviesGetStandardsLists(
             TmdbApiConstants.DEFAULT_API_VERSION,
             standardList,
-            TmdbApiConstants.API_KEY_V3,
+            tmdbApiKeyV3,
             page,
             TmdbApiConstants.LANGUAGE_ANSWER,
-            TmdbApiConstants.INCLUDE_ADULT
+            adultAdded
         )
             .enqueue(object : Callback<MoviesResponseTmdb> {
                 override fun onResponse(

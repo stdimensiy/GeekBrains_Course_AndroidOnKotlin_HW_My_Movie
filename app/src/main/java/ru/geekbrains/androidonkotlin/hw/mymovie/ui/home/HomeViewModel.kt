@@ -3,6 +3,7 @@ package ru.geekbrains.androidonkotlin.hw.mymovie.ui.home
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.preference.PreferenceManager
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.GroupResponseObject
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.ListMovies
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
@@ -10,12 +11,19 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
 
 class HomeViewModel(
-    private val app: Application,
+    app: Application,
     private val repository: TestMoviesRepository
 ) : ViewModel() {
 
     val homeBasicStructureLiveData = MutableLiveData<ArrayList<GroupResponseObject>>()
     var arrGroupList = ArrayList<GroupResponseObject>()
+    private val preferenceManager = PreferenceManager.getDefaultSharedPreferences(app)
+    private var tmdbApiKeyV3: String = preferenceManager.getString("tmdbApiKeyV3", "").toString()
+    private var adultAdded = !preferenceManager.getBoolean("adultAdded", true)
+    private var excludeMoviesWithoutPoster =
+        preferenceManager.getBoolean("excludeMoviesWithoutPoster", true)
+    private var excludeMoviesWithoutReleaseData =
+        preferenceManager.getBoolean("excludeMoviesWithoutReleaseData", true)
 
     fun fetchData() {
         repository.getHomeFragmentStructure(object : CallBack<List<ListMovies>> {
@@ -41,7 +49,7 @@ class HomeViewModel(
         page: Int,
         currentGroupResponseObject: GroupResponseObject
     ) {
-        repository.getStandardsList(standardList, page, object : CallBack<MoviesResponseTmdb> {
+        repository.getStandardsList(standardList, tmdbApiKeyV3, adultAdded, page, object : CallBack<MoviesResponseTmdb> {
             override fun onResult(value: MoviesResponseTmdb) {
                 //получая новую порцию данных обрабатываем её дополнительно по критериям пригодности к отображению
                 // критерии будут определены позже, поэтому сейчас список добавляется к текущему
