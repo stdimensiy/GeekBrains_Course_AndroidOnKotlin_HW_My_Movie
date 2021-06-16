@@ -15,13 +15,13 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
-    private lateinit var defaultDataNull: String
+    private lateinit var defoultDataNull: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingInnerViewHolder {
         val root =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.common_horizontal_list_item, parent, false)
-        defaultDataNull = parent.context.getString(R.string.default_date_null)
+        defoultDataNull = parent.context.getString(R.string.default_date_null)
         return RatingInnerViewHolder(root)
     }
 
@@ -38,7 +38,7 @@ class RatingInnerAdapter : RecyclerView.Adapter<RatingInnerViewHolder>() {
         if (item.releaseDate.isNotBlank()) {
             holder.publicData.text = item.releaseDate.trim().substring(0, 4)
         } else {
-            holder.publicData.text = defaultDataNull
+            holder.publicData.text = defoultDataNull
         }
         holder.rating.text = item.voteAverage.toString()
         if (items.isNotEmpty() && position == items.size - 1) {
