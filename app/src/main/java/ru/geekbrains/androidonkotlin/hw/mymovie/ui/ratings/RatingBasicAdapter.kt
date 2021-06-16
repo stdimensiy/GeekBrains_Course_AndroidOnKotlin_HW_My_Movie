@@ -17,7 +17,7 @@ class RatingBasicAdapter(_fragment: Fragment) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatingBasicViewHolder {
         val root =
-            LayoutInflater.from(parent.context).inflate(R.layout.basic_item_home, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.basic_item_ratings, parent, false)
         return RatingBasicViewHolder(root)
     }
 

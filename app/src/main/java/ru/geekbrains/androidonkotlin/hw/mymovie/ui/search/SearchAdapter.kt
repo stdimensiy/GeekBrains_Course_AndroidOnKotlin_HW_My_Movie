@@ -27,6 +27,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         //применена разметка от элемента списка избранных фильмов - сознательно. для экономии времени и проверки работоспособности.
         //пока он будет абсолютно таким-же, потом может заменю.
+        genreStub = parent.context.getString(R.string.genre_stub)
+        defaultDataNull = parent.context.getString(R.string.default_date_null)
         val root =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.common_vertical_list_item, parent, false)

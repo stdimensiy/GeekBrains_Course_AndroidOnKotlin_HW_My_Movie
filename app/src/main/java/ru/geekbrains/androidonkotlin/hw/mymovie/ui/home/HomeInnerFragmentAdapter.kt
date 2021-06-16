@@ -12,8 +12,9 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TmdbApiConstants
 import ru.geekbrains.androidonkotlin.hw.mymovie.ui.interfaces.OnLoadMoreMovies
 
-class HomeInnerAdapter : RecyclerView.Adapter<HomeInnerViewHolder>() {
+class HomeInnerFragmentAdapter(_fragment: Fragment) : RecyclerView.Adapter<HomeInnerViewHolder>() {
     var items: List<MovieTmdb> = listOf()
+    val fragment: Fragment = _fragment
     private var onLoadMoreMoviesListener: OnLoadMoreMovies? = null
     private lateinit var defaultDataNull: String
 
