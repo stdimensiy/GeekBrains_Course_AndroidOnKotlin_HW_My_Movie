@@ -11,8 +11,10 @@ class RatingBasicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     var adapter: RatingInnerAdapter = RatingInnerAdapter()
 
     init {
-        val ratingsInnerRecyclerView: RecyclerView = itemView.findViewById(R.id.ratings_inner_list)
-        ratingsInnerRecyclerView.adapter = adapter
-        ratingsInnerRecyclerView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        val homeInnerRecyclerView: RecyclerView =
+            itemView.findViewById(R.id.home_inner_list)
+        homeInnerRecyclerView.adapter = adapter
+        homeInnerRecyclerView.layoutManager =
+            LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
     }
 }
