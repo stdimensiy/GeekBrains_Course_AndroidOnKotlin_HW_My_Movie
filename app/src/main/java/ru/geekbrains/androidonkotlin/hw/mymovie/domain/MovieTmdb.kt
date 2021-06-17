@@ -32,7 +32,7 @@ import kotlinx.parcelize.Parcelize
 // решение которой очень простое, но искать его долго.
 
 // дополнительно установил большинство значений по умолчанию, избегая null
-
+//@Entity(tableName = "FavoriteMovies")
 @Parcelize
 data class MovieTmdb(
     @SerializedName("adult")
@@ -41,6 +41,7 @@ data class MovieTmdb(
     val backdropPath: String = "",
     @SerializedName("genre_ids")
     val genreIds: List<Int> = listOf(),
+    //@PrimaryKey
     @SerializedName("id")
     val id: Int = 0,
     @SerializedName("original_language")
