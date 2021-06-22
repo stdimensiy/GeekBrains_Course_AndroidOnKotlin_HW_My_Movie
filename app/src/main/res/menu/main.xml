@@ -8,6 +8,11 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
     <item
+        android:id="@+id/menu_search_history"
+        android:icon="@drawable/ic_baseline_manage_search_24"
+        android:title="Search_history"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

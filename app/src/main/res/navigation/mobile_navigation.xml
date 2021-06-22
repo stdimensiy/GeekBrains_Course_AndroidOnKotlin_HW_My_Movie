@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_nav_home_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_historySearchFragment"
+            app:destination="@id/historySearchFragment" />
     </fragment>
 
     <fragment
@@ -79,4 +82,13 @@
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.unwanted.UnwantedListFragment"
         android:label="@string/unwanted_list_label"
         tools:layout="@layout/unwanted_list_fragment" />
+    <fragment
+        android:id="@+id/historySearchFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.history.HistorySearchFragment"
+        android:label="history_search_fragment"
+        tools:layout="@layout/history_search_fragment" >
+        <action
+            android:id="@+id/action_historySearchFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 </navigation>
