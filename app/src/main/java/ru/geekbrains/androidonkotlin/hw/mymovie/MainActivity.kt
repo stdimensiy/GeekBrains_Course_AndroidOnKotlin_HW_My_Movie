@@ -81,6 +81,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.menu_search_history -> {
+                val navController = findNavController(R.id.nav_host_fragment)
+                navController.navigate(R.id.settingsFragmentNewAllInOne)
+            }
             R.id.action_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment)
                 navController.navigate(R.id.settingsFragmentNewAllInOne)
