@@ -1,6 +1,7 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.search
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.preference.PreferenceManager
@@ -8,6 +9,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MovieTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.MoviesResponseTmdb
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.TestMoviesRepository
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.interfaces.CallBack
+import ru.geekbrains.androidonkotlin.hw.mymovie.domain.room.SearchHistory
 
 class SearchViewModel(
     app: Application,
@@ -30,6 +32,7 @@ class SearchViewModel(
         if (searchTitle != currentSearchTitle) {
             this.currentSearchTitle = searchTitle
             currentPage = 1
+            repository.saveEntity(searchTitle)
         } else {
             currentPage++
         }
@@ -54,5 +57,16 @@ class SearchViewModel(
                     }
                 }
             })
+//        val res = repository.getAllHistorySearch()
+//        res.forEach {
+//            Log.d("Моя проверка", it.searchQuery)
+//        }
+        repository.getAllHistorySearch(object : CallBack<List<SearchHistory>>{
+            override fun onResult(value: List<SearchHistory>) {
+                value.forEach {
+                    Log.d("Моя проверка", it.searchQuery)
+                }
+            }
+        })
     }
 }
