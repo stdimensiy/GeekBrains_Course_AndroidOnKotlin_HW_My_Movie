@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_moreDetailedFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -28,13 +28,16 @@
         <action
             android:id="@+id/action_nav_home_to_historySearchFragment"
             app:destination="@id/historySearchFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_contactsListFragment"
+            app:destination="@id/contactsListFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_favorites"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.favorites.FavoritesFragment"
         android:label="@string/menu_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_nav_favorites_to_moreDetailedFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -44,7 +47,7 @@
         android:id="@+id/nav_ratings"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.ratings.RatingsFragment"
         android:label="@string/menu_ratings"
-        tools:layout="@layout/fragment_ratings" >
+        tools:layout="@layout/fragment_ratings">
         <action
             android:id="@+id/action_nav_ratings_to_moreDetailedFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -63,7 +66,7 @@
         android:id="@+id/searchFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.SearchFragment"
         android:label="@string/search_fragment_label_result"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_moreDetailedFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -86,9 +89,14 @@
         android:id="@+id/historySearchFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.history.HistorySearchFragment"
         android:label="history_search_fragment"
-        tools:layout="@layout/history_search_fragment" >
+        tools:layout="@layout/history_search_fragment">
         <action
             android:id="@+id/action_historySearchFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactsListFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.contacts.ContactsListFragment"
+        android:label="contacts_list_fragment"
+        tools:layout="@layout/contacts_list_fragment" />
 </navigation>

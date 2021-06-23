@@ -112,4 +112,11 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
     }
+
+    fun onMenuContactsListClick(item: MenuItem) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        navController.navigate(R.id.contactsListFragment)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout.closeDrawer(GravityCompat.START)
+    }
 }

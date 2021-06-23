@@ -79,4 +79,5 @@
     <string name="settings_fragment_label">Настройки</string>
     <string name="marked_Aaa_List_Label">Контент "Для взрослых" (дополнительно)</string>
     <string name="unwanted_list_label">Нежелательный контент</string>
+    <string name="menu_contacts_list_item_title">Контакты</string>
 </resources>
