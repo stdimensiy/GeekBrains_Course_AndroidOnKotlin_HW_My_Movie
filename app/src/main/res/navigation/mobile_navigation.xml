@@ -88,7 +88,7 @@
     <fragment
         android:id="@+id/historySearchFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.search.history.HistorySearchFragment"
-        android:label="history_search_fragment"
+        android:label="@string/history_search_fragment_label"
         tools:layout="@layout/history_search_fragment">
         <action
             android:id="@+id/action_historySearchFragment_to_searchFragment"
@@ -97,6 +97,6 @@
     <fragment
         android:id="@+id/contactsListFragment"
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.contacts.ContactsListFragment"
-        android:label="contacts_list_fragment"
+        android:label="@string/contacts_list_fragment_label"
         tools:layout="@layout/contacts_list_fragment" />
 </navigation>

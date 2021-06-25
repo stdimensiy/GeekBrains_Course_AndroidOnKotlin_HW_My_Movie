@@ -4,13 +4,13 @@
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_twotone_search_24"
-        android:title="Search"
+        android:title="@string/search_title"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
     <item
         android:id="@+id/menu_search_history"
         android:icon="@drawable/ic_baseline_manage_search_24"
-        android:title="Search_history"
+        android:title="@string/search_history_title"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"

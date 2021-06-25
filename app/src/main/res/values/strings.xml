@@ -80,4 +80,13 @@
     <string name="marked_Aaa_List_Label">Контент "Для взрослых" (дополнительно)</string>
     <string name="unwanted_list_label">Нежелательный контент</string>
     <string name="menu_contacts_list_item_title">Контакты</string>
+    <string name="search_title">Поиск фильмов</string>
+    <string name="search_history_title">История поиска</string>
+    <string name="ImageView_contentDescription_go_to_details_contact">Посмотреть детальную информацию о контакте</string>
+    <string name="textView_default_name_movie_for_contact_item_holder">Отображаемое наименование контакта</string>
+    <string name="default_text_for_contact_description">Дополнительное описание контакта</string>
+    <string name="contact_group_stub">группа контакта</string>
+    <string name="ImageView_contentDescription_send_message">Отправить сообщение</string>
+    <string name="history_search_fragment_label">История поисковых запросов</string>
+    <string name="contacts_list_fragment_label">Контакты</string>
 </resources>

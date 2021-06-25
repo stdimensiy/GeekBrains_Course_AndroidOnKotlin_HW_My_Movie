@@ -33,8 +33,9 @@ class ContactsListFragment : Fragment() {
 
         val contacts = mutableListOf<Contact>()
         val safeCursor = cursor ?: return
-        while (safeCursor.moveToNext()){
-            val displayName = safeCursor.getString(safeCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+        while (safeCursor.moveToNext()) {
+            val displayName =
+                safeCursor.getString(safeCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
             contacts.add(Contact(displayName))
         }
         adapter.items = contacts
