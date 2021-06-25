@@ -57,10 +57,6 @@ class SearchViewModel(
                     }
                 }
             })
-//        val res = repository.getAllHistorySearch()
-//        res.forEach {
-//            Log.d("Моя проверка", it.searchQuery)
-//        }
         repository.getAllHistorySearch(object : CallBack<List<SearchHistory>>{
             override fun onResult(value: List<SearchHistory>) {
                 value.forEach {

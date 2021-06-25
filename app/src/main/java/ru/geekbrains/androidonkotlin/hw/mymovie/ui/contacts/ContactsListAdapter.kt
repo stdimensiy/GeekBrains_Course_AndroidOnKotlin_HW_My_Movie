@@ -7,7 +7,7 @@ import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.domain.Contact
 
 class ContactsListAdapter : RecyclerView.Adapter<ContactsListViewHolder>() {
-    var items: MutableList<Contact> = mutableListOf()
+    var items: List<Contact> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsListViewHolder {
         val root = LayoutInflater.from(parent.context)
             .inflate(R.layout.contacts_list_item, parent, false)
