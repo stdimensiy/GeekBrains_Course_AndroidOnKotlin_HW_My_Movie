@@ -29,6 +29,11 @@
                 android:icon="@drawable/ic_twotone_contacts_24"
                 android:onClick="onMenuContactsListClick"
                 android:title="@string/menu_contacts_list_item_title" />
+            <item
+                android:id="@+id/location"
+                android:icon="@drawable/ic_twotone_location_on_24"
+                android:onClick="onMenuLocationClick"
+                android:title="@string/menu_location_item_title" />
         </menu>
     </item>
 </menu>
