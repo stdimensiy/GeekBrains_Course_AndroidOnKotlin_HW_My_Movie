@@ -59,25 +59,6 @@
             app:layout_constraintTop_toBottomOf="@id/textViewReleaseData" />
 
         <ImageView
-            android:id="@+id/imageViewRating"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:contentDescription="@string/ImageView_contentDescription_give_a_rating_question"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
-            app:layout_constraintStart_toEndOf="@id/imageView_avatar"
-            app:layout_constraintTop_toTopOf="@+id/textViewRating"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <TextView
-            android:id="@+id/textViewRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textView_default_rating_tmdb_for_item_holder"
-            app:layout_constraintStart_toEndOf="@id/imageViewRating"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGenres"
-            tools:layout_editor_absoluteX="99dp" />
-
-        <ImageView
             android:id="@+id/imageView_ingBtn_addToFavorites"
             android:layout_width="32dp"
             android:layout_height="32dp"
