@@ -1,8 +1,10 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie.ui.location
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -13,17 +15,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import ru.geekbrains.androidonkotlin.hw.mymovie.R
 import ru.geekbrains.androidonkotlin.hw.mymovie.databinding.LocationFragmentBinding
+import java.io.IOException
 
 class LocationFragment : Fragment() {
 
     private var _binding: LocationFragmentBinding? = null
     private val binding get() = _binding!!
     private val onLocationListener = object : LocationListener {
+        @SuppressLint("SetTextI18n")
         override fun onLocationChanged(location: Location) {
             Log.d("Моя проверка", "Сработал слушатель")
-            binding.locationValue.text =
-                "Долгота " + location.latitude.toString() + " и широта " + location.longitude.toString()
+            binding.locationCoordinates.text = getString(
+                R.string.default_text_location_coordinates,
+                location.latitude.toString(),
+                location.longitude.toString()
+            )
+            context?.let {
+                getAddressAsync(it, location)
+            }
         }
     }
     private lateinit var viewModel: LocationViewModel
@@ -38,7 +49,8 @@ class LocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.locationValue.text = "Координаты пользователя"
+        binding.locationCoordinates.text = "Координаты пользователя"
+        binding.locationAddress.text = "Адрес (по координатам)"
         getLocation()
     }
 
@@ -66,7 +78,7 @@ class LocationFragment : Fragment() {
                     locationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
                         6000L,
-                        100f,
+                        10f,
                         onLocationListener
                     )
                 }
@@ -74,5 +86,26 @@ class LocationFragment : Fragment() {
                 Log.d("Моя проверка", "GPS_PROVIDER НЕ СОЗДАН")
             }
         }
+    }
+
+    private fun getAddressAsync(
+        context: Context,
+        location: Location
+    ) {
+        val geoCoder = Geocoder(context)
+        Thread {
+            try {
+                val addresses = geoCoder.getFromLocation(
+                    location.latitude,
+                    location.longitude,
+                    1
+                )
+                binding.locationAddress.post {
+                    binding.locationAddress.text = addresses[0].getAddressLine(0)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 }
