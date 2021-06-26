@@ -97,4 +97,6 @@
     <string name="testSnackebarActionText">Action</string>
     <string name="requestPermissionLocationText">для работы этого модуля, край как нужно разрешение на доступ к геопозиции...</string>
     <string name="requestPermissionLocationSadlyText">Очень жаль. Но вы не можете воспользоваться данной функцией пока не разрешите приложению использовать ваше местоположение (в настройках)</string>
+    <string name="locationHeaderText">Координаты объекта</string>
+    <string name="locationValueText">координаты</string>
 </resources>
