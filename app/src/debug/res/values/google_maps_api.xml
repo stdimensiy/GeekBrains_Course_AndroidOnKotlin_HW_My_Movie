@@ -1,7 +1,5 @@
 <resources>
     <!--
-    TODO: Before you run your application, you need a Google Maps API key.
-
     To get one, follow this link, follow the directions and press "Create" at the end:
 
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=CB:F1:DE:EC:BC:F9:C5:75:69:20:51:00:A8:C0:D1:D1:E3:74:7A:87%3Bru.geekbrains.androidonkotlin.hw.mymovie.ui.map
@@ -20,5 +18,5 @@
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">YOUR_KEY_HERE</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD3tAMcAjwNBa_jr3SL6LBQfp8Bl53GOks</string>
 </resources>
