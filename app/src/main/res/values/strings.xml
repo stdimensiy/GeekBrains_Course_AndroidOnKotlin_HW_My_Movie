@@ -100,4 +100,7 @@
     <string name="locationHeaderText">Координаты объекта</string>
     <string name="locationValueText">координаты</string>
     <string name="default_text_location_coordinates">Широта %1$s и долгота %2$s</string>
+    <string name="defaultLocationCoordinatesText">Координаты пользователя</string>
+    <string name="defaultLocationAddressText">Адрес (по координатам)</string>
+    <string name="menu_map_item_title">Карта</string>
 </resources>

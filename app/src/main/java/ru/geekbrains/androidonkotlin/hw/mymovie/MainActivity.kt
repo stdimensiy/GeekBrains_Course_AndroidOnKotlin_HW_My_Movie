@@ -213,4 +213,32 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun onMenuMapClick(item: MenuItem) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            navController.navigate(R.id.mapsFragment)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    Snackbar.make(
+                        requireViewById(R.id.drawer_layout), // Parent view
+                        getString(R.string.requestPermissionLocationText), // Message to show
+                        Snackbar.LENGTH_LONG
+                    )
+                        .setAction(getString(R.string.requestPermissionActionText)) {
+                            locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                        }.show()
+                }
+            } else {
+                locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+        }
+    }
 }

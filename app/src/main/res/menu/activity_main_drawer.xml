@@ -34,6 +34,11 @@
                 android:icon="@drawable/ic_twotone_location_on_24"
                 android:onClick="onMenuLocationClick"
                 android:title="@string/menu_location_item_title" />
+            <item
+                android:id="@+id/map"
+                android:icon="@drawable/ic_twotone_map_24"
+                android:onClick="onMenuMapClick"
+                android:title="@string/menu_map_item_title" />
         </menu>
     </item>
 </menu>
