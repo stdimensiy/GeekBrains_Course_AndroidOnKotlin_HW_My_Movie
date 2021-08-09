@@ -1,13 +1,19 @@
 package ru.geekbrains.androidonkotlin.hw.mymovie
 
+import android.Manifest
 import android.app.SearchManager
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -23,6 +29,27 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    // особый доступ к чувствительным данным
+    private val permissionRequest =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                // КОНТАКТЫ открываем только при наличии разрешения пользователя
+                val navController = findNavController(R.id.nav_host_fragment)
+                val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+                navController.navigate(R.id.contactsListFragment)
+                drawerLayout.closeDrawer(GravityCompat.START)
+
+            } else {
+                val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+                drawerLayout.closeDrawer(GravityCompat.START)
+                Toast.makeText(
+                    applicationContext, "Очень жаль, но данной функцией вы не сможете" +
+                            " воспользоваться. В настройках нужно дать разрешение на доступ к контактам",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,5 +138,33 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.aboutFragment)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
+    }
+
+    fun onMenuContactsListClick(item: MenuItem) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            navController.navigate(R.id.contactsListFragment)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    Snackbar.make(
+                        requireViewById(R.id.drawer_layout), // Parent view
+                        "Мне нужно это разрешение. край как...", // Message to show
+                        Snackbar.LENGTH_LONG
+                    )
+                        .setAction("Разрешить") {
+                            permissionRequest.launch(Manifest.permission.READ_CONTACTS)
+                        }.show()
+                }
+            } else {
+                permissionRequest.launch(Manifest.permission.READ_CONTACTS)
+            }
+        }
     }
 }
