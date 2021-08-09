@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     // особый доступ к чувствительным данным
-    private val permissionRequest =
+    private val contactsPermissionRequest =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
                 // КОНТАКТЫ открываем только при наличии разрешения пользователя
@@ -44,8 +44,26 @@ class MainActivity : AppCompatActivity() {
                 val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
                 drawerLayout.closeDrawer(GravityCompat.START)
                 Toast.makeText(
-                    applicationContext, "Очень жаль, но данной функцией вы не сможете" +
-                            " воспользоваться. В настройках нужно дать разрешение на доступ к контактам",
+                    applicationContext, getString(R.string.requestPermissionReadContactsSadlyText),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+    private val locationPermissionRequest =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                // КОНТАКТЫ открываем только при наличии разрешения пользователя
+                val navController = findNavController(R.id.nav_host_fragment)
+                val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+                navController.navigate(R.id.locationFragment)
+                drawerLayout.closeDrawer(GravityCompat.START)
+
+            } else {
+                val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+                drawerLayout.closeDrawer(GravityCompat.START)
+                Toast.makeText(
+                    applicationContext, getString(R.string.requestPermissionLocationSadlyText),
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -59,8 +77,8 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            Snackbar.make(view, getString(R.string.testSnackebarText), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.testSnackebarActionText), null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -155,15 +173,71 @@ class MainActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     Snackbar.make(
                         requireViewById(R.id.drawer_layout), // Parent view
-                        "Мне нужно это разрешение. край как...", // Message to show
+                        getString(R.string.requestPermissionReadContactsText), // Message to show
                         Snackbar.LENGTH_LONG
                     )
-                        .setAction("Разрешить") {
-                            permissionRequest.launch(Manifest.permission.READ_CONTACTS)
+                        .setAction(getString(R.string.requestPermissionActionText)) {
+                            contactsPermissionRequest.launch(Manifest.permission.READ_CONTACTS)
                         }.show()
                 }
             } else {
-                permissionRequest.launch(Manifest.permission.READ_CONTACTS)
+                contactsPermissionRequest.launch(Manifest.permission.READ_CONTACTS)
+            }
+        }
+    }
+
+    fun onMenuLocationClick(item: MenuItem) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            navController.navigate(R.id.locationFragment)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    Snackbar.make(
+                        requireViewById(R.id.drawer_layout), // Parent view
+                        getString(R.string.requestPermissionLocationText), // Message to show
+                        Snackbar.LENGTH_LONG
+                    )
+                        .setAction(getString(R.string.requestPermissionActionText)) {
+                            locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                        }.show()
+                }
+            } else {
+                locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+        }
+    }
+
+    fun onMenuMapClick(item: MenuItem) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            navController.navigate(R.id.mapsFragment)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    Snackbar.make(
+                        requireViewById(R.id.drawer_layout), // Parent view
+                        getString(R.string.requestPermissionLocationText), // Message to show
+                        Snackbar.LENGTH_LONG
+                    )
+                        .setAction(getString(R.string.requestPermissionActionText)) {
+                            locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                        }.show()
+                }
+            } else {
+                locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
         }
     }

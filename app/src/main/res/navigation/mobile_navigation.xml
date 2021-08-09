@@ -31,6 +31,12 @@
         <action
             android:id="@+id/action_nav_home_to_contactsListFragment"
             app:destination="@id/contactsListFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
 
     <fragment
@@ -99,4 +105,14 @@
         android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.contacts.ContactsListFragment"
         android:label="@string/contacts_list_fragment_label"
         tools:layout="@layout/contacts_list_fragment" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.location.LocationFragment"
+        android:label="@string/menu_location_item_title"
+        tools:layout="@layout/location_fragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="ru.geekbrains.androidonkotlin.hw.mymovie.ui.map.MapsFragment"
+        android:label="@string/menu_map_item_title"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

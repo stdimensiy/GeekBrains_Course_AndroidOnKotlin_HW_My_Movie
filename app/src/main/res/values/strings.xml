@@ -31,14 +31,14 @@
     <string name="default_text_action_for_heart">Пользователь нажал на сердечко к фильму %1$s, идентификатор фильма %2$d</string>
     <string name="base_url_about">https://souos.ru</string>
     <string name="movie_details_fragment">Информация о фильме</string>
-    <string name="search_fragment_label_result">Результаты поиска...</string>
+    <string name="search_fragment_label_result">Результаты поиска…</string>
     <string name="default_text_movie_details_name_movie">Региональное наименование фильма</string>
     <string name="default_text_movie_details_original_name_movie">Оригинальное наименование и (ГГГГ)</string>
     <string name="default_text_movie_details_duration_movie">123 мин.</string>
     <string name="default_text_movie_details_rating_movie">8,5 (7183)</string>
     <string name="default_text_movie_details_budget_movie">Бюджет: 1 234 567 890 $</string>
     <string name="default_text_movie_details_revenue_movie">Сборы: 1 234 567 890 $</string>
-    <string name="default_text_movie_details_release_data_movie">Дата релиза: (2018-12-06)</string>
+    <string name="default_text_movie_details_release_data_movie">Дата релиза: (2018–12–06)</string>
     <string name="textView_default_basic_title">Пустое наименование рубрики</string>
     <string name="textView_default_name_movie_for_item_holder">Воспоминание об убийстве</string>
     <string name="textView_default_date_release_for_item_holder">2020</string>
@@ -89,4 +89,18 @@
     <string name="ImageView_contentDescription_send_message">Отправить сообщение</string>
     <string name="history_search_fragment_label">История поисковых запросов</string>
     <string name="contacts_list_fragment_label">Контакты</string>
+    <string name="menu_location_item_title">Геолокация</string>
+    <string name="requestPermissionReadContactsText">Мне нужно это разрешение. край как…</string>
+    <string name="requestPermissionActionText">Разрешить</string>
+    <string name="requestPermissionReadContactsSadlyText">Очень жаль, но данной функцией вы не сможете воспользоваться. В настройках нужно дать разрешение на доступ к контактам</string>
+    <string name="testSnackebarText">Replace with your own action</string>
+    <string name="testSnackebarActionText">Action</string>
+    <string name="requestPermissionLocationText">для работы этого модуля, край как нужно разрешение на доступ к геопозиции…</string>
+    <string name="requestPermissionLocationSadlyText">Очень жаль. Но вы не можете воспользоваться данной функцией пока не разрешите приложению использовать ваше местоположение (в настройках)</string>
+    <string name="locationHeaderText">Координаты объекта</string>
+    <string name="locationValueText">координаты</string>
+    <string name="default_text_location_coordinates">Широта %1$s и долгота %2$s</string>
+    <string name="defaultLocationCoordinatesText">Координаты пользователя</string>
+    <string name="defaultLocationAddressText">Адрес (по координатам)</string>
+    <string name="menu_map_item_title">Карта</string>
 </resources>
